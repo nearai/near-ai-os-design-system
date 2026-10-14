@@ -1,0 +1,63 @@
+<!-- @dsCard group="Containers" height=318 subtitle="Reasoning and tool calls in an answer; inspector sections; dense foldouts" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Expander — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 440px" aria-label="Conversation">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">research-digest</div>
+    <div class="nr-card nr-card--quiet nr-stack">
+      <div class="web-body">Here is the digest for October 13. Three of the twelve sources disagree on the release date, so it is marked as unconfirmed.</div>
+      <div>
+        <details class="nr-expander">
+          <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Show reasoning</span><span class="nr-expander__meta web-caption">12 s</span></summary>
+          <div class="nr-expander__content web-caption">Grouped the sources by publisher, then compared the dates each one gives.</div>
+        </details>
+        <details class="nr-expander" open>
+          <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Tool calls</span><span class="nr-expander__meta web-caption">3</span></summary>
+          <div class="nr-expander__content nr-stack">
+            <div class="nr-spread"><span class="web-mono nr-text-secondary">web_search("near ai attestation")</span><span class="web-caption nr-text-tertiary">5 results</span></div>
+            <div class="nr-spread"><span class="web-mono nr-text-secondary">fetch("near.ai/blog/private-ml-sdk")</span><span class="web-caption nr-text-tertiary">48 KB</span></div>
+            <div class="nr-spread"><span class="web-mono nr-text-secondary">fetch("docs.near.ai/cloud/verify")</span><span class="web-caption nr-text-tertiary">31 KB</span></div>
+          </div>
+        </details>
+        <details class="nr-expander">
+          <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Sources</span><span class="nr-expander__meta web-caption">12</span></summary>
+          <div class="nr-expander__content web-caption">near.ai, docs.near.ai and ten others.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <aside class="nr-pane nr-stack" style="width: 276px" aria-label="Inspector">
+    <div class="nr-card nr-card--quiet">
+      <details class="nr-expander" open>
+        <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-body-strong">Decisions</span></summary>
+        <div class="nr-expander__content web-caption">3 sessions are waiting. near-agents asks before anything is sent.</div>
+      </details>
+    </div>
+    <div class="nr-card nr-card--quiet">
+      <details class="nr-expander">
+        <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-body-strong">Not offered</span><span class="nr-expander__meta web-caption">2</span></summary>
+        <div class="nr-expander__content web-caption">Two sessions were too short to contribute.</div>
+      </details>
+    </div>
+    <div class="nr-card nr-card--quiet nr-dense">
+      <details class="nr-expander" open>
+        <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-caption">Limits</span></summary>
+        <div class="nr-expander__content">
+          <details class="nr-expander">
+            <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-caption">Time</span></summary>
+            <div class="nr-expander__content web-caption">Timeout 120 s</div>
+          </details>
+          <details class="nr-expander" open>
+            <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-caption">Budget</span></summary>
+            <div class="nr-expander__content web-caption nr-text-primary">0.50 NEAR per run</div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

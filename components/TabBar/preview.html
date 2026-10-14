@@ -1,0 +1,100 @@
+<!-- @dsCard group="Navigation" height=490 subtitle="Phone: floating glass tab bar and the M3 navigation bar" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TabBar — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <!-- iPhone: floating glass tab bar, bottom accessory, separate search tab -->
+  <div class="nr-tabbar__screen nr-touch" style="width: 356px" aria-label="iPhone">
+    <div class="nr-tabbar__content">
+      <div class="ios-display">Agents</div>
+      <div class="nr-card nr-stack">
+        <div class="ios-body-strong">Research agent</div>
+        <div class="ios-caption nr-text-secondary">Waiting for your approval</div>
+      </div>
+      <div class="nr-card nr-stack">
+        <div class="ios-body-strong">Inbox triage</div>
+        <div class="ios-caption nr-text-secondary">Running on Private AI · step 3 of 5</div>
+      </div>
+      <div class="nr-card nr-stack">
+        <div class="ios-body-strong">Weekly digest</div>
+        <div class="ios-caption nr-text-secondary">Scheduled · Mondays at 9:00</div>
+      </div>
+    </div>
+    <div class="nr-tabbar nr-tabbar--pinned">
+      <div class="nr-tabbar__accessory" role="group" aria-label="Agent run in progress">
+        <span class="nr-tabbar__accessory-dot" aria-hidden="true"></span>
+        <span class="nr-tabbar__accessory-text">
+          <span class="ios-label">Inbox triage</span>
+          <span class="ios-caption nr-text-secondary">Running · step 3 of 5</span>
+        </span>
+        <button class="nr-tabbar__accessory-button" aria-label="Stop Inbox triage">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <div class="nr-tabbar__row">
+        <nav class="nr-tabbar__tabs" aria-label="Main">
+          <a class="nr-tabbar__tab" href="#home"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span><span class="nr-tabbar__label ios-micro">Home</span></a>
+          <a class="nr-tabbar__tab" href="#agents" aria-current="page"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><span class="nr-tabbar__badge ios-micro" aria-hidden="true">1</span></span><span class="nr-tabbar__label ios-micro">Agents</span><span class="nr-visually-hidden">, 1 needs your approval</span></a>
+          <a class="nr-tabbar__tab" href="#private-ai"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="nr-tabbar__label ios-micro">Private AI</span></a>
+          <a class="nr-tabbar__tab" href="#settings"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><span class="nr-tabbar__label ios-micro">Settings</span></a>
+        </nav>
+        <button class="nr-tabbar__search" aria-label="Search">
+          <svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Android: M3 flexible navigation bar, docked -->
+  <div class="nr-tabbar__screen nr-touch" style="width: 356px" aria-label="Android phone">
+    <div class="nr-tabbar__content">
+      <div class="android-heading">Agents</div>
+      <div class="nr-card nr-stack">
+        <div class="android-body-strong">Research agent</div>
+        <div class="android-caption nr-text-secondary">Waiting for your approval</div>
+      </div>
+      <div class="nr-card nr-stack">
+        <div class="android-body-strong">Inbox triage</div>
+        <div class="android-caption nr-text-secondary">Running on Private AI · step 3 of 5</div>
+      </div>
+      <div class="nr-card nr-stack">
+        <div class="android-body-strong">Weekly digest</div>
+        <div class="android-caption nr-text-secondary">Scheduled · Mondays at 9:00</div>
+      </div>
+    </div>
+    <div class="nr-tabbar nr-tabbar--docked nr-tabbar--pinned">
+      <nav class="nr-tabbar__tabs" aria-label="Main">
+        <a class="nr-tabbar__tab" href="#home"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span><span class="nr-tabbar__label android-caption">Home</span></a>
+        <a class="nr-tabbar__tab" href="#agents" aria-current="page"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><span class="nr-tabbar__badge android-micro" aria-hidden="true">1</span></span><span class="nr-tabbar__label android-caption">Agents</span><span class="nr-visually-hidden">, 1 needs your approval</span></a>
+        <a class="nr-tabbar__tab" href="#private-ai"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="nr-tabbar__label android-caption">Private AI</span></a>
+        <a class="nr-tabbar__tab" href="#settings"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span><span class="nr-tabbar__label android-caption">Settings</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- iPhone, scrolled down: the bar minimizes and the accessory moves inline -->
+  <div class="nr-stack" style="width: 356px">
+    <div class="web-caption nr-text-secondary">Scrolled on iPhone: the selected tab, the accessory inline.</div>
+    <div class="nr-tabbar nr-tabbar--minimized nr-touch">
+      <div class="nr-tabbar__accessory" role="group" aria-label="Agent run in progress">
+        <span class="nr-tabbar__accessory-dot" aria-hidden="true"></span>
+        <span class="nr-tabbar__accessory-text"><span class="ios-label">Inbox triage</span></span>
+        <button class="nr-tabbar__accessory-button" aria-label="Stop Inbox triage">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <div class="nr-tabbar__row">
+        <nav class="nr-tabbar__tabs" aria-label="Main">
+          <a class="nr-tabbar__tab" href="#home"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span><span class="nr-tabbar__label ios-micro">Home</span></a>
+          <a class="nr-tabbar__tab" href="#agents" aria-current="page" aria-label="Agents"><span class="nr-tabbar__indicator"><svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><span class="nr-tabbar__label ios-micro">Agents</span></a>
+        </nav>
+        <button class="nr-tabbar__search" aria-label="Search">
+          <svg class="nr-tabbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

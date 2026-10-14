@@ -1,0 +1,67 @@
+<!-- @dsCard group="Inputs" height=256 subtitle="Numbers with units, steppers, label scrubbing and a mixed value" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>NumberField — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-number-field">
+      <label class="nr-number-field__label web-eyebrow nr-upper" for="nf-1">Max tokens</label>
+      <div class="nr-number-field__well web-label">
+        <input class="nr-number-field__input" id="nf-1" type="text" inputmode="decimal" role="spinbutton" value="4,096" aria-valuenow="4096" aria-valuemin="1" aria-valuemax="32768" aria-valuetext="4,096 tokens">
+        <span class="nr-number-field__unit" aria-hidden="true">tokens</span>
+        <span class="nr-number-field__steps">
+          <button class="nr-number-field__step nr-number-field__step--down" type="button" tabindex="-1" aria-label="Decrease max tokens"></button>
+          <button class="nr-number-field__step nr-number-field__step--up" type="button" tabindex="-1" aria-label="Increase max tokens"></button>
+        </span>
+      </div>
+    </div>
+    <div class="nr-number-field nr-number-field--invalid">
+      <label class="nr-number-field__label web-eyebrow nr-upper" for="nf-2">Max tokens</label>
+      <div class="nr-number-field__well web-label">
+        <input class="nr-number-field__input" id="nf-2" type="text" inputmode="decimal" role="spinbutton" value="40,000" aria-invalid="true" aria-describedby="nf-2-msg" aria-valuemin="1" aria-valuemax="32768">
+        <span class="nr-number-field__unit" aria-hidden="true">tokens</span>
+        <span class="nr-number-field__steps">
+          <button class="nr-number-field__step nr-number-field__step--down" type="button" tabindex="-1" aria-label="Decrease max tokens"></button>
+          <button class="nr-number-field__step nr-number-field__step--up" type="button" tabindex="-1" aria-label="Increase max tokens" disabled></button>
+        </span>
+      </div>
+      <span class="nr-number-field__message web-caption" id="nf-2-msg">Use a number from 1 to 32,768.</span>
+    </div>
+    <div class="web-caption nr-text-tertiary">Touch (iOS)</div>
+    <div class="nr-touch">
+      <div class="nr-number-field__well ios-body">
+        <input class="nr-number-field__input" type="text" inputmode="numeric" role="spinbutton" value="30" aria-label="Timeout" aria-valuenow="30" aria-valuetext="30 seconds">
+        <span class="nr-number-field__unit" aria-hidden="true">seconds</span>
+        <span class="nr-number-field__steps">
+          <button class="nr-number-field__step nr-number-field__step--down" type="button" tabindex="-1" aria-label="Decrease timeout"></button>
+          <button class="nr-number-field__step nr-number-field__step--up" type="button" tabindex="-1" aria-label="Increase timeout"></button>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">3 agents selected</div>
+    <div class="nr-dense nr-stack" style="--nr-label-width: 112px">
+      <div class="nr-number-field nr-number-field--inline">
+        <label class="nr-number-field__label nr-number-field__label--scrub web-caption" for="nf-3">Temperature</label>
+        <div class="nr-number-field__well web-caption"><input class="nr-number-field__input" id="nf-3" type="text" inputmode="decimal" role="spinbutton" value="0.70" aria-valuenow="0.7"></div>
+      </div>
+      <div class="nr-number-field nr-number-field--inline">
+        <label class="nr-number-field__label nr-number-field__label--scrub web-caption" for="nf-4">Top P</label>
+        <div class="nr-number-field__well web-caption"><input class="nr-number-field__input" id="nf-4" type="text" inputmode="decimal" role="spinbutton" value="0.95" aria-valuenow="0.95"></div>
+      </div>
+      <div class="nr-number-field nr-number-field--inline nr-number-field--mixed">
+        <label class="nr-number-field__label nr-number-field__label--scrub web-caption" for="nf-5">Max tokens</label>
+        <div class="nr-number-field__well web-caption"><input class="nr-number-field__input" id="nf-5" type="text" inputmode="decimal" role="spinbutton" placeholder="—" aria-valuetext="Mixed"><span class="nr-number-field__unit" aria-hidden="true">tokens</span></div>
+      </div>
+      <div class="nr-number-field nr-number-field--inline">
+        <label class="nr-number-field__label nr-number-field__label--scrub web-caption" for="nf-6">Timeout</label>
+        <div class="nr-number-field__well web-caption"><input class="nr-number-field__input" id="nf-6" type="text" inputmode="numeric" role="spinbutton" value="30" aria-valuenow="30" aria-valuetext="30 seconds"><span class="nr-number-field__unit" aria-hidden="true">s</span></div>
+      </div>
+    </div>
+    <div class="web-caption nr-text-tertiary">Drag a label to scrub: Shift steps by 10, Alt (Option) by 0.1. Type 4096*2 to multiply.</div>
+  </section>
+</div>
+</body>
+</html>

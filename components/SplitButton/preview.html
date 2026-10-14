@@ -1,0 +1,41 @@
+<!-- @dsCard group="Actions" height=196 subtitle="Glass inline split and a filled split with its menu open" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SplitButton — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-row" style="width: 100%">
+    <div class="nr-stack" style="width: 340px">
+      <div class="nr-card nr-card--quiet nr-spread">
+        <div class="nr-stack"><div class="web-body-strong">near-agents</div><div class="web-caption nr-text-secondary">Ask me · 3 sessions waiting</div></div>
+        <div class="nr-split-button web-label">
+          <button class="nr-split-button__action">Submit all</button>
+          <span class="nr-split-button__divider" aria-hidden="true"></span>
+          <button class="nr-split-button__menu" aria-haspopup="menu" aria-expanded="false" aria-label="More ways to submit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5L8 10.5 12 6.5"/></svg></button>
+        </div>
+      </div>
+      <div class="nr-card nr-card--quiet nr-spread">
+        <div class="nr-stack"><div class="web-body-strong">trace-commons</div><div class="web-caption nr-text-secondary">Paused · nothing waiting</div></div>
+        <div class="nr-split-button web-label" aria-disabled="true">
+          <button class="nr-split-button__action" disabled>Submit all</button>
+          <span class="nr-split-button__divider" aria-hidden="true"></span>
+          <button class="nr-split-button__menu" disabled aria-haspopup="menu" aria-label="More ways to submit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5L8 10.5 12 6.5"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="nr-menu-anchor nr-menu-anchor--static" style="width: 344px">
+      <div class="nr-split-button nr-split-button--primary nr-split-button--bar web-body-strong">
+        <button class="nr-split-button__action">Run agent</button>
+        <span class="nr-split-button__divider" aria-hidden="true"></span>
+        <button class="nr-split-button__menu" aria-haspopup="menu" aria-expanded="true" aria-controls="run-menu" aria-label="More ways to run"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5L8 10.5 12 6.5"/></svg></button>
+      </div>
+      <div class="nr-menu" id="run-menu" role="menu" aria-label="More ways to run">
+        <button class="nr-menu__item web-body" role="menuitem" data-highlighted><span class="nr-menu__label">Run in a new chat</span></button>
+        <button class="nr-menu__item web-body" role="menuitem"><span class="nr-menu__label">Run on Private AI</span></button>
+        <button class="nr-menu__item web-body" role="menuitem"><span class="nr-menu__label">Run on a schedule…</span></button>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

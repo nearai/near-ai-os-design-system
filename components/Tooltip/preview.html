@@ -1,0 +1,34 @@
+<!-- @dsCard group="Presentation" height=128 subtitle="Name and shortcut, a reason for a disabled action, label then detail" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tooltip — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-row" style="width: 100%">
+    <div class="nr-compact" style="width: 232px">
+      <div class="nr-icon-button-group" role="toolbar" aria-label="View">
+        <button class="nr-icon-button nr-icon-button--toolbar" aria-pressed="true" aria-label="Show sidebar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2.5"/><path d="M6.5 3v10"/></svg></button>
+        <button class="nr-icon-button nr-icon-button--toolbar" aria-pressed="false" aria-label="Show graph"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3.5 13V8.5M8 13V3.5M12.5 13V6.5"/></svg></button>
+        <span class="nr-tooltip-anchor">
+          <button class="nr-icon-button nr-icon-button--toolbar" aria-pressed="false" aria-label="Show inspector" aria-describedby="tip-1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="2.5"/><path d="M9.5 3v10"/></svg></button>
+          <span class="nr-tooltip mac-caption" role="tooltip" id="tip-1">Show inspector <span class="nr-tooltip__keys">⌥⌘I</span></span>
+        </span>
+      </div>
+    </div>
+    <div style="width: 236px">
+      <span class="nr-tooltip-anchor">
+        <button class="nr-button nr-button--primary web-body-strong" aria-disabled="true" aria-describedby="tip-2">Contribute</button>
+        <span class="nr-tooltip web-caption" role="tooltip" id="tip-2">Resume watching to contribute.</span>
+      </span>
+    </div>
+    <div style="width: 200px">
+      <span class="web-label nr-text-secondary">Balance 4.21 NEAR</span>
+      <span class="nr-tooltip-anchor">
+        <button class="nr-icon-button nr-icon-button--bare" aria-label="Refresh balance" aria-describedby="tip-3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.46-3.54M13 3v3h-3"/></svg></button>
+        <span class="nr-tooltip web-caption" role="tooltip" id="tip-3">Refresh balance<br>Last checked 2 minutes ago.</span>
+      </span>
+    </div>
+  </section>
+</div>
+</body>
+</html>

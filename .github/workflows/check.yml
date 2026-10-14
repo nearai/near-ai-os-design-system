@@ -1,0 +1,26 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tokens:
+    name: tokens, contrast and component cards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Contrast floors, token references, stale dist/
+        run: python3 scripts/check.py
+
+  swift:
+    name: generated Swift type-checks
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v6
+      - name: Type-check NearAITokens.swift for macOS 14 and iOS 17
+        run: |
+          swiftc -typecheck -swift-version 6 -target arm64-apple-macos14 dist/swift/NearAITokens.swift
+          swiftc -typecheck -swift-version 6 -sdk "$(xcrun --sdk iphoneos --show-sdk-path)" -target arm64-apple-ios17.0 dist/swift/NearAITokens.swift

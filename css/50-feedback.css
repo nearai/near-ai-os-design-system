@@ -1,0 +1,366 @@
+/* ---------------------------------------------------------------------------
+   Feedback: StatusLabel, Tag, Badge, Notice, InlineAlert, Toast, Spinner,
+   ProgressBar, Skeleton, EmptyState.
+   Status is a dot (or glyph) plus words, never colour alone. Tone colours
+   are marks (`positive` `caution` `critical` `neutral`), text inks
+   (`-text`) and grounds (`-tint`). Derived values are documented in each
+   component README: dot = space-8, ring = space-6 / 2, spinner stroke =
+   size / 8.
+   --------------------------------------------------------------------------- */
+
+/* ---- StatusLabel ----------------------------------------------------------- */
+.nr-status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--inline-gap);
+  min-width: 0;
+  color: var(--text-secondary);
+}
+.nr-status-label--strong { font-weight: 600; }
+.nr-status-label__text { min-width: 0; }
+.nr-status-label__dot {
+  --nr-tone: var(--neutral);
+  --nr-tone-tint: var(--neutral-tint);
+  flex: none;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: 50%;
+  background: var(--nr-tone);
+}
+.nr-status-label__dot--positive { --nr-tone: var(--positive); --nr-tone-tint: var(--positive-tint); }
+.nr-status-label__dot--caution  { --nr-tone: var(--caution);  --nr-tone-tint: var(--caution-tint); }
+.nr-status-label__dot--critical { --nr-tone: var(--critical); --nr-tone-tint: var(--critical-tint); }
+.nr-status-label__dot--neutral  { --nr-tone: var(--neutral);  --nr-tone-tint: var(--neutral-tint); }
+/* Halo: a 2px ink ring that lifts the dot off a busy ground (legend cells). */
+.nr-status-label__dot--halo { box-shadow: 0 0 0 2px var(--hairline); }
+/* Ring: the tone's tint, 3px, for the one status that heads a card. */
+.nr-status-label__dot--ring { box-shadow: 0 0 0 calc(var(--space-6) / 2) var(--nr-tone-tint); }
+/* Lead: the status that heads a card. Dot, a strong line, and a sub-line
+   aligned under the words (the Home status card). */
+.nr-status-label--lead {
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-10);
+  row-gap: var(--space-2);
+  align-items: center;
+  color: var(--text-primary);
+}
+.nr-status-label__sub { grid-column: 2; color: var(--text-secondary); }
+.nr-dense .nr-status-label__dot, .nr-status-label.nr-dense .nr-status-label__dot { width: var(--space-6); height: var(--space-6); }
+.nr-touch .nr-status-label { gap: var(--space-8); }
+
+/* ---- Tag ------------------------------------------------------------------- */
+.nr-tag {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--size-control-dense);
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-pill);
+  background: var(--neutral-tint);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.nr-tag--positive { background: var(--positive-tint); color: var(--positive-text); }
+.nr-tag--caution  { background: var(--caution-tint);  color: var(--caution-text); }
+.nr-tag--critical { background: var(--critical-tint); color: var(--critical-text); }
+.nr-tag--accent   { background: var(--accent-tint);   color: var(--accent-text); }
+/* A check that failed: the critical pill, outlined in its ink, so it never
+   reads as the same pill as critical and never as colour alone. */
+.nr-tag--failed {
+  background: var(--critical-tint);
+  color: var(--critical-text);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+[data-theme$="-hc"] .nr-tag:not(.nr-tag--failed) { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+[data-theme$="-hc"] .nr-tag--failed { box-shadow: inset 0 0 0 2px currentColor; }
+
+/* ---- Badge ----------------------------------------------------------------- */
+.nr-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: var(--space-16);
+  height: var(--space-16);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--badge-fill);
+  color: var(--text-on-status);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex: none;
+}
+/* Inside a tab or segment: the 16% ink ground, the label's own ink. */
+.nr-badge--subtle {
+  min-width: var(--space-14);
+  height: var(--space-14);
+  background: var(--toggle-off);
+  color: inherit;
+}
+/* Over an icon: anchored at its top trailing corner. The host is the icon. */
+.nr-badge__host { position: relative; display: inline-flex; }
+.nr-badge--anchored {
+  position: absolute;
+  top: calc(var(--space-4) * -1);
+  inset-inline-end: calc(var(--space-6) * -1);
+}
+
+/* ---- Notice ---------------------------------------------------------------- */
+/* A quiet card. Tone is the title's dot; the card is never tinted. */
+.nr-notice {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+  padding: var(--space-10) var(--space-12);
+  border-radius: var(--radius-card-quiet);
+  background: var(--card-quiet);
+  color: var(--text-secondary);
+}
+.nr-notice__body { margin: 0; font-weight: 400; color: var(--text-secondary); }
+.nr-notice__list { margin: 0; padding-inline-start: var(--space-16); font-weight: 400; }
+.nr-notice__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-4);
+}
+.nr-notice-stack { display: flex; flex-direction: column; gap: var(--card-gap); min-width: 0; }
+.nr-notice-stack__head { display: flex; justify-content: flex-end; }
+[data-theme$="-hc"] .nr-notice { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+
+/* ---- InlineAlert ----------------------------------------------------------- */
+/* A failed request's line: unboxed, under the control it is about. */
+.nr-inline-alert {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  min-width: 0;
+  margin: 0;
+  color: var(--critical-text);
+}
+.nr-inline-alert__text { flex: 1 1 auto; min-width: 0; margin: 0; }
+.nr-inline-alert__dismiss { flex: none; }
+
+/* ---- Toast ----------------------------------------------------------------- */
+/* Floating: the undo bar lifted onto the floating layer (web, Android, iOS). */
+.nr-toast {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8) var(--space-16);
+  width: 100%;
+  max-width: var(--size-modal-narrow);
+  padding: var(--card-padding-y) var(--card-padding-x);
+  border-radius: var(--radius-card);
+  background: var(--popover);
+  -webkit-backdrop-filter: var(--blur-floating);
+  backdrop-filter: var(--blur-floating);
+  box-shadow: var(--shadow-float);
+  color: var(--text-primary);
+}
+.nr-toast__text {
+  flex: 1 1 var(--size-modal-nav);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.nr-toast__eyebrow { color: var(--text-tertiary); }
+.nr-toast__title { color: var(--text-primary); }
+.nr-toast__detail { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.nr-toast__actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-inline-start: auto;
+}
+.nr-toast__refusal { flex-basis: 100%; }
+/* Docked: the macOS undo bar, a painted card at the top of the inspector
+   (or the foot of the main pane when the inspector is closed). */
+.nr-toast--docked {
+  flex-wrap: nowrap;
+  max-width: none;
+  background: var(--card);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+[data-theme$="-hc"] .nr-toast { box-shadow: inset 0 0 0 1px var(--edge-hc), var(--shadow-float); }
+[data-theme$="-hc"] .nr-toast--docked { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nr-toast:not(.nr-toast--docked) { background: var(--pane-base); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nr-toast:not(.nr-toast--docked) { background: var(--pane-opaque); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+/* The region: one toast at a time, bottom edge, above navigation bars. */
+.nr-toast-region {
+  position: fixed;
+  inset-inline: var(--margin-compact);
+  bottom: var(--margin-compact);
+  z-index: var(--z-toast);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.nr-toast-region > .nr-toast {
+  pointer-events: auto;
+  animation: nr-toast-in var(--duration-spring-spatial) var(--spring-spatial) both;
+}
+@media (min-width: 600px) {
+  .nr-toast-region { inset-inline: var(--margin-medium); bottom: var(--margin-medium); }
+}
+@keyframes nr-toast-in {
+  from { opacity: 0; transform: translateY(var(--space-16)); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---- Spinner --------------------------------------------------------------- */
+/* A ring whose quarter arc turns once per duration-spin. Stroke = size / 8. */
+.nr-spinner {
+  --nr-spinner-size: var(--space-12);
+  display: inline-block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--nr-spinner-size);
+  height: var(--nr-spinner-size);
+  border-radius: 50%;
+  border: calc(var(--nr-spinner-size) / 8) solid var(--toggle-off);
+  border-top-color: var(--text-secondary);
+  animation: nr-spinner-turn var(--duration-spin) var(--ease-linear) infinite;
+  vertical-align: middle;
+}
+.nr-spinner--medium { --nr-spinner-size: var(--size-glyph); }
+.nr-spinner--large { --nr-spinner-size: var(--space-32); }
+.nr-spinner--inherit { border-top-color: currentColor; }
+.nr-spinner-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--inline-gap);
+  min-width: 0;
+  color: var(--text-secondary);
+}
+.nr-spinner-status--center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-12);
+  text-align: center;
+}
+@keyframes nr-spinner-turn { to { transform: rotate(360deg); } }
+
+/* ---- ProgressBar ----------------------------------------------------------- */
+.nr-progress-bar { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+.nr-progress-bar__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.nr-progress-bar__label { color: var(--text-primary); min-width: 0; }
+.nr-progress-bar__value { color: var(--text-secondary); font-variant-numeric: tabular-nums; flex: none; }
+.nr-progress-bar__row { display: flex; align-items: center; gap: var(--space-8); min-width: 0; }
+.nr-progress-bar__track {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--well);
+  overflow: hidden;
+}
+.nr-progress-bar__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent-soft);
+  transition: width var(--duration-standard) var(--ease-standard);
+}
+.nr-progress-bar__status { color: var(--text-secondary); margin: 0; }
+.nr-progress-bar--thick .nr-progress-bar__track { height: var(--space-8); }
+.nr-progress-bar--paused .nr-progress-bar__fill { background: var(--neutral); }
+.nr-progress-bar--failed .nr-progress-bar__fill { background: var(--critical); }
+/* Indeterminate: only the opening phase of work that will become measured. */
+.nr-progress-bar--indeterminate .nr-progress-bar__fill {
+  width: 50%;
+  animation: nr-progress-slide var(--duration-pulse) var(--ease-standard) infinite;
+}
+@keyframes nr-progress-slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+[data-theme$="-hc"] .nr-progress-bar__track { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+
+/* ---- Skeleton -------------------------------------------------------------- */
+/* Where content of a known shape is still loading. Never for a value. */
+.nr-skeleton {
+  display: block;
+  box-sizing: border-box;
+  height: var(--space-12);
+  border-radius: var(--radius-control);
+  background: var(--neutral-tint);
+  animation: nr-skeleton-pulse calc(var(--duration-pulse) / 2) var(--ease-standard) infinite alternate;
+}
+.nr-skeleton--heading { height: var(--space-16); }
+.nr-skeleton--row { height: var(--nr-h-row, var(--size-list-row)); }
+.nr-skeleton--tile { width: var(--size-tool-tile); height: var(--size-tool-tile); border-radius: var(--radius-tile); flex: none; }
+.nr-skeleton--circle { width: var(--size-tool-tile); height: var(--size-tool-tile); border-radius: 50%; flex: none; }
+.nr-skeleton-group { display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
+[data-theme$="-hc"] .nr-skeleton { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+@keyframes nr-skeleton-pulse { to { opacity: var(--opacity-skeleton); } }
+
+/* ---- EmptyState ------------------------------------------------------------ */
+.nr-empty-state {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--size-panel-width);
+  margin-inline: auto;
+  padding: var(--space-24) var(--space-16);
+  text-align: center;
+}
+.nr-empty-state__glyph {
+  width: var(--size-tool-tile);
+  height: var(--size-tool-tile);
+  color: var(--text-tertiary);
+  flex: none;
+}
+.nr-empty-state__title { margin: 0; color: var(--text-primary); }
+.nr-empty-state__detail { margin: 0; color: var(--text-secondary); }
+.nr-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+.nr-empty-state--inline { padding: var(--space-12) var(--space-12); }
+.nr-empty-state--screen { padding: var(--space-40) var(--space-16); gap: var(--space-8); }
+.nr-empty-state--screen .nr-empty-state__glyph { width: var(--space-40); height: var(--space-40); }
+
+/* ---- Reduce Motion: nothing turns, slides or breathes. --------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .nr-spinner, .nr-skeleton, .nr-toast-region > .nr-toast { animation: none; }
+  .nr-progress-bar__fill { transition: none; }
+  .nr-progress-bar--indeterminate .nr-progress-bar__fill { animation: none; visibility: hidden; }
+}
+
+/* ---- Forced colours: marks become system colours, words stay. -------------- */
+@media (forced-colors: active) {
+  .nr-status-label__dot { background: CanvasText; forced-color-adjust: none; }
+  .nr-tag, .nr-badge { border: 1px solid CanvasText; }
+  .nr-notice, .nr-toast { border: 1px solid CanvasText; }
+  .nr-progress-bar__track { border: 1px solid CanvasText; }
+  .nr-progress-bar__fill { background: Highlight; forced-color-adjust: none; }
+  .nr-spinner { forced-color-adjust: none; border-color: GrayText; border-top-color: CanvasText; }
+}

@@ -1,0 +1,45 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Cover</title>
+<style>
+  .cover { box-sizing: border-box; width: 960px; height: 288px; padding: 28px 40px 0; background: var(--scene); }
+  .cover svg { display: block; width: 880px; height: 112px; }
+  .blk { rx: var(--radius-pane); ry: var(--radius-pane); }
+  .pill { rx: var(--radius-control); ry: var(--radius-control); }
+  .blue { fill: var(--brand-blue); }
+  .ink { fill: var(--text-primary); }
+  .glow { fill: var(--scene-glow-1); }
+  .violet { fill: var(--trace-purple); }
+  .paper { fill: var(--brand-paper); }
+  .ground { fill: var(--scene); }
+  .name { margin: 32px 0 0; font-family: var(--font-web); font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.5px; color: var(--text-primary); }
+  .tag { margin: 12px 0 0; max-width: 440px; font-family: var(--font-web); font-size: 14px; line-height: 20px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="cover">
+  <svg viewBox="0 0 880 112" role="img" aria-label="">
+    <!-- blocks: brand-blue 432x112, text-primary (ink) 196x112, scene-glow-1 120x112, trace-purple 112x112; radius-pane corners; pane-gap 10 between -->
+    <!-- arrangement: one strip of unequal bands across the top (top-band skeleton; the name is too wide for the 440px zone at 64px) -->
+    <!-- pattern: capsules, the shape every control takes; "Controls are capsules on every platform" (Shape and elevation) -->
+    <!-- scales: capsule height 22 with rx radius-control 11; rows at a 32 pitch (space-32); gaps space-8 -->
+    <rect class="blk blue" x="0" y="0" width="432" height="112"/>
+    <rect class="blk ink" x="442" y="0" width="196" height="112"/>
+    <rect class="blk glow" x="648" y="0" width="120" height="112"/>
+    <rect class="blk violet" x="778" y="0" width="102" height="112"/>
+    <rect class="pill paper" x="24" y="22" width="96" height="22"/>
+    <rect class="pill paper" x="128" y="22" width="64" height="22"/>
+    <rect class="pill paper" x="200" y="22" width="140" height="22"/>
+    <rect class="pill paper" x="24" y="54" width="150" height="22"/>
+    <rect class="pill paper" x="182" y="54" width="84" height="22"/>
+    <rect class="pill paper" x="274" y="54" width="62" height="22"/>
+    <rect class="pill ground" x="456" y="22" width="120" height="22"/>
+    <rect class="pill ground" x="456" y="54" width="64" height="22"/>
+    <rect class="pill ground" x="528" y="54" width="92" height="22"/>
+  </svg>
+  <h1 class="name">NEAR AI Design System</h1>
+  <p class="tag">One system for NEAR AI on desktop, web, tablet and phone.</p>
+</div>
+</body>
+</html>

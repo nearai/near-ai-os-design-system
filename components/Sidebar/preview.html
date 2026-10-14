@@ -1,0 +1,71 @@
+<!-- @dsCard group="Navigation" height=368 subtitle="App sidebar with sections, and the settings section list" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Sidebar — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <nav class="nr-sidebar nr-pane" aria-label="Near.ai">
+    <div class="nr-sidebar__group">
+      <h2 class="nr-sidebar__heading web-eyebrow nr-upper" id="sb-workspace">Workspace</h2>
+      <ul class="nr-sidebar__list" aria-labelledby="sb-workspace">
+        <li><a class="nr-sidebar__item web-label" href="#home">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+          <span class="nr-sidebar__label">Home</span></a></li>
+        <li><a class="nr-sidebar__item web-label" href="#agents">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
+          <span class="nr-sidebar__label">Agents</span><span class="nr-sidebar__count web-caption">2 waiting</span></a></li>
+        <li><a class="nr-sidebar__item nr-sidebar__item--nested web-label" href="#research" aria-current="page">
+          <span class="nr-sidebar__label">Research agent</span><span class="nr-sidebar__count web-caption">Running</span></a></li>
+        <li><a class="nr-sidebar__item nr-sidebar__item--nested web-label" href="#triage">
+          <span class="nr-sidebar__label">Inbox triage</span><span class="nr-sidebar__count web-caption">Paused</span></a></li>
+        <li><a class="nr-sidebar__item web-label" href="#traces">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3.5l2-5 4 10 3-7 1.5 2H21"/></svg>
+          <span class="nr-sidebar__label">Traces</span><span class="nr-sidebar__count web-caption">3</span></a></li>
+      </ul>
+    </div>
+    <div class="nr-sidebar__group">
+      <h2 class="nr-sidebar__heading web-eyebrow nr-upper" id="sb-private">Private AI</h2>
+      <ul class="nr-sidebar__list" aria-labelledby="sb-private">
+        <li><a class="nr-sidebar__item web-label" href="#models">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 19.5 7.5v9L12 20.5 4.5 16.5v-9z"/><path d="M4.5 7.5 12 11.5l7.5-4M12 11.5v9"/></svg>
+          <span class="nr-sidebar__label">Models</span></a></li>
+        <li><a class="nr-sidebar__item web-label" href="#usage">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19v-8M12 19V5M18 19v-6"/></svg>
+          <span class="nr-sidebar__label">Usage and credit</span></a></li>
+        <li><a class="nr-sidebar__item web-label" href="#proofs">
+          <svg class="nr-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+          <span class="nr-sidebar__label">Proofs</span><span class="nr-sidebar__count web-caption">41 verified</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="nr-pane nr-pane--opaque nr-compact" style="width: 436px" aria-label="Settings">
+    <div class="nr-stack">
+      <div class="mac-title">Settings</div>
+      <hr class="nr-rule">
+      <div class="nr-sidebar__split">
+        <nav class="nr-sidebar nr-sidebar--sections" aria-label="Settings sections">
+          <a class="nr-sidebar__item mac-label" href="#general">General</a>
+          <a class="nr-sidebar__item mac-label" href="#connection">Connection</a>
+          <a class="nr-sidebar__item mac-label" href="#startup">Startup</a>
+          <a class="nr-sidebar__item mac-label" href="#watching" aria-current="true">Watching</a>
+          <a class="nr-sidebar__item mac-label" href="#uses">How traces may be used</a>
+          <a class="nr-sidebar__item mac-label" href="#profile">Public profile</a>
+          <a class="nr-sidebar__item mac-label" href="#folders">Watched folders</a>
+          <span class="nr-sidebar__item mac-label" aria-disabled="true">&#8212;</span>
+        </nav>
+        <div class="nr-stack">
+          <div class="mac-eyebrow nr-upper nr-text-accent">Watching</div>
+          <div class="nr-card nr-stack">
+            <div class="mac-body-strong">Watching · 3 folders</div>
+            <div class="mac-caption nr-text-secondary">New sessions are read as they are written. Nothing is sent unless you say so.</div>
+          </div>
+          <div class="mac-eyebrow nr-upper nr-text-accent">How traces may be used</div>
+          <div class="nr-card nr-card--quiet mac-caption nr-text-secondary">Ask me before each contribution.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

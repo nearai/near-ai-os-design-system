@@ -1,0 +1,62 @@
+<!-- @dsCard group="Navigation" height=384 subtitle="Collapsed 96 and expanded 220, tablet and web" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>NavigationRail — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <nav class="nr-rail nr-pane" aria-label="Main">
+    <button class="nr-rail__menu" aria-label="Show labels" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nr-rail__items">
+      <li><a class="nr-rail__item" href="#home">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span>
+        <span class="nr-rail__label web-caption">Home</span></a></li>
+      <li><a class="nr-rail__item" href="#agents" aria-current="page">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
+          <span class="nr-rail__badge web-micro" aria-hidden="true">2</span></span>
+        <span class="nr-rail__label web-caption">Agents</span><span class="nr-visually-hidden">, 2 need your approval</span></a></li>
+      <li><a class="nr-rail__item" href="#private-ai">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+        <span class="nr-rail__label web-caption">Private AI</span></a></li>
+      <li><a class="nr-rail__item" href="#settings">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+        <span class="nr-rail__label web-caption">Settings</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="nr-rail nr-rail--expanded nr-pane" aria-label="Main">
+    <button class="nr-rail__menu" aria-label="Hide labels" aria-expanded="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11M4 12h16M4 17h11M19 5l-3 2 3 2"/></svg>
+    </button>
+    <ul class="nr-rail__items">
+      <li><a class="nr-rail__item" href="#home">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></span>
+        <span class="nr-rail__label web-label">Home</span></a></li>
+      <li><a class="nr-rail__item" href="#agents" aria-current="page">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
+        <span class="nr-rail__label web-label">Agents</span><span class="nr-rail__badge web-micro" aria-hidden="true">2</span><span class="nr-visually-hidden">, 2 need your approval</span></a></li>
+      <li><a class="nr-rail__item" href="#private-ai">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+        <span class="nr-rail__label web-label">Private AI</span></a></li>
+      <li><a class="nr-rail__item" href="#settings">
+        <span class="nr-rail__indicator"><svg class="nr-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+        <span class="nr-rail__label web-label">Settings</span></a></li>
+    </ul>
+  </nav>
+
+  <section class="nr-pane nr-stack" style="width: 316px" aria-label="Agents">
+    <div class="web-heading">Agents</div>
+    <div class="nr-card nr-stack">
+      <div class="web-body-strong">Research agent</div>
+      <div class="web-caption nr-text-secondary">Waiting for approval · wants to send 2 files to a search tool</div>
+    </div>
+    <div class="nr-card nr-stack">
+      <div class="web-body-strong">Inbox triage</div>
+      <div class="web-caption nr-text-secondary">Waiting for approval · 14 messages labeled</div>
+    </div>
+    <div class="nr-card nr-card--quiet web-caption nr-text-secondary">Runs on Private AI. Prompts stay inside a verified enclave unless a step names an outside model.</div>
+  </section>
+</div>
+</body>
+</html>

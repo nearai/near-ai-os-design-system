@@ -1,0 +1,67 @@
+<!-- @dsCard group="Inputs" height=246 subtitle="Pill that opens a menu of values, with status dots" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Select — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-spread">
+      <span class="web-body-strong">near-agents</span>
+      <button class="nr-select web-label" type="button" aria-haspopup="listbox" aria-expanded="true" aria-label="Mode for near-agents" aria-controls="sel-list">
+        <span class="nr-select__dot nr-select__dot--caution" aria-hidden="true"></span>
+        <span class="nr-select__value">Ask me</span>
+        <span class="nr-select__chevron" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="nr-spread"><span></span>
+    <ul class="nr-select__listbox web-label" role="listbox" id="sel-list" aria-label="Mode for near-agents">
+      <li class="nr-select__option" role="option" aria-selected="true"><span class="nr-select__dot nr-select__dot--caution" aria-hidden="true"></span>Ask me</li>
+      <li class="nr-select__option nr-select__option--active" role="option" aria-selected="false"><span class="nr-select__dot nr-select__dot--positive" aria-hidden="true"></span>Automatic</li>
+      <li class="nr-select__option" role="option" aria-selected="false"><span class="nr-select__dot nr-select__dot--neutral" aria-hidden="true"></span>Never</li>
+    </ul>
+    </div>
+    <div class="nr-spread">
+      <span class="web-body-strong">nearcore</span>
+      <button class="nr-select nr-select--invalid web-label" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Mode for nearcore" aria-invalid="true" aria-describedby="sel-msg">
+        <span class="nr-select__value nr-select__value--placeholder">Choose…</span>
+        <span class="nr-select__chevron" aria-hidden="true"></span>
+      </button>
+    </div>
+    <span class="nr-select__message nr-select__message--invalid web-caption" id="sel-msg">Choose a mode for nearcore to continue.</span>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-spread">
+      <span class="web-body">3 folders selected</span>
+      <span class="nr-row">
+        <button class="nr-select web-label" type="button" aria-haspopup="listbox" aria-label="Mode" aria-description="Mixed">
+          <span class="nr-select__value nr-select__value--mixed">—</span>
+          <span class="nr-select__chevron" aria-hidden="true"></span>
+        </button>
+        <button class="nr-select nr-select--icon" type="button" aria-haspopup="listbox" aria-label="Sort sessions" title="Sort sessions">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M5 8h6M7 11h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </span>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Touch (web and Android)</div>
+    <div class="nr-touch nr-spread">
+      <span class="android-body">Sharing</span>
+      <button class="nr-select android-label" type="button" aria-haspopup="listbox" aria-label="Sharing">
+        <span class="nr-select__dot nr-select__dot--positive" aria-hidden="true"></span>
+        <span class="nr-select__value">Automatic</span>
+        <span class="nr-select__chevron" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Dense</div>
+    <div class="nr-dense nr-spread">
+      <span class="web-caption nr-text-secondary">Model</span>
+      <button class="nr-select web-caption" type="button" aria-haspopup="listbox" aria-label="Model">
+        <span class="nr-select__value">llama-3.3-70b-instruct</span>
+        <span class="nr-select__chevron" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+</div>
+</body>
+</html>

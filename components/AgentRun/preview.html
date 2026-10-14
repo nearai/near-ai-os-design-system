@@ -1,0 +1,73 @@
+<!-- @dsCard group="AI" height=410 subtitle="A long agent run: progress, current step, steps, Stop and Pause; compact rows" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>AgentRun — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane" style="width: 404px">
+    <article class="nr-card nr-agent-run" aria-labelledby="run1-title">
+      <header class="nr-agent-run__head">
+        <span class="nr-agent-run__tile web-micro" aria-hidden="true">NA</span>
+        <div class="nr-agent-run__titles">
+          <div class="nr-agent-run__title web-body-strong" id="run1-title" role="heading" aria-level="3">Fix the failing proof tests</div>
+          <div class="nr-agent-run__meta web-caption"><span class="nr-agent-run__dot nr-agent-run__dot--active" aria-hidden="true"></span><span>Running · near-agents</span></div>
+        </div>
+        <span class="nr-agent-run__elapsed web-caption">9 min</span>
+      </header>
+      <div class="nr-agent-run__progress" role="progressbar" aria-labelledby="run1-title" aria-valuemin="0" aria-valuemax="6" aria-valuenow="3" aria-valuetext="Step 3 of 6, reading the failure logs"><span class="nr-agent-run__fill" style="width: 42%"></span></div>
+      <div class="nr-agent-run__now web-caption" role="status"><span class="nr-agent-run__spinner" aria-hidden="true"></span><span class="nr-agent-run__now-text">Step 3 of 6 · Reading failure log 9 of 14…</span></div>
+      <ol class="nr-agent-run__steps" aria-label="Steps">
+        <li class="nr-agent-run__step nr-agent-run__step--done web-label"><span class="nr-agent-run__step-mark"><svg class="nr-agent-run__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg></span><span class="nr-agent-run__step-text">Check out near-agents at 6ed1e8c</span><span class="nr-agent-run__step-time web-caption">0:14</span></li>
+        <li class="nr-agent-run__step nr-agent-run__step--done web-label"><span class="nr-agent-run__step-mark"><svg class="nr-agent-run__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg></span><span class="nr-agent-run__step-text">Run the test suite<span class="nr-agent-run__step-detail web-caption">14 tests failed in tests/proof.rs</span></span><span class="nr-agent-run__step-time web-caption">6:40</span></li>
+        <li class="nr-agent-run__step nr-agent-run__step--current web-label" aria-current="step"><span class="nr-agent-run__step-mark"><span class="nr-agent-run__spinner" aria-hidden="true"></span></span><span class="nr-agent-run__step-text">Read the 14 failure logs</span><span class="nr-agent-run__step-time web-caption">1:52</span></li>
+        <li class="nr-agent-run__step web-label"><span class="nr-agent-run__step-mark nr-agent-run__step-mark--ring" aria-hidden="true"></span><span class="nr-agent-run__step-text">Propose a fix</span></li>
+        <li class="nr-agent-run__step web-label"><span class="nr-agent-run__step-mark nr-agent-run__step-mark--ring" aria-hidden="true"></span><span class="nr-agent-run__step-text">Run the tests again</span></li>
+        <li class="nr-agent-run__step web-label"><span class="nr-agent-run__step-mark nr-agent-run__step-mark--ring" aria-hidden="true"></span><span class="nr-agent-run__step-text">Ask before pushing a branch</span></li>
+      </ol>
+      <div class="nr-agent-run__actions">
+        <button class="nr-agent-run__button web-label" type="button" aria-keyshortcuts="Escape Meta+Period"><svg class="nr-agent-run__glyph" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1.5" fill="currentColor"/></svg>Stop</button>
+        <button class="nr-agent-run__button web-label" type="button"><svg class="nr-agent-run__glyph" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="1" fill="currentColor"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="1" fill="currentColor"/></svg>Pause</button>
+      </div>
+      <p class="nr-agent-run__note web-caption">Keeps running if you close this window. You'll get a notification when it needs you or finishes.</p>
+    </article>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 312px" aria-label="Runs">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Runs</div>
+
+    <article class="nr-card nr-card--quiet nr-agent-run nr-agent-run--compact" aria-labelledby="run2-title">
+      <div class="nr-agent-run__body">
+        <div class="nr-agent-run__title web-label" id="run2-title">Summarize this week's traces</div>
+        <div class="nr-agent-run__progress nr-agent-run__progress--indeterminate" role="progressbar" aria-labelledby="run2-title" aria-valuetext="Finding sessions"><span class="nr-agent-run__fill"></span></div>
+        <div class="nr-agent-run__now web-caption"><span class="nr-agent-run__now-text">Finding sessions since Mon 12 Oct…</span></div>
+      </div>
+      <button class="nr-agent-run__button web-label" type="button" aria-label="Stop summarizing this week's traces">Stop</button>
+    </article>
+
+    <article class="nr-card nr-card--quiet nr-agent-run nr-agent-run--compact" aria-labelledby="run3-title">
+      <div class="nr-agent-run__body">
+        <div class="nr-agent-run__title web-label" id="run3-title">Draft v0.15.0 release notes</div>
+        <div class="nr-agent-run__meta web-caption"><span class="nr-agent-run__dot nr-agent-run__dot--caution" aria-hidden="true"></span><span>Needs you · wants to push</span></div>
+      </div>
+      <button class="nr-agent-run__button web-label" type="button" aria-label="Review the release notes request">Review</button>
+    </article>
+
+    <article class="nr-card nr-card--quiet nr-agent-run nr-agent-run--compact" aria-labelledby="run4-title">
+      <div class="nr-agent-run__body">
+        <div class="nr-agent-run__title web-label" id="run4-title">Index trace-commons docs</div>
+        <div class="nr-agent-run__meta web-caption"><span class="nr-agent-run__dot" aria-hidden="true"></span><span>Paused at step 2 of 5</span></div>
+      </div>
+      <button class="nr-agent-run__button web-label" type="button" aria-label="Resume indexing the trace-commons docs">Resume</button>
+    </article>
+
+    <article class="nr-card nr-card--quiet nr-agent-run nr-agent-run--compact" aria-labelledby="run5-title">
+      <div class="nr-agent-run__body">
+        <div class="nr-agent-run__title web-label" id="run5-title">Check proof on 1,706 calls</div>
+        <div class="nr-agent-run__meta web-caption"><span class="nr-agent-run__dot nr-agent-run__dot--positive" aria-hidden="true"></span><span>Done in 3 min · 1,674 verified</span></div>
+      </div>
+      <button class="nr-agent-run__link web-label" type="button" aria-label="Open the proof check results">Open</button>
+    </article>
+  </section>
+</div>
+</body>
+</html>

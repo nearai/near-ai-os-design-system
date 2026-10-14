@@ -1,0 +1,89 @@
+<!-- @dsCard group="AI" height=750 subtitle="An agent asks to act: reversible, irreversible, destructive, and answered" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ToolCall — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane" style="width: 358px" aria-label="Reversible request">
+    <article class="nr-card nr-tool-call" aria-labelledby="tc1-title" aria-describedby="tc1-what">
+      <header class="nr-tool-call__head">
+        <span class="nr-tool-call__tile" aria-hidden="true"><svg class="nr-tool-call__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M11 2.75l2.25 2.25L6 12.25l-3 .75.75-3z"/></svg></span>
+        <div class="nr-tool-call__titles">
+          <div class="web-body-strong" id="tc1-title" role="heading" aria-level="3">near-agents wants to edit 3 files</div>
+          <div class="nr-tool-call__meta web-caption"><span class="nr-tool-call__dot nr-tool-call__dot--caution" aria-hidden="true"></span><span>Needs your answer · <span class="nr-tool-call__tool web-mono">fs.write</span></span></div>
+        </div>
+      </header>
+      <pre class="nr-tool-call__command web-mono">src/proof.rs     +18 −6
+tests/proof.rs    +4 −4
+src/router.rs     +2 −1</pre>
+      <p class="nr-tool-call__consequence web-body" id="tc1-what">Changes these files in ~/code/near-agents. You can undo all three from the agent's message.</p>
+      <p class="nr-tool-call__scope web-caption">Always allow lets near-agents edit files in this folder without asking. Change it in Settings › Agents.</p>
+      <div class="nr-tool-call__actions">
+        <button class="nr-tool-call__button web-label" type="button">Deny</button>
+        <button class="nr-tool-call__button web-label" type="button">Always allow</button>
+        <button class="nr-tool-call__button nr-tool-call__button--primary web-label" type="button" aria-keyshortcuts="Enter">Allow once</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="nr-pane" style="width: 358px" aria-label="Irreversible request">
+    <article class="nr-card nr-tool-call" aria-labelledby="tc2-title" aria-describedby="tc2-what">
+      <header class="nr-tool-call__head">
+        <span class="nr-tool-call__tile" aria-hidden="true"><svg class="nr-tool-call__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3.5M4.5 7L8 3.5 11.5 7"/></svg></span>
+        <div class="nr-tool-call__titles">
+          <div class="web-body-strong" id="tc2-title" role="heading" aria-level="3">near-agents wants to push a branch</div>
+          <div class="nr-tool-call__meta web-caption"><span class="nr-tool-call__dot nr-tool-call__dot--caution" aria-hidden="true"></span><span>Needs your answer · <span class="nr-tool-call__tool web-mono">git.push</span></span></div>
+        </div>
+      </header>
+      <pre class="nr-tool-call__command web-mono">git push origin fix/proof-tests</pre>
+      <p class="nr-tool-call__consequence web-body" id="tc2-what">Sends 2 commits to origin. Anyone with access to the repository sees them, and a push can't be taken back from here.</p>
+      <p class="nr-tool-call__scope web-caption">Asks every time. A push can't be set to Always allow.</p>
+      <div class="nr-tool-call__actions">
+        <button class="nr-tool-call__button web-label" type="button">Deny</button>
+        <button class="nr-tool-call__button nr-tool-call__button--primary web-label" type="button">Push</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 728px" aria-label="Destructive request and answered requests">
+    <article class="nr-card nr-tool-call" aria-labelledby="tc3-title" aria-describedby="tc3-what">
+      <header class="nr-tool-call__head">
+        <span class="nr-tool-call__tile" aria-hidden="true"><svg class="nr-tool-call__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.6 8.5h5.8l.6-8.5"/></svg></span>
+        <div class="nr-tool-call__titles">
+          <div class="web-body-strong" id="tc3-title" role="heading" aria-level="3">near-agents wants to delete 214 files</div>
+          <div class="nr-tool-call__meta web-caption"><span class="nr-tool-call__dot nr-tool-call__dot--caution" aria-hidden="true"></span><span>Needs your answer · <span class="nr-tool-call__tool web-mono">fs.remove</span></span></div>
+        </div>
+      </header>
+      <pre class="nr-tool-call__command web-mono">rm -r ~/code/near-agents/target/debug/incremental</pre>
+      <p class="nr-tool-call__consequence web-body" id="tc3-what">Deletes 214 files (1.2 GB). They skip the Trash and can't be restored from here. The next build makes them again.</p>
+      <div class="nr-tool-call__actions">
+        <button class="nr-tool-call__button web-label" type="button">Deny</button>
+        <button class="nr-tool-call__button nr-tool-call__button--destructive web-label" type="button">Delete 214 files</button>
+      </div>
+    </article>
+
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Answered</div>
+    <div class="nr-card nr-card--quiet nr-tool-call nr-tool-call--resolved">
+      <span class="nr-tool-call__dot nr-tool-call__dot--positive" aria-hidden="true"></span>
+      <span class="web-label">Allowed once</span>
+      <span class="nr-tool-call__what web-caption">Edited 3 files in near-agents</span>
+      <span class="nr-tool-call__when web-caption">14:06</span>
+      <button class="nr-tool-call__link web-label" type="button" aria-label="Undo the edits to 3 files">Undo</button>
+    </div>
+    <div class="nr-card nr-card--quiet nr-tool-call nr-tool-call--resolved">
+      <span class="nr-tool-call__dot" aria-hidden="true"></span>
+      <span class="web-label">Denied</span>
+      <span class="nr-tool-call__what web-mono">git push origin fix/proof-tests</span>
+      <span class="nr-tool-call__when web-caption">14:09</span>
+    </div>
+    <div class="nr-card nr-card--quiet nr-tool-call nr-tool-call--resolved">
+      <span class="nr-tool-call__dot nr-tool-call__dot--positive" aria-hidden="true"></span>
+      <span class="web-label">Always allowed</span>
+      <span class="nr-tool-call__what web-caption">Read files in near-agents</span>
+      <span class="nr-tool-call__when web-caption">Since Fri 9 Oct</span>
+      <button class="nr-tool-call__link web-label" type="button" aria-label="Change what near-agents can do without asking">Change</button>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- @dsCard group="Inputs" height=186 subtitle="Two to five related values in a well; floating variant on a canvas" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SegmentedControl — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-eyebrow nr-upper nr-text-tertiary" id="sc-1">Appearance</div>
+    <div class="nr-segmented-control nr-segmented-control--fill" role="radiogroup" aria-labelledby="sc-1">
+      <button class="nr-segmented-control__segment web-label" type="button" role="radio" aria-checked="false" tabindex="-1">Light</button>
+      <button class="nr-segmented-control__segment web-label" type="button" role="radio" aria-checked="false" tabindex="-1">Dark</button>
+      <button class="nr-segmented-control__segment web-label" type="button" role="radio" aria-checked="true">System</button>
+    </div>
+    <div class="nr-card nr-card--quiet">
+      <div class="nr-segmented-control nr-segmented-control--floating" role="radiogroup" aria-label="Map view">
+        <button class="nr-segmented-control__segment web-label" type="button" role="radio" aria-checked="true">Traces</button>
+        <button class="nr-segmented-control__segment web-label" type="button" role="radio" aria-checked="false" tabindex="-1" aria-description="Answering">Private AI<span class="nr-segmented-control__dot nr-segmented-control__dot--positive" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (iOS and Android)</div>
+    <div class="nr-touch">
+      <div class="nr-segmented-control nr-segmented-control--fill" role="radiogroup" aria-label="Appearance">
+        <button class="nr-segmented-control__segment ios-label" type="button" role="radio" aria-checked="false" tabindex="-1">Light</button>
+        <button class="nr-segmented-control__segment ios-label" type="button" role="radio" aria-checked="true">Dark</button>
+        <button class="nr-segmented-control__segment ios-label" type="button" role="radio" aria-checked="false" tabindex="-1">System</button>
+      </div>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Dense</div>
+    <div class="nr-dense nr-spread">
+      <span class="web-caption nr-text-secondary" id="sc-3">Scope</span>
+      <div class="nr-segmented-control" role="radiogroup" aria-labelledby="sc-3">
+        <button class="nr-segmented-control__segment web-caption" type="button" role="radio" aria-checked="false" tabindex="-1">File</button>
+        <button class="nr-segmented-control__segment web-caption" type="button" role="radio" aria-checked="true">Folder</button>
+        <button class="nr-segmented-control__segment web-caption" type="button" role="radio" aria-checked="false" tabindex="-1">Repository</button>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

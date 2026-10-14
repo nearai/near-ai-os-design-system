@@ -1,0 +1,828 @@
+/* ---------------------------------------------------------------------------
+   AI group: Message, PromptComposer, ProofTag, AgentRun, ToolCall.
+   Content layer: everything here is painted on a pane, never blurred. The
+   proof popover is the one floating surface (.nr-floating + its own class).
+   Derived values, documented in each README:
+   - hit areas grow to --nr-target: calc((size - var(--nr-target)) / 2);
+   - the composer field grows to 8 lines: calc(1lh * 8);
+   - the indeterminate run bar is a third of the track sliding across.
+   --------------------------------------------------------------------------- */
+
+/* ---- Shared glyphs ------------------------------------------------------- */
+.nr-message__glyph,
+.nr-prompt-composer__glyph,
+.nr-agent-run__glyph,
+.nr-tool-call__glyph {
+  width: var(--size-glyph);
+  height: var(--size-glyph);
+  flex: none;
+}
+.nr-proof-tag__glyph,
+.nr-prompt-composer__chip-glyph {
+  width: var(--space-10);
+  height: var(--space-10);
+  flex: none;
+}
+
+/* ---- Shared pill action (one declaration, namespaced per component) ------ */
+.nr-message__action,
+.nr-prompt-composer__pill,
+.nr-agent-run__button,
+.nr-tool-call__button {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  min-height: var(--nr-h-control);
+  margin: 0;
+  padding: 0 var(--space-12);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--control);
+  color: var(--text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+/* Invisible hit area up to the density's target. */
+.nr-message__action::after,
+.nr-prompt-composer__pill::after,
+.nr-prompt-composer__icon::after,
+.nr-prompt-composer__send::after,
+.nr-agent-run__button::after,
+.nr-tool-call__button::after {
+  content: "";
+  position: absolute;
+  inset: min(0px, calc((var(--nr-h-control) - var(--nr-target)) / 2));
+}
+.nr-message__action:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__pill:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__icon:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-agent-run__button:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-tool-call__button:where(:hover:not(:disabled, [aria-disabled="true"])) {
+  background: var(--control-hover);
+}
+.nr-message__action:where(:active:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__pill:where(:active:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__icon:where(:active:not(:disabled, [aria-disabled="true"])),
+.nr-agent-run__button:where(:active:not(:disabled, [aria-disabled="true"])),
+.nr-tool-call__button:where(:active:not(:disabled, [aria-disabled="true"])) {
+  filter: brightness(0.92);
+}
+.nr-message__action:where(:disabled, [aria-disabled="true"]),
+.nr-prompt-composer__pill:where(:disabled, [aria-disabled="true"]),
+.nr-prompt-composer__icon:where(:disabled, [aria-disabled="true"]),
+.nr-prompt-composer__send:where(:disabled, [aria-disabled="true"]),
+.nr-agent-run__button:where(:disabled, [aria-disabled="true"]),
+.nr-tool-call__button:where(:disabled, [aria-disabled="true"]) {
+  opacity: var(--opacity-disabled);
+  cursor: default;
+}
+/* The one accent action on a surface. Pressed deepens, never fades. */
+.nr-tool-call__button--primary,
+.nr-prompt-composer__send {
+  background: var(--accent);
+  color: var(--text-on-accent);
+  filter: none;
+}
+.nr-tool-call__button--primary:where(:active:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__send:where(:active:not(:disabled, [aria-disabled="true"])) {
+  background: var(--accent-pressed);
+}
+.nr-tool-call__button--destructive { color: var(--destructive-text); }
+
+/* A text action with no container (Undo, Open the report). */
+.nr-message__link,
+.nr-prompt-composer__link,
+.nr-proof-tag__link,
+.nr-agent-run__link,
+.nr-tool-call__link {
+  position: relative;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+.nr-message__link::after,
+.nr-prompt-composer__link::after,
+.nr-proof-tag__link::after,
+.nr-agent-run__link::after,
+.nr-tool-call__link::after {
+  content: "";
+  position: absolute;
+  inset: min(0px, calc((1lh - var(--nr-target)) / 2)) 0;
+}
+.nr-message__link:hover,
+.nr-prompt-composer__link:hover,
+.nr-proof-tag__link:hover,
+.nr-agent-run__link:hover,
+.nr-tool-call__link:hover { text-decoration: underline; }
+
+/* Status dot: always beside words, never alone. */
+.nr-message__dot,
+.nr-prompt-composer__dot,
+.nr-agent-run__dot,
+.nr-tool-call__dot {
+  width: var(--space-8);
+  height: var(--space-8);
+  margin-top: calc((1lh - var(--space-8)) / 2);
+  align-self: flex-start;
+  border-radius: 50%;
+  background: var(--neutral);
+  flex: none;
+}
+.nr-message__dot--positive, .nr-agent-run__dot--positive, .nr-tool-call__dot--positive { background: var(--positive); }
+.nr-message__dot--caution, .nr-prompt-composer__dot--caution, .nr-agent-run__dot--caution, .nr-tool-call__dot--caution { background: var(--caution); }
+.nr-message__dot--critical, .nr-prompt-composer__dot--critical, .nr-agent-run__dot--critical, .nr-tool-call__dot--critical { background: var(--critical); }
+.nr-agent-run__dot--active { background: var(--accent-soft); }
+
+/* Spinner: a quarter arc turning on duration-spin. Words carry the state. */
+.nr-message__spinner,
+.nr-agent-run__spinner {
+  box-sizing: border-box;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: 50%;
+  border: 2px solid var(--rule);
+  border-top-color: currentColor;
+  flex: none;
+  animation: nr-message-spin var(--duration-spin) var(--ease-linear) infinite;
+}
+@keyframes nr-message-spin { to { transform: rotate(1turn); } }
+
+/* Agent tile: the agent's initials on the accent tint. Decorative. */
+.nr-message__avatar,
+.nr-agent-run__tile,
+.nr-tool-call__tile {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-tool-tile);
+  height: var(--size-tool-tile);
+  border-radius: var(--radius-tile);
+  background: var(--accent-tint);
+  color: var(--accent-text);
+  flex: none;
+}
+.nr-tool-call__tile { background: var(--neutral-tint); color: var(--text-secondary); }
+
+/* ===========================================================================
+   Message
+   =========================================================================== */
+.nr-message-thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  min-width: 0;
+}
+.nr-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  min-width: 0;
+  max-width: var(--size-readable-width);
+  color: var(--text-primary);
+}
+.nr-message--user {
+  align-self: flex-end;
+  align-items: flex-end;
+  margin-inline-start: var(--space-48);
+}
+.nr-message__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.nr-message__time { color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.nr-message__bubble { max-width: var(--size-readable-width); }
+.nr-message__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.nr-message__body > * { margin: 0; }
+.nr-message__body :is(ul, ol) { padding-inline-start: var(--space-20); }
+.nr-message__code {
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-dense);
+  background: var(--neutral-tint);
+  color: var(--text-primary);
+}
+.nr-message__cite {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--size-glyph);
+  height: var(--size-glyph);
+  margin: 0 var(--space-2);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--neutral-tint);
+  color: var(--text-secondary);
+  text-decoration: none;
+  vertical-align: text-top;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-message__cite:hover { background: var(--accent-tint); color: var(--accent-text); }
+.nr-message__sources {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin: 0;
+  list-style: none;
+}
+.nr-message__source {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  min-width: 0;
+  padding: var(--space-6) 0;
+}
+.nr-message__source + .nr-message__source { border-top: 1px solid var(--hairline); }
+.nr-message__source-num { color: var(--text-tertiary); font-variant-numeric: tabular-nums; flex: none; }
+.nr-message__source-path {
+  min-width: 0;
+  margin-inline-start: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-tertiary);
+}
+/* Streaming: a caret at the insertion point, a specific status line. */
+.nr-message__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-inline-start: var(--space-2);
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: nr-message-caret var(--duration-pulse) var(--ease-standard) infinite;
+}
+@keyframes nr-message-caret { 50% { opacity: 0; } }
+.nr-message__status,
+.nr-message__state {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  color: var(--text-secondary);
+}
+.nr-message__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  color: var(--critical-text);
+}
+.nr-message__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6) var(--space-8);
+  color: var(--text-tertiary);
+}
+.nr-message__model { color: var(--text-secondary); }
+.nr-message__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.nr-message__action {
+  padding: 0 var(--space-8);
+  background: transparent;
+  color: var(--text-secondary);
+}
+.nr-message__action--icon { width: var(--nr-h-control); padding: 0; }
+.nr-message__sep {
+  width: 1px;
+  height: var(--space-16);
+  margin: 0 var(--space-4);
+  background: var(--rule);
+}
+/* Earlier turns reveal their actions on hover or focus; touch shows them. */
+@media (hover: hover) {
+  .nr-message:not(:hover, :focus-within) .nr-message__actions--reveal { opacity: 0; }
+}
+.nr-message--stopped .nr-message__body,
+.nr-message--error .nr-message__body { color: var(--text-secondary); }
+
+/* ===========================================================================
+   PromptComposer
+   =========================================================================== */
+.nr-prompt-composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.nr-prompt-composer__starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+.nr-prompt-composer__box {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+  padding: var(--space-10) var(--space-8) var(--space-8) var(--space-14);
+  border-radius: var(--radius-card);
+  background: var(--field);
+}
+.nr-prompt-composer__box:has(.nr-prompt-composer__input:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.nr-focus-off .nr-prompt-composer__box:has(:focus-visible) { outline: none; }
+.nr-prompt-composer .nr-prompt-composer__input:focus-visible { outline: none; }
+.nr-prompt-composer__input {
+  box-sizing: border-box;
+  display: block;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 1lh;
+  max-height: calc(1lh * 8);
+  margin: 0;
+  padding: 0 var(--space-6) 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  resize: none;
+  field-sizing: content;
+}
+.nr-prompt-composer__input::placeholder { color: var(--text-placeholder); opacity: inherit; }
+.nr-prompt-composer__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-inline-start: calc(var(--space-4) * -1);
+}
+.nr-prompt-composer__chip {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: var(--size-popover-width);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-8);
+  border-radius: var(--radius-pill);
+  background: var(--neutral-tint);
+  color: var(--text-secondary);
+}
+.nr-prompt-composer__chip--scope { background: var(--accent-tint); color: var(--accent-text); }
+.nr-prompt-composer__chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nr-prompt-composer__chip-remove {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-glyph);
+  height: var(--size-glyph);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  flex: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-prompt-composer__chip-remove::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--size-glyph) - var(--nr-target)) / 2);
+}
+.nr-prompt-composer__chip-remove:hover { background: var(--neutral-tint); }
+.nr-prompt-composer__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  margin-inline-start: calc(var(--space-6) * -1);
+}
+.nr-prompt-composer__icon,
+.nr-prompt-composer__send {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nr-h-control);
+  height: var(--nr-h-control);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  flex: none;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard);
+}
+.nr-prompt-composer__icon { background: transparent; color: var(--text-secondary); }
+.nr-prompt-composer__pill--quiet { min-width: 0; padding: 0 var(--space-10); background: transparent; color: var(--text-secondary); }
+.nr-prompt-composer__model {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nr-prompt-composer__trail {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-inline-start: auto;
+}
+.nr-prompt-composer__count { color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.nr-prompt-composer__count--over { color: var(--critical-text); }
+.nr-prompt-composer__box--drop { background: var(--accent-tint); }
+.nr-dense .nr-prompt-composer__box { border-radius: var(--radius-control); }
+.nr-prompt-composer__note,
+.nr-prompt-composer__reason {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: 0 var(--space-14);
+  color: var(--text-tertiary);
+}
+.nr-prompt-composer__reason { color: var(--text-secondary); }
+.nr-prompt-composer__note--outside { color: var(--critical-text); }
+
+/* ===========================================================================
+   ProofTag
+   =========================================================================== */
+.nr-proof-tag {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-8) var(--space-2) var(--space-6);
+  border-radius: var(--radius-pill);
+  background: var(--neutral-tint);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.nr-proof-tag--verified { background: var(--positive-tint); color: var(--positive-text); }
+.nr-proof-tag--pending { background: var(--caution-tint); color: var(--caution-text); }
+.nr-proof-tag--outside { background: var(--critical-tint); color: var(--critical-text); }
+/* A failed check is its own pill: outlined, so it never reads as outside. */
+.nr-proof-tag--failed {
+  background: var(--critical-tint);
+  color: var(--critical-text);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.nr-proof-tag__count { font-variant-numeric: tabular-nums; }
+.nr-proof-tag-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.nr-proof-tag__info {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-glyph);
+  height: var(--size-glyph);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  flex: none;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-proof-tag__info::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--size-glyph) - var(--nr-target)) / 2);
+}
+.nr-proof-tag__info:hover { background: var(--control-hover); }
+.nr-proof-tag__info[aria-expanded="true"] { color: var(--text-primary); background: var(--control-hover); }
+.nr-proof-tag__popover {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: var(--size-popover-width);
+  padding: var(--space-10) var(--space-12) var(--space-12);
+}
+.nr-proof-tag__facts {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.nr-proof-tag__facts dt { color: var(--text-tertiary); }
+.nr-proof-tag__facts dd + dt { margin-top: var(--space-6); }
+.nr-proof-tag__facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+}
+[data-theme$="-hc"] .nr-proof-tag { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+[data-theme$="-hc"] .nr-proof-tag--failed { box-shadow: inset 0 0 0 2px currentColor; }
+
+/* ===========================================================================
+   AgentRun
+   =========================================================================== */
+.nr-agent-run {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  min-width: 0;
+}
+.nr-agent-run__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  min-width: 0;
+}
+.nr-agent-run__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.nr-agent-run__title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nr-agent-run__meta {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  color: var(--text-secondary);
+}
+.nr-agent-run__elapsed {
+  margin-inline-start: auto;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.nr-agent-run__progress {
+  position: relative;
+  height: var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--well);
+  overflow: hidden;
+}
+.nr-agent-run__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: var(--accent-soft);
+  transition: width var(--duration-standard) var(--ease-standard);
+}
+.nr-agent-run__progress--indeterminate .nr-agent-run__fill {
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, transparent 34%, var(--accent-soft) 34%, var(--accent-soft) 66%, transparent 66%);
+  animation: nr-agent-run-slide var(--duration-pulse) var(--ease-standard) infinite;
+}
+@keyframes nr-agent-run-slide {
+  from { transform: translateX(-66%); }
+  to { transform: translateX(66%); }
+}
+.nr-agent-run__now {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-width: 0;
+  color: var(--text-secondary);
+}
+.nr-agent-run__now-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nr-agent-run__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nr-agent-run__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  min-width: 0;
+  color: var(--text-tertiary);
+}
+.nr-agent-run__step-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-glyph);
+  height: var(--size-glyph);
+  margin-top: var(--space-2);
+  color: var(--neutral);
+  flex: none;
+}
+.nr-agent-run__step-mark--ring::before {
+  content: "";
+  box-sizing: border-box;
+  width: var(--space-10);
+  height: var(--space-10);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+.nr-agent-run__step-text { display: flex; flex-direction: column; min-width: 0; }
+.nr-agent-run__step-detail { color: var(--text-tertiary); }
+.nr-agent-run__step-time {
+  margin-inline-start: auto;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.nr-agent-run__step--done { color: var(--text-secondary); }
+.nr-agent-run__step--done .nr-agent-run__step-mark { color: var(--positive); }
+.nr-agent-run__step--current { color: var(--text-primary); }
+.nr-agent-run__step--current .nr-agent-run__step-mark { color: var(--accent-soft); }
+.nr-agent-run__step--waiting { color: var(--text-primary); }
+.nr-agent-run__step--waiting .nr-agent-run__step-mark { color: var(--caution); }
+.nr-agent-run__step--failed { color: var(--text-primary); }
+.nr-agent-run__step--failed .nr-agent-run__step-mark { color: var(--critical); }
+.nr-agent-run__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+.nr-agent-run__note { margin: 0; color: var(--text-tertiary); }
+/* Compact: one row for a sidebar, the menu bar or a run list. */
+.nr-agent-run--compact {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-10);
+}
+.nr-agent-run__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+  flex: 1 1 0;
+}
+.nr-agent-run--compact .nr-agent-run__button { flex: none; }
+
+/* ===========================================================================
+   ToolCall
+   =========================================================================== */
+.nr-tool-call {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  min-width: 0;
+}
+.nr-tool-call__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  min-width: 0;
+}
+.nr-tool-call__titles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.nr-tool-call__meta {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  color: var(--text-secondary);
+}
+.nr-tool-call__tool { color: var(--text-tertiary); }
+.nr-tool-call__command {
+  margin: 0;
+  padding: var(--space-8) var(--space-10);
+  border-radius: var(--radius-control);
+  background: var(--consent);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.nr-tool-call__consequence { margin: 0; color: var(--text-primary); }
+.nr-tool-call__scope { margin: 0; color: var(--text-tertiary); }
+.nr-tool-call__gate {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.nr-tool-call__gate input {
+  width: var(--size-checkbox);
+  height: var(--size-checkbox);
+  margin: var(--space-2) 0 0;
+  accent-color: var(--accent);
+  flex: none;
+}
+.nr-tool-call__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-8);
+}
+/* Touch: the answers stack full width, the confirming action on top. */
+.nr-touch .nr-tool-call__actions {
+  flex-direction: column-reverse;
+  align-items: stretch;
+}
+.nr-tool-call__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  color: var(--critical-text);
+}
+/* Resolved: the request folds to one line with what happened. */
+.nr-tool-call--resolved {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+}
+.nr-tool-call__what {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+.nr-tool-call__when {
+  margin-inline-start: auto;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Quiet controls (no fill at rest) still take the hover fill. */
+.nr-message__action:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__pill--quiet:where(:hover:not(:disabled, [aria-disabled="true"])),
+.nr-prompt-composer__icon:where(:hover:not(:disabled, [aria-disabled="true"])) {
+  background: var(--control-hover);
+  color: var(--text-primary);
+}
+
+/* ---- Increased contrast: painted controls and fields get the 1pt edge ---- */
+[data-theme$="-hc"] .nr-message__action,
+[data-theme$="-hc"] .nr-message__cite,
+[data-theme$="-hc"] .nr-message__code,
+[data-theme$="-hc"] .nr-prompt-composer__box,
+[data-theme$="-hc"] .nr-prompt-composer__pill,
+[data-theme$="-hc"] .nr-prompt-composer__chip,
+[data-theme$="-hc"] .nr-prompt-composer__send,
+[data-theme$="-hc"] .nr-agent-run__button,
+[data-theme$="-hc"] .nr-agent-run__progress,
+[data-theme$="-hc"] .nr-tool-call__button,
+[data-theme$="-hc"] .nr-tool-call__command {
+  box-shadow: inset 0 0 0 1px var(--edge-hc);
+}
+
+/* ---- Forced colors: system colors, real borders ---- */
+@media (forced-colors: active) {
+  .nr-prompt-composer__box,
+  .nr-tool-call__command { border: 1px solid CanvasText; }
+  .nr-proof-tag { border: 1px solid CanvasText; }
+  .nr-agent-run__fill { background: Highlight; }
+}
+
+/* ---- Reduce Motion: nothing moves; words carry progress ---- */
+@media (prefers-reduced-motion: reduce) {
+  .nr-message__caret,
+  .nr-message__spinner,
+  .nr-agent-run__spinner,
+  .nr-agent-run__progress--indeterminate .nr-agent-run__fill { animation: none; }
+  .nr-message__action, .nr-message__cite, .nr-prompt-composer__pill,
+  .nr-prompt-composer__icon, .nr-prompt-composer__send, .nr-prompt-composer__chip-remove,
+  .nr-proof-tag__info, .nr-agent-run__button, .nr-agent-run__fill,
+  .nr-tool-call__button { transition: none; }
+}

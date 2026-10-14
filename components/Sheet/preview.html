@@ -1,0 +1,46 @@
+<!-- @dsCard group="Presentation" height=396 subtitle="Bottom sheet at the medium detent on a phone; side sheet on web" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Sheet — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <div class="nr-sheet-layer nr-sheet-layer--static nr-touch" style="width: 300px">
+    <section class="nr-sheet" role="dialog" aria-modal="true" aria-labelledby="s1-title">
+      <button class="nr-sheet__grabber" aria-label="Resize sheet" aria-valuetext="Half height"></button>
+      <header class="nr-sheet__header">
+        <button class="nr-icon-button" aria-label="Cancel"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+        <div class="nr-sheet__titles"><h2 class="nr-sheet__title ios-body-strong" id="s1-title">Run settings</h2><p class="nr-sheet__subtitle ios-caption">near-agents</p></div>
+        <button class="nr-icon-button nr-icon-button--primary" aria-label="Done"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg></button>
+      </header>
+      <div class="nr-sheet__body">
+        <div class="nr-card nr-card--quiet nr-spread"><span class="ios-label">Model</span><span class="ios-label nr-text-secondary">Private AI</span></div>
+        <div class="nr-card nr-card--quiet nr-spread"><span class="ios-label">Tools</span><span class="ios-label nr-text-secondary">Web search, Files</span></div>
+        <div class="nr-card nr-card--quiet nr-spread"><span class="ios-label">Stop after</span><span class="ios-label nr-text-secondary">20 steps</span></div>
+        <div class="ios-caption nr-text-tertiary">Changes apply to the next run.</div>
+      </div>
+    </section>
+  </div>
+  <div class="nr-sheet-layer nr-sheet-layer--static nr-sheet-layer--side" style="width: 416px">
+    <section class="nr-sheet nr-sheet--side" role="dialog" aria-modal="true" aria-labelledby="s2-title">
+      <header class="nr-sheet__header nr-sheet__header--start">
+        <div class="nr-sheet__titles"><h2 class="nr-sheet__title web-title" id="s2-title">Run details</h2><p class="nr-sheet__subtitle web-caption">near-agents · 14 steps · 2 min</p></div>
+        <button class="nr-icon-button nr-icon-button--small" aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+      </header>
+      <div class="nr-sheet__body">
+        <div class="nr-card nr-card--quiet nr-spread"><span class="web-label">Model</span><span class="web-label nr-text-secondary">Private AI</span></div>
+        <div class="nr-card nr-card--quiet nr-spread"><span class="web-label">Tool calls</span><span class="web-label nr-text-secondary">6 · all finished</span></div>
+        <div class="nr-card nr-card--quiet nr-spread"><span class="web-label">Proof</span><span class="web-label nr-text-secondary">verified</span></div>
+      </div>
+      <div class="nr-sheet__footer nr-action-bar">
+        <div class="nr-action-bar__row">
+          <div class="nr-action-bar__end">
+            <button class="nr-button nr-button--glass web-body-strong">Export log</button>
+            <button class="nr-button nr-button--primary web-body-strong">Run again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>

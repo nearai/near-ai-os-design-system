@@ -1,0 +1,42 @@
+<!-- @dsCard group="Feedback" height=272 subtitle="Measured work: value in words, Stop beside it, honest pace" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ProgressBar — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 352px">
+    <div class="nr-card nr-progress-bar">
+      <div class="nr-progress-bar__head"><span class="nr-progress-bar__label web-label" id="p1">Uploading 3 of 8 sessions</span><span class="nr-progress-bar__value web-caption">38%</span></div>
+      <div class="nr-progress-bar__row">
+        <div class="nr-progress-bar__track" role="progressbar" aria-labelledby="p1" aria-valuenow="3" aria-valuemin="0" aria-valuemax="8" aria-valuetext="3 of 8 sessions"><div class="nr-progress-bar__fill" style="width: 37.5%"></div></div>
+        <button class="nr-button nr-button--glass web-label">Stop</button>
+      </div>
+      <p class="nr-progress-bar__status web-caption">About a minute left</p>
+    </div>
+    <div class="nr-card nr-progress-bar nr-progress-bar--paused">
+      <div class="nr-progress-bar__head"><span class="nr-progress-bar__label web-label" id="p2">Downloading llama-3.3-70b</span><span class="nr-progress-bar__value web-caption">4.1 of 39.8 GB</span></div>
+      <div class="nr-progress-bar__row">
+        <div class="nr-progress-bar__track" role="progressbar" aria-labelledby="p2" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Paused at 4.1 of 39.8 GB"><div class="nr-progress-bar__fill" style="width: 10.3%"></div></div>
+        <button class="nr-button nr-button--glass web-label">Resume</button>
+      </div>
+      <div class="nr-spread"><p class="nr-progress-bar__status web-caption">Paused. It picks up where it stopped.</p><button class="nr-button nr-button--link web-label">Cancel</button></div>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 352px">
+    <div class="nr-card nr-progress-bar">
+      <div class="nr-progress-bar__head"><span class="nr-progress-bar__label web-label" id="p3">Searching 12 sources</span><span class="nr-progress-bar__value web-caption">Step 3 of 7</span></div>
+      <div class="nr-progress-bar__row">
+        <div class="nr-progress-bar__track" role="progressbar" aria-labelledby="p3" aria-valuenow="3" aria-valuemin="0" aria-valuemax="7" aria-valuetext="Step 3 of 7"><div class="nr-progress-bar__fill" style="width: 42.9%"></div></div>
+        <button class="nr-button nr-button--glass web-label" aria-keyshortcuts="Escape">Stop</button>
+      </div>
+      <p class="nr-progress-bar__status web-caption">Waiting for docs.near.ai to answer. The run goes on when it does.</p>
+    </div>
+    <div class="nr-card nr-progress-bar nr-progress-bar--indeterminate">
+      <div class="nr-progress-bar__head"><span class="nr-progress-bar__label web-label" id="p4">Preparing upload…</span></div>
+      <div class="nr-progress-bar__track" role="progressbar" aria-labelledby="p4"><div class="nr-progress-bar__fill"></div></div>
+      <p class="nr-progress-bar__status web-caption">Counting sessions in near-agents</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>

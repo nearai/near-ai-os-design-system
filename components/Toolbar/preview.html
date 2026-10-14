@@ -1,0 +1,55 @@
+<!-- @dsCard group="Navigation" height=272 subtitle="A toolbar group and one prominent action, trailing" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Toolbar — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-compact nr-stack" style="width: 440px" aria-label="Main pane, macOS">
+    <div class="nr-toolbar" role="toolbar" aria-label="Window">
+      <span class="nr-toolbar__window-controls" aria-hidden="true"><span class="nr-toolbar__window-light"></span><span class="nr-toolbar__window-light"></span><span class="nr-toolbar__window-light"></span></span>
+      <span class="nr-toolbar__spacer"></span>
+      <span class="nr-toolbar__group">
+        <button class="nr-toolbar__button" aria-label="View options" title="View options" aria-haspopup="menu" aria-expanded="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="Graph" title="Graph" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 19v-8M12 19V5M18 19v-6"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="Map" title="Map" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5zM9 4.5v13M15 6.5v13"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="Inspector" title="Inspector" aria-pressed="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="M14.5 5v14"/></svg></button>
+      </span>
+      <button class="nr-toolbar__button nr-toolbar__button--round" aria-label="Settings" title="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M18.79 10.31 L21.06 10.38 L21.06 13.62 L18.79 13.69 L18.00 15.61 L19.55 17.26 L17.26 19.55 L15.61 18.00 L13.69 18.79 L13.62 21.06 L10.38 21.06 L10.31 18.79 L8.39 18.00 L6.74 19.55 L4.45 17.26 L6.00 15.61 L5.21 13.69 L2.94 13.62 L2.94 10.38 L5.21 10.31 L6.00 8.39 L4.45 6.74 L6.74 4.45 L8.39 6.00 L10.31 5.21 L10.38 2.94 L13.62 2.94 L13.69 5.21 L15.61 6.00 L17.26 4.45 L19.55 6.74 L18.00 8.39Z"/><circle cx="12" cy="12" r="2.8"/></svg></button>
+    </div>
+    <div class="mac-caption nr-text-secondary">The main pane's top row: room for the window controls, one group whose Map pane is hidden, Settings.</div>
+  </section>
+
+  <section class="nr-stack" style="width: 264px">
+    <div class="nr-toolbar nr-toolbar--floating nr-touch" role="toolbar" aria-label="Review">
+      <span class="nr-toolbar__group">
+        <button class="nr-toolbar__button" aria-label="Look inside"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="Keep"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg></button>
+      </span>
+      <span class="nr-toolbar__spacer"></span>
+      <button class="nr-toolbar__prominent ios-body-strong">Contribute</button>
+    </div>
+    <div class="web-caption nr-text-secondary">Phone, floating over a session under review. The tab bar is hidden on this screen.</div>
+  </section>
+
+  <section class="nr-pane" style="width: 100%" aria-label="Web">
+    <div class="nr-toolbar" role="toolbar" aria-label="Research agent">
+      <button class="nr-toolbar__button" aria-label="Back to Agents" title="Back to Agents">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <h2 class="nr-toolbar__title web-title">Research agent</h2>
+      <span class="nr-toolbar__group">
+        <button class="nr-toolbar__button" aria-label="Duplicate" title="Duplicate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="Share" title="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M6 12v6.5A1.5 1.5 0 0 0 7.5 20h9a1.5 1.5 0 0 0 1.5-1.5V12"/></svg></button>
+        <button class="nr-toolbar__button" aria-label="More" title="More" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/></svg></button>
+      </span>
+      <button class="nr-toolbar__prominent web-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg>Run agent</button>
+    </div>
+  </section>
+</div>
+</body>
+</html>

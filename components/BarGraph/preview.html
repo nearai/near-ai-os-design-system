@@ -1,0 +1,88 @@
+<!-- @dsCard group="Data" height=262 subtitle="Shared above the axis, kept below; the legend reads out the bucket under the pointer" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BarGraph — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 400px" aria-label="Last 11 days">
+    <div class="nr-stat-card-row nr-stat-card-row--legend">
+      <div class="nr-stat-card nr-stat-card--legend"><span class="nr-stat-card__dot nr-stat-card__dot--data-1" aria-hidden="true"></span><span class="nr-stat-card__label web-body">Shared</span><span class="nr-stat-card__value web-body-strong" id="g1-up">40</span></div>
+      <div class="nr-stat-card nr-stat-card--legend"><span class="nr-stat-card__dot nr-stat-card__dot--data-2" aria-hidden="true"></span><span class="nr-stat-card__label web-body">Kept</span><span class="nr-stat-card__value web-body-strong" id="g1-down">17</span></div>
+    </div>
+    <figure class="nr-bar-graph">
+      <div class="nr-bar-graph__plot" id="g1" role="group" tabindex="0" aria-label="Sessions shared and kept per day, October 3 to 13"></div>
+      <figcaption class="nr-bar-graph__range web-caption" id="g1-range">Oct 3 – Oct 13</figcaption>
+    </figure>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 316px" aria-label="Last 42 days">
+    <div class="nr-stat-card-row nr-stat-card-row--legend">
+      <div class="nr-stat-card nr-stat-card--legend"><span class="nr-stat-card__dot nr-stat-card__dot--data-1" aria-hidden="true"></span><span class="nr-stat-card__label web-body">Shared</span><span class="nr-stat-card__value web-body-strong" id="g2-up">0</span></div>
+      <div class="nr-stat-card nr-stat-card--legend"><span class="nr-stat-card__dot nr-stat-card__dot--data-2" aria-hidden="true"></span><span class="nr-stat-card__label web-body">Kept</span><span class="nr-stat-card__value web-body-strong" id="g2-down">0</span></div>
+    </div>
+    <figure class="nr-bar-graph nr-bar-graph--thin">
+      <div class="nr-bar-graph__plot" id="g2" role="group" tabindex="0" aria-label="Sessions shared and kept per day, September 2 to October 13"></div>
+      <figcaption class="nr-bar-graph__range web-caption" id="g2-range">Sep 2 – Oct 13</figcaption>
+    </figure>
+  </section>
+</div>
+<script>
+(function () {
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function days(n) { var out = [], end = new Date(2026, 9, 13); for (var i = n - 1; i >= 0; i--) { var d = new Date(end); d.setDate(end.getDate() - i); out.push(d); } return out; }
+  function alphas(v, max) {
+    var rows = 7, a = [];
+    if (!(v > 0) || !(max > 0)) { for (var r = 0; r < rows; r++) a.push(0); return a; }
+    var lit = Math.max(1, Math.min(rows, v / max * rows)), tip = Math.ceil(lit);
+    for (var k = 0; k < rows; k++) {
+      var fill = Math.min(1, Math.max(0, lit - k));
+      a.push(fill > 0 ? (0.35 + 0.65 * (k + 1) / tip) * (fill < 1 ? Math.max(0.35, fill) : 1) : 0);
+    }
+    return a;
+  }
+  function dot(cls, alpha) { var s = document.createElement('span'); s.className = 'nr-bar-graph__dot' + (alpha > 0 ? ' ' + cls : ''); if (alpha > 0) s.style.setProperty('--nr-dot-alpha', alpha.toFixed(2)); return s; }
+  function build(id, up, down, label, thin, current) {
+    var plot = document.getElementById(id), dates = days(up.length);
+    var max = Math.max(5, Math.max.apply(null, up.concat(down)));
+    var tu = up.reduce(function (a, b) { return a + b; }, 0), td = down.reduce(function (a, b) { return a + b; }, 0);
+    var oUp = document.getElementById(id + '-up'), oDown = document.getElementById(id + '-down'), oRange = document.getElementById(id + '-range'), range = oRange.textContent;
+    var buckets = up.map(function (u, i) {
+      var b = document.createElement('div'), d = dates[i], name = DAY[d.getDay()] + ', ' + MON[d.getMonth()] + ' ' + d.getDate();
+      b.className = 'nr-bar-graph__bucket'; b.id = id + '-b' + i; b.setAttribute('role', 'img');
+      b.setAttribute('aria-label', name + ': ' + u + ' shared, ' + down[i] + ' kept');
+      var col = document.createElement('div'); col.className = 'nr-bar-graph__column';
+      var au = alphas(u, max), ad = alphas(down[i], max);
+      for (var c = 0; c < (thin ? 1 : 3); c++) {
+        var g = document.createElement('div'); g.className = 'nr-bar-graph__dots';
+        for (var r = 6; r >= 0; r--) g.appendChild(dot('nr-bar-graph__dot--up', au[r]));
+        var ax = document.createElement('span'); ax.className = 'nr-bar-graph__axis'; g.appendChild(ax);
+        for (r = 0; r < 7; r++) g.appendChild(dot('nr-bar-graph__dot--down', ad[r]));
+        col.appendChild(g);
+      }
+      var l = document.createElement('div'); l.className = 'nr-bar-graph__label ' + (thin ? 'web-micro' : 'web-caption'); l.textContent = label(d, i);
+      b.appendChild(col); b.appendChild(l); plot.appendChild(b);
+      b.addEventListener('mouseenter', function () { show(i); });
+      b._name = name; return b;
+    });
+    function show(i) {
+      buckets.forEach(function (b, j) { if (j === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+      if (i < 0) { oUp.textContent = tu; oDown.textContent = td; oRange.textContent = range; plot.removeAttribute('aria-activedescendant'); return; }
+      oUp.textContent = up[i]; oDown.textContent = down[i]; oRange.textContent = buckets[i]._name; plot.setAttribute('aria-activedescendant', buckets[i].id); plot._i = i;
+    }
+    plot.addEventListener('mouseleave', function () { show(-1); });
+    plot.addEventListener('blur', function () { show(-1); });
+    plot.addEventListener('keydown', function (e) {
+      var i = plot._i >= 0 ? plot._i : buckets.length - 1;
+      if (e.key === 'ArrowLeft') show(Math.max(0, i - 1)); else if (e.key === 'ArrowRight') show(Math.min(buckets.length - 1, i + 1));
+      else if (e.key === 'Home') show(0); else if (e.key === 'End') show(buckets.length - 1); else return;
+      e.preventDefault();
+    });
+    show(current);
+  }
+  build('g1', [3, 0, 5, 8, 2, 0, 1, 6, 9, 4, 2], [1, 2, 0, 3, 1, 0, 0, 2, 4, 1, 3], function (d) { return DAY[d.getDay()]; }, false, 8);
+  var u2 = [], d2 = [];
+  for (var i = 0; i < 42; i++) { u2.push([0, 1, 3, 2, 5, 0, 0][i % 7] + (i > 27 ? (i % 3) + 1 : 0)); d2.push([2, 0, 1, 0, 3, 1, 0][(i + 3) % 7] + (i > 34 ? 1 : 0)); }
+  build('g2', u2, d2, function (d, i) { return (i === 0 || i === 14 || i === 28 || i === 41) ? MON[d.getMonth()] + ' ' + d.getDate() : ''; }, true, -1);
+})();
+</script>
+</body>
+</html>

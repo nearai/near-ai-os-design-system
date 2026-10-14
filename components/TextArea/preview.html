@@ -1,0 +1,35 @@
+<!-- @dsCard group="Inputs" height=324 subtitle="Multi-line field that grows with its text, with a counter" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TextArea — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <label class="nr-text-area">
+      <span class="nr-text-area__label web-eyebrow nr-upper">Note for reviewers</span>
+      <textarea class="nr-text-area__input web-label" rows="2" placeholder="What should a reviewer know about this session?" aria-describedby="ta-count-1"></textarea>
+      <span class="nr-text-area__footer"><span class="nr-text-area__counter web-caption" id="ta-count-1">0/280</span></span>
+    </label>
+    <label class="nr-text-area nr-text-area--invalid">
+      <span class="nr-text-area__label web-eyebrow nr-upper">Note for reviewers</span>
+      <textarea class="nr-text-area__input web-label" rows="3" aria-invalid="true" aria-describedby="ta-msg-2 ta-count-2">The retry test failed twice on CI before I pinned the tokio version. The fix is in the second half of the session, after the lockfile diff. Everything before that is me reading the backoff code and trying three approaches that did not work, so a reviewer can skip it.</textarea>
+      <span class="nr-text-area__footer"><span class="nr-text-area__message web-caption" id="ta-msg-2">Use 280 characters or fewer.</span><span class="nr-text-area__counter web-caption" id="ta-count-2">296/280</span></span>
+    </label>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (Android)</div>
+    <div class="nr-touch">
+      <label class="nr-text-area">
+        <span class="nr-text-area__label android-eyebrow nr-upper">Instructions for this agent</span>
+        <textarea class="nr-text-area__input android-body" rows="3">Review pull requests in near/nearcore. Flag unsafe unwraps first, then missing tests.</textarea>
+      </label>
+    </div>
+    <label class="nr-text-area">
+      <span class="nr-text-area__label web-eyebrow nr-upper">Bio</span>
+      <textarea class="nr-text-area__input web-label" rows="2" disabled>Maintains near-agents. Contributes traces from Rust and TypeScript work.</textarea>
+      <span class="nr-text-area__footer"><span class="nr-text-area__message web-caption">Turn on your public profile to edit this.</span></span>
+    </label>
+  </section>
+</div>
+</body>
+</html>

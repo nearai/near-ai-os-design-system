@@ -1,0 +1,39 @@
+<!-- @dsCard group="Feedback" height=340 subtitle="A quiet card whose title dot carries the tone" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Notice — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane" style="width: 352px">
+    <div class="nr-notice-stack">
+      <div class="nr-notice-stack__head"><button class="nr-button nr-button--link web-label">Dismiss all</button></div>
+      <section class="nr-notice" aria-labelledby="n1">
+        <span class="nr-status-label nr-status-label--strong web-label" id="n1"><span class="nr-status-label__dot nr-status-label__dot--caution"></span><span class="nr-status-label__text">The watcher isn't running.</span></span>
+        <p class="nr-notice__body web-label">It stopped when this Mac went to sleep, so new sessions aren't being read. Restart it to pick them up.</p>
+        <div class="nr-notice__actions">
+          <button class="nr-button nr-button--glass web-label">Restart</button>
+          <button class="nr-button nr-button--link web-label">Dismiss</button>
+        </div>
+      </section>
+      <section class="nr-notice" aria-labelledby="n2">
+        <span class="nr-status-label nr-status-label--strong web-label" id="n2"><span class="nr-status-label__dot nr-status-label__dot--neutral"></span><span class="nr-status-label__text">Watching is paused until 9:00.</span></span>
+        <p class="nr-notice__body web-label">Sessions that finish before then stay on this Mac until you resume.</p>
+        <div class="nr-notice__actions">
+          <button class="nr-button nr-button--link web-label">Dismiss</button>
+        </div>
+      </section>
+    </div>
+  </section>
+  <section class="nr-pane" style="width: 352px">
+    <section class="nr-notice" aria-labelledby="n3">
+      <span class="nr-status-label nr-status-label--strong web-label" id="n3"><span class="nr-status-label__dot nr-status-label__dot--critical"></span><span class="nr-status-label__text">History couldn't be read.</span></span>
+      <p class="nr-notice__body web-label">Another Near.ai window has the history file open. Close that window, then try again.</p>
+      <div class="nr-notice__actions">
+        <button class="nr-button nr-button--glass web-label">Try again</button>
+      </div>
+      <p class="nr-inline-alert" role="alert"><span class="nr-inline-alert__text web-caption">The file is still open. Quit Near.ai from the menu bar and open it again.</span></p>
+    </section>
+  </section>
+</div>
+</body>
+</html>

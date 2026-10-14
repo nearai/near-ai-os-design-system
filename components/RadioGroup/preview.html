@@ -1,0 +1,44 @@
+<!-- @dsCard group="Inputs" height=262 subtitle="One choice of a few, all in view; one tab stop, arrows move" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>RadioGroup — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-radio-group" role="radiogroup" aria-labelledby="rg-1">
+      <div class="nr-radio-group__label web-eyebrow nr-upper" id="rg-1">Pause watching</div>
+      <label class="nr-radio-group__option web-label">
+        <input class="nr-radio-group__radio" type="radio" name="pause" checked>
+        <span class="nr-radio-group__text">1 hour</span>
+      </label>
+      <label class="nr-radio-group__option web-label">
+        <input class="nr-radio-group__radio" type="radio" name="pause">
+        <span class="nr-radio-group__text"><span class="nr-radio-group__title">Until morning</span><span class="nr-radio-group__sub web-caption">Watching resumes at 8:00.</span></span>
+      </label>
+      <label class="nr-radio-group__option web-label">
+        <input class="nr-radio-group__radio" type="radio" name="pause">
+        <span class="nr-radio-group__text"><span class="nr-radio-group__title">Until resumed</span><span class="nr-radio-group__sub web-caption">Sessions you start are not offered until you turn watching back on.</span></span>
+      </label>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="nr-radio-group nr-radio-group--row" role="radiogroup" aria-labelledby="rg-2">
+      <div class="nr-radio-group__label web-eyebrow nr-upper" id="rg-2">How did it go?</div>
+      <label class="nr-radio-group__option web-label"><input class="nr-radio-group__radio" type="radio" name="verdict"><span class="nr-radio-group__text">Worked</span></label>
+      <label class="nr-radio-group__option web-label"><input class="nr-radio-group__radio" type="radio" name="verdict" checked><span class="nr-radio-group__text">Partly</span></label>
+      <label class="nr-radio-group__option web-label"><input class="nr-radio-group__radio" type="radio" name="verdict"><span class="nr-radio-group__text">Failed</span></label>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (Android)</div>
+    <div class="nr-touch">
+      <div class="nr-radio-group" role="radiogroup" aria-labelledby="rg-3">
+        <div class="nr-radio-group__label android-eyebrow nr-upper" id="rg-3">Answer model</div>
+        <label class="nr-radio-group__option android-body"><input class="nr-radio-group__radio" type="radio" name="model" checked><span class="nr-radio-group__text">Automatic</span></label>
+        <label class="nr-radio-group__option android-body"><input class="nr-radio-group__radio" type="radio" name="model"><span class="nr-radio-group__text">llama-3.3-70b-instruct</span></label>
+        <label class="nr-radio-group__option android-body"><input class="nr-radio-group__radio" type="radio" name="model" disabled aria-describedby="rg-why"><span class="nr-radio-group__text"><span class="nr-radio-group__title">deepseek-r1</span><span class="nr-radio-group__sub android-caption" id="rg-why">Not answering right now.</span></span></label>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- @dsCard group="Inputs" height=190 subtitle="Capsule field with a search glyph, clear button and scope tokens" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SearchField — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-spread">
+      <span class="web-title">Traces</span>
+      <div class="nr-search-field web-label" role="search" style="width: 200px">
+        <span class="nr-search-field__glyph" aria-hidden="true"></span>
+        <input class="nr-search-field__input" type="search" placeholder="Search traces" aria-label="Search traces">
+      </div>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="nr-search-field web-label" role="search">
+      <span class="nr-search-field__glyph" aria-hidden="true"></span>
+      <input class="nr-search-field__input" type="search" value="rate limit" placeholder="Search traces" aria-label="Search traces" aria-describedby="sf-count">
+      <button class="nr-search-field__clear" type="button" aria-label="Clear search"></button>
+    </div>
+    <div class="web-caption nr-text-tertiary" id="sf-count" aria-live="polite">12 sessions match</div>
+    <div class="nr-search-field web-label" role="search">
+      <span class="nr-search-field__glyph" aria-hidden="true"></span>
+      <span class="nr-search-field__tokens">
+        <span class="nr-chip nr-chip--input web-caption"><span class="nr-chip__label">in: nearcore</span><button class="nr-chip__remove" type="button" aria-label="Remove in: nearcore"></button></span>
+      </span>
+      <input class="nr-search-field__input" type="search" value="retry backoff" placeholder="Search traces" aria-label="Search traces">
+      <button class="nr-search-field__clear" type="button" aria-label="Clear search"></button>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (iPhone): bottom toolbar</div>
+    <div class="nr-touch">
+      <div class="nr-search-field ios-body" role="search">
+        <span class="nr-search-field__glyph" aria-hidden="true"></span>
+        <input class="nr-search-field__input" type="search" placeholder="Search sessions" aria-label="Search sessions">
+      </div>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Dense (panel filter)</div>
+    <div class="nr-dense">
+      <div class="nr-search-field web-caption" role="search">
+        <span class="nr-search-field__glyph" aria-hidden="true"></span>
+        <input class="nr-search-field__input" type="search" placeholder="Filter tools" aria-label="Filter tools">
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

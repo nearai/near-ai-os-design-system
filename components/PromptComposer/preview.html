@@ -1,0 +1,102 @@
+<!-- @dsCard group="AI" height=780 subtitle="Starters, context chips, model picker, Send and Stop, route note, disabled reason" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>PromptComposer — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 728px">
+
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Empty, with starters</div>
+    <div class="nr-prompt-composer">
+      <div class="nr-prompt-composer__starters" role="group" aria-label="Suggestions">
+        <button class="nr-prompt-composer__pill web-label" type="button">Summarize this week's traces</button>
+        <button class="nr-prompt-composer__pill web-label" type="button">Find calls with no proof</button>
+        <button class="nr-prompt-composer__pill web-label" type="button">Draft release notes for v0.15.0</button>
+      </div>
+      <div class="nr-prompt-composer__box">
+        <textarea class="nr-prompt-composer__input web-body" rows="1" aria-label="Message near-agents" placeholder="Ask near-agents, or type @ to add context"></textarea>
+        <div class="nr-prompt-composer__bar">
+          <button class="nr-prompt-composer__icon" type="button" aria-label="Attach files"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+          <button class="nr-prompt-composer__pill nr-prompt-composer__pill--quiet" type="button" aria-haspopup="menu" aria-label="Model: deepseek-ai/DeepSeek-V3.1"><span class="nr-prompt-composer__model web-mono">deepseek-ai/DeepSeek-V3.1</span><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="nr-prompt-composer__trail">
+            <button class="nr-prompt-composer__send" type="button" aria-label="Send" aria-disabled="true"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12.5v-9M4 7.5l4-4 4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="nr-hairline">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Ready, with context</div>
+    <div class="nr-prompt-composer">
+      <div class="nr-prompt-composer__box">
+        <div class="nr-prompt-composer__chips" role="list" aria-label="Context">
+          <span class="nr-prompt-composer__chip nr-prompt-composer__chip--scope" role="listitem"><span class="nr-prompt-composer__chip-label web-label">@near-agents</span><button class="nr-prompt-composer__chip-remove" type="button" aria-label="Remove @near-agents"><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l6 6M11 5l-6 6"/></svg></button></span>
+          <span class="nr-prompt-composer__chip" role="listitem"><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 2.5h5l3 3v8H4z"/></svg><span class="nr-prompt-composer__chip-label web-mono">tests/proof.rs</span><button class="nr-prompt-composer__chip-remove" type="button" aria-label="Remove tests/proof.rs"><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l6 6M11 5l-6 6"/></svg></button></span>
+        </div>
+        <textarea class="nr-prompt-composer__input web-body" rows="2" aria-label="Message near-agents" aria-describedby="pc-route">Why do the proof tests fail after the 6ed1e8c merge? Keep the fix to tests/proof.rs if you can.</textarea>
+        <div class="nr-prompt-composer__bar">
+          <button class="nr-prompt-composer__icon" type="button" aria-label="Attach files"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+          <button class="nr-prompt-composer__pill nr-prompt-composer__pill--quiet" type="button" aria-haspopup="menu" aria-label="Model: deepseek-ai/DeepSeek-V3.1"><span class="nr-prompt-composer__model web-mono">deepseek-ai/DeepSeek-V3.1</span><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="nr-prompt-composer__trail">
+            <button class="nr-prompt-composer__send" type="button" aria-label="Send" aria-keyshortcuts="Enter"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12.5v-9M4 7.5l4-4 4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="nr-prompt-composer__note web-caption" id="pc-route"><span>Goes to deepseek-ai/DeepSeek-V3.1 on NEAR AI Cloud with 1 file. Each answer shows its proof.</span></div>
+    </div>
+
+    <hr class="nr-hairline">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Outside model chosen</div>
+    <div class="nr-prompt-composer">
+      <div class="nr-prompt-composer__box">
+        <div class="nr-prompt-composer__chips" role="list" aria-label="Context">
+          <span class="nr-prompt-composer__chip" role="listitem"><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 2.5h5l3 3v8H4z"/></svg><span class="nr-prompt-composer__chip-label web-label">Pasted text · 212 lines</span><button class="nr-prompt-composer__chip-remove" type="button" aria-label="Remove pasted text"><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l6 6M11 5l-6 6"/></svg></button></span>
+        </div>
+        <textarea class="nr-prompt-composer__input web-body" rows="1" aria-label="Message near-agents" aria-describedby="pc-outside">Explain this stack trace.</textarea>
+        <div class="nr-prompt-composer__bar">
+          <button class="nr-prompt-composer__icon" type="button" aria-label="Attach files"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+          <button class="nr-prompt-composer__pill nr-prompt-composer__pill--quiet" type="button" aria-haspopup="menu" aria-label="Model: claude-sonnet-4-5"><span class="nr-prompt-composer__model web-mono">claude-sonnet-4-5</span><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="nr-prompt-composer__trail">
+            <button class="nr-prompt-composer__send" type="button" aria-label="Send"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12.5v-9M4 7.5l4-4 4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="nr-prompt-composer__note nr-prompt-composer__note--outside web-caption" id="pc-outside"><span class="nr-prompt-composer__dot nr-prompt-composer__dot--critical" aria-hidden="true"></span><span>This model is outside NEAR AI Cloud. Your message and the pasted text leave this computer with no proof.</span></div>
+    </div>
+
+    <hr class="nr-hairline">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Generating</div>
+    <div class="nr-prompt-composer">
+      <div class="nr-prompt-composer__box">
+        <textarea class="nr-prompt-composer__input web-body" rows="1" aria-label="Message near-agents" placeholder="Reply to near-agents"></textarea>
+        <div class="nr-prompt-composer__bar">
+          <button class="nr-prompt-composer__icon" type="button" aria-label="Attach files"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+          <button class="nr-prompt-composer__pill nr-prompt-composer__pill--quiet" type="button" aria-haspopup="menu" aria-label="Model: deepseek-ai/DeepSeek-V3.1"><span class="nr-prompt-composer__model web-mono">deepseek-ai/DeepSeek-V3.1</span><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="nr-prompt-composer__trail">
+            <span class="nr-prompt-composer__count web-caption">Esc or ⌘. stops</span>
+            <button class="nr-prompt-composer__send" type="button" aria-label="Stop answering" aria-keyshortcuts="Escape Meta+Period"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="currentColor"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="nr-hairline">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Can't send</div>
+    <div class="nr-prompt-composer">
+      <div class="nr-prompt-composer__box">
+        <textarea class="nr-prompt-composer__input web-body" rows="1" aria-label="Message near-agents" aria-describedby="pc-reason">Summarize this week's traces for the team.</textarea>
+        <div class="nr-prompt-composer__bar">
+          <button class="nr-prompt-composer__icon" type="button" aria-label="Attach files"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+          <button class="nr-prompt-composer__pill nr-prompt-composer__pill--quiet" type="button" aria-haspopup="menu" aria-label="Model: deepseek-ai/DeepSeek-V3.1"><span class="nr-prompt-composer__model web-mono">deepseek-ai/DeepSeek-V3.1</span><svg class="nr-prompt-composer__chip-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="nr-prompt-composer__trail">
+            <button class="nr-prompt-composer__send" type="button" aria-label="Send" aria-disabled="true" aria-describedby="pc-reason"><svg class="nr-prompt-composer__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12.5v-9M4 7.5l4-4 4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="nr-prompt-composer__reason web-caption" id="pc-reason"><span class="nr-prompt-composer__dot nr-prompt-composer__dot--caution" aria-hidden="true"></span><span>Sign in to NEAR AI to send. Your draft stays here.</span><button class="nr-prompt-composer__link web-caption" type="button">Sign in</button></div>
+    </div>
+
+  </section>
+</div>
+</body>
+</html>

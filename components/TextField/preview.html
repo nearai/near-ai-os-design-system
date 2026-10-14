@@ -1,0 +1,55 @@
+<!-- @dsCard group="Inputs" height=336 subtitle="Eyebrow label over a field well; invalid ring with words" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TextField — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <label class="nr-text-field">
+      <span class="nr-text-field__label web-eyebrow nr-upper">Handle</span>
+      <span class="nr-text-field__well web-label"><input class="nr-text-field__input" type="text" placeholder="@yourname" autocomplete="off"></span>
+    </label>
+    <label class="nr-text-field nr-text-field--invalid">
+      <span class="nr-text-field__label web-eyebrow nr-upper">Handle</span>
+      <span class="nr-text-field__well web-label"><input class="nr-text-field__input" type="text" value="@near-agents-maintainer-for-the-public-trace-commons-profile-page" aria-invalid="true" aria-describedby="tf-err"></span>
+      <span class="nr-text-field__message web-caption" id="tf-err">Use 64 characters or fewer.</span>
+    </label>
+    <label class="nr-text-field">
+      <span class="nr-text-field__label web-eyebrow nr-upper">API key</span>
+      <span class="nr-text-field__well web-label"><input class="nr-text-field__input" type="password" value="nearai-sk-2f9c41d07b" autocomplete="off"></span>
+      <span class="nr-text-field__message web-caption">Saved to this Mac's keychain.</span>
+    </label>
+    <label class="nr-text-field">
+      <span class="nr-text-field__label web-eyebrow nr-upper">Server</span>
+      <span class="nr-text-field__well web-label"><input class="nr-text-field__input" type="text" value="Trace Commons" disabled></span>
+      <span class="nr-text-field__message web-caption">Set by your organization.</span>
+    </label>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (iOS)</div>
+    <div class="nr-touch">
+      <label class="nr-text-field">
+        <span class="nr-text-field__label ios-eyebrow nr-upper">Handle</span>
+        <span class="nr-text-field__well ios-body"><input class="nr-text-field__input" type="text" placeholder="@yourname" autocomplete="off"></span>
+      </label>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Dense (inspector)</div>
+    <div class="nr-dense nr-stack" style="--nr-label-width: 112px">
+      <label class="nr-text-field nr-text-field--inline">
+        <span class="nr-text-field__label web-caption">Agent name</span>
+        <span class="nr-text-field__well web-caption"><input class="nr-text-field__input" type="text" value="pr-reviewer"></span>
+      </label>
+      <label class="nr-text-field nr-text-field--inline">
+        <span class="nr-text-field__label web-caption">Repository</span>
+        <span class="nr-text-field__well web-caption"><input class="nr-text-field__input" type="text" value="near/nearcore"></span>
+      </label>
+      <label class="nr-text-field nr-text-field--inline nr-text-field--mixed">
+        <span class="nr-text-field__label web-caption">Branch</span>
+        <span class="nr-text-field__well web-caption"><input class="nr-text-field__input" type="text" placeholder="—" aria-description="Mixed"></span>
+      </label>
+    </div>
+  </section>
+</div>
+</body>
+</html>

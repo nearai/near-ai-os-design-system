@@ -1,0 +1,55 @@
+<!-- @dsCard group="Navigation" height=360 subtitle="macOS screen-edge rail: open with the Traces peek, and closed" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>EdgeRail — preview</title></head>
+<body>
+<div class="nr-preview nr-scene nr-compact">
+  <div class="nr-stack" style="width: 508px">
+    <div class="nr-edge-rail__screen" aria-label="Screen, rail open">
+      <div class="nr-edge-rail">
+        <section class="nr-edge-rail__peek nr-pane" aria-labelledby="peek-traces">
+          <h2 class="nr-edge-rail__title mac-heading" id="peek-traces">Traces</h2>
+          <div class="nr-edge-rail__row">
+            <span class="nr-edge-rail__dot nr-edge-rail__dot--positive" aria-hidden="true"></span>
+            <span class="nr-edge-rail__row-text mac-body-strong">Watching · 3 folders</span>
+            <button class="nr-edge-rail__button mac-label">Pause</button>
+          </div>
+          <div class="nr-card nr-stack">
+            <div><div class="mac-body-strong">near-agents</div><div class="mac-caption nr-text-secondary">Ask me · 3 sessions waiting</div></div>
+            <hr class="nr-hairline">
+            <div><div class="mac-body-strong">trace-commons</div><div class="mac-caption nr-text-secondary">Automatic · 1 session waiting</div></div>
+            <hr class="nr-hairline">
+            <div><div class="mac-body-strong">nearai-cloud</div><div class="mac-caption nr-text-secondary">Never</div></div>
+          </div>
+          <div class="nr-spread">
+            <a class="nr-edge-rail__link mac-label" href="#open-traces">Open Traces &#8594;</a>
+            <span class="mac-caption nr-text-tertiary">Nothing is sent unless you say so.</span>
+          </div>
+        </section>
+        <nav class="nr-edge-rail__rail nr-pane" aria-label="Edge rail">
+          <button class="nr-edge-rail__tile" aria-label="Home" title="Home">
+            <svg class="nr-edge-rail__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></button>
+          <button class="nr-edge-rail__tile" aria-label="Private AI" title="Private AI">
+            <svg class="nr-edge-rail__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9 4.1-1.4 7-4.7 7-9V6.2z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></button>
+          <button class="nr-edge-rail__tile" aria-label="Traces" title="Traces" aria-current="true">
+            <svg class="nr-edge-rail__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3.5l2-5 4 10 3-7 1.5 2H21"/></svg></button>
+          <span class="nr-edge-rail__rule" aria-hidden="true"></span>
+          <button class="nr-edge-rail__tile" aria-label="Open Near.ai" title="Open Near.ai">
+            <svg class="nr-edge-rail__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></svg></button>
+        </nav>
+      </div>
+    </div>
+    <div class="mac-caption nr-text-secondary">Open: a 56-wide rail of 44 tiles, 12 from the screen edge; the peek is 380 wide, 16 to its left.</div>
+  </div>
+
+  <div class="nr-stack" style="width: 208px">
+    <div class="nr-edge-rail__screen" aria-label="Screen, rail closed">
+      <div class="nr-edge-rail__zone" role="button" tabindex="0" aria-label="Open the edge rail">
+        <span class="nr-edge-rail__handle" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="mac-caption nr-text-secondary">Closed: a 4 by 240 hover zone holds the 3 by 72 handle.</div>
+  </div>
+</div>
+</body>
+</html>

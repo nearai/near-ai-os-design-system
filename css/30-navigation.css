@@ -1,0 +1,1004 @@
+/* ===========================================================================
+   Navigation: Tabs, Breadcrumb, Sidebar, NavigationRail, TabBar, Toolbar,
+   StepProgress, EdgeRail. Containers: the Pane modifiers and the three-pane
+   window (.nr-pane-layout). The base .nr-pane lives in 00-base.css and is
+   only extended here, never restyled.
+   Derived values are documented in each component's README.
+   =========================================================================== */
+
+/* ---- Shared: glyphs inside navigation controls ---------------------------- */
+.nr-tabs svg, .nr-breadcrumb svg, .nr-sidebar svg, .nr-rail svg,
+.nr-tabbar svg, .nr-toolbar svg, .nr-edge-rail svg {
+  display: block;
+  flex: none;
+  width: var(--size-glyph);
+  height: var(--size-glyph);
+}
+
+/* ===========================================================================
+   Tabs: the Ember Rule. Equal-width titles over a 1px rule; the selected
+   title in primary ink with a 2px ember line reaching 30% past the tab and a
+   26px halo rising behind it. The ember glides on spring-ember.
+   Set --nr-tabs-count and --nr-tabs-index on .nr-tabs.
+   =========================================================================== */
+.nr-tabs {
+  --nr-tabs-count: 3;
+  --nr-tabs-index: 0;
+  --nr-tabs-halo: var(--size-control);
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-x: clip;
+  overflow-y: visible;
+  overflow-clip-margin: var(--space-4);
+}
+.nr-tabs::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+  pointer-events: none;
+}
+/* The rule runs to the pane's edges from inside its padding; the pane edge
+   clips the rule and the ember. */
+.nr-tabs--bleed {
+  margin-inline: calc(-1 * var(--pane-padding));
+  padding-inline: var(--pane-padding);
+  overflow-clip-margin: 0;
+}
+.nr-tabs__list {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+.nr-tabs__tab {
+  appearance: none;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--inline-gap);
+  min-width: 0;
+  min-height: max(var(--nr-h-bar), var(--nr-target));
+  margin: 0;
+  padding: 0 var(--space-8);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-tabs__tab:hover { color: var(--text-primary); }
+.nr-tabs__tab:active { background: var(--neutral-tint); }
+.nr-tabs__tab[aria-selected="true"] { color: var(--text-primary); font-weight: 600; }
+.nr-tabs__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.nr-tabs__ember {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: calc(100% / var(--nr-tabs-count));
+  transform: translateX(calc(100% * var(--nr-tabs-index)));
+  transition: transform var(--duration-spring-ember) var(--spring-ember);
+  pointer-events: none;
+  z-index: 0;
+}
+.nr-tabs__ember::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  bottom: 0;
+  width: 110%;
+  height: var(--nr-tabs-halo);
+  background: radial-gradient(50% 100% at 50% 100%, var(--tab-ember-halo), transparent);
+}
+.nr-tabs__ember::after {
+  content: "";
+  position: absolute;
+  left: -30%;
+  bottom: 0;
+  width: 160%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--tab-ember), transparent);
+}
+/* Decisions owed: a subtle count. --alert is the red count for critical items. */
+.nr-tabs__badge {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--space-14);
+  height: var(--space-14);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--neutral-tint);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.nr-tabs__badge--alert { background: var(--badge-fill); color: var(--text-on-status); }
+.nr-tabs__dot {
+  flex: none;
+  width: var(--space-6);
+  height: var(--space-6);
+  border-radius: 50%;
+  background: var(--neutral);
+}
+.nr-tabs__dot--positive { background: var(--positive); }
+.nr-tabs__dot--caution { background: var(--caution); }
+.nr-tabs__dot--critical { background: var(--critical); }
+[data-theme$="-hc"] .nr-tabs__badge { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+
+/* ===========================================================================
+   Breadcrumb: a bare back chevron (26px target on macOS), then crumbs
+   secondary › tertiary separator › current in primary.
+   =========================================================================== */
+.nr-breadcrumb {
+  --nr-breadcrumb-target: var(--nr-target);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.nr-compact .nr-breadcrumb, .nr-breadcrumb.nr-compact { --nr-breadcrumb-target: var(--size-control); }
+.nr-breadcrumb__back {
+  appearance: none;
+  position: relative;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--nr-breadcrumb-target);
+  height: var(--nr-breadcrumb-target);
+  margin: 0;
+  margin-inline-end: calc(-1 * var(--space-4));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-tile);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.nr-breadcrumb__back svg { width: var(--space-12); height: var(--space-12); }
+.nr-touch .nr-breadcrumb__back svg { width: var(--space-20); height: var(--space-20); }
+.nr-breadcrumb__back:hover { color: var(--text-primary); }
+.nr-breadcrumb__back:active { filter: brightness(0.92); }
+.nr-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nr-breadcrumb__item { display: inline-flex; align-items: center; gap: var(--space-4); min-width: 0; }
+.nr-breadcrumb__item + .nr-breadcrumb__item::before {
+  content: "\203A" / "";
+  color: var(--text-tertiary);
+}
+.nr-breadcrumb__crumb {
+  position: relative;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--radius-tile);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+/* Text-height crumbs get a hit area 6px above and below (28px at the label step). */
+.nr-breadcrumb__crumb::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--space-6)) calc(-1 * var(--space-2));
+}
+.nr-breadcrumb__crumb:hover { color: var(--text-primary); }
+.nr-breadcrumb__crumb:active { filter: brightness(0.92); }
+.nr-breadcrumb__current {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* Compact width: the back button and the current title only. */
+.nr-breadcrumb--collapsed .nr-breadcrumb__item:not(:last-child) { display: none; }
+.nr-breadcrumb--collapsed .nr-breadcrumb__item + .nr-breadcrumb__item::before { content: none; }
+
+/* ===========================================================================
+   Sidebar: destinations on the leading edge (desktop, iPad, web). Use with
+   .nr-pane. --sections is the settings section list (scrolls a body; it
+   selects nothing). Two levels at most.
+   =========================================================================== */
+.nr-sidebar {
+  box-sizing: border-box;
+  flex: none;
+  width: var(--size-sidebar);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.nr-sidebar--edge { border-start-start-radius: 0; border-end-start-radius: 0; }
+.nr-sidebar__group { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.nr-sidebar__heading {
+  margin: 0;
+  padding: 0 var(--space-10) var(--space-4);
+  color: var(--text-tertiary);
+}
+.nr-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nr-sidebar__item {
+  appearance: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: 100%;
+  min-width: 0;
+  min-height: max(var(--nr-h-control), var(--nr-target));
+  margin: 0;
+  padding: 0 var(--space-10);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-primary);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+}
+.nr-sidebar__item:hover { background: var(--row-hover); }
+.nr-sidebar__item:active { filter: brightness(0.92); }
+.nr-sidebar__item[aria-current="page"] {
+  background: var(--selection);
+  color: var(--text-on-accent);
+  font-weight: 600;
+}
+.nr-sidebar__item[aria-current="page"]:active { background: var(--accent-pressed); filter: none; }
+.nr-sidebar__item[aria-disabled="true"] { opacity: var(--opacity-disabled); pointer-events: none; }
+/* Level two lines up with its parent's label: glyph plus gap. */
+.nr-sidebar__item--nested { padding-inline-start: calc(var(--space-10) + var(--size-glyph) + var(--space-8)); }
+.nr-sidebar__icon { color: var(--accent-text); }
+.nr-sidebar__item[aria-current="page"] .nr-sidebar__icon { color: var(--text-on-accent); }
+.nr-sidebar__label { flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.nr-sidebar__count { flex: none; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.nr-sidebar__item[aria-current="page"] .nr-sidebar__count { color: var(--text-on-accent); }
+
+.nr-sidebar--sections { width: var(--size-modal-nav); gap: var(--space-2); }
+/* A settings window or page: the section list beside one scrolling body. */
+.nr-sidebar__split { display: flex; align-items: flex-start; gap: var(--space-8); min-width: 0; }
+.nr-sidebar__split > :last-child { flex: 1 1 auto; min-width: 0; }
+.nr-sidebar--sections .nr-sidebar__item {
+  display: block;
+  min-height: var(--nr-target);
+  padding: var(--space-6) var(--space-10);
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nr-sidebar--sections .nr-sidebar__item:hover { color: var(--text-primary); }
+/* The section in view (web scroll-spy): primary ink and semibold, never a fill. */
+.nr-sidebar--sections .nr-sidebar__item[aria-current] {
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.nr-sidebar--sections .nr-sidebar__item[aria-current]:hover { background: var(--row-hover); }
+.nr-sidebar--sections .nr-sidebar__item[aria-disabled="true"] { color: var(--text-tertiary); opacity: 1; }
+[data-theme$="-hc"] .nr-sidebar__item[aria-current="page"] { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+
+/* ===========================================================================
+   NavigationRail (M3 Expressive): 96 collapsed, 220 expanded (max 360).
+   Collapsed items 64 tall with a 56 x 32 indicator over the label; expanded
+   items 56 tall with the label inside the indicator.
+   =========================================================================== */
+.nr-rail {
+  --nr-rail-item: var(--space-64);
+  --nr-rail-indicator-w: calc(var(--space-48) + var(--space-8));
+  --nr-rail-indicator-h: var(--space-32);
+  box-sizing: border-box;
+  width: var(--size-rail-collapsed);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-8);
+  min-width: 0;
+}
+.nr-rail--expanded { width: var(--size-rail-expanded); padding-inline: var(--space-12); }
+.nr-rail__menu {
+  appearance: none;
+  position: relative;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: var(--nr-rail-indicator-w);
+  height: var(--nr-target);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.nr-rail--expanded .nr-rail__menu { align-self: flex-start; }
+.nr-rail__menu:hover { background: var(--control-hover); color: var(--text-primary); }
+.nr-rail__menu:active { filter: brightness(0.92); }
+.nr-rail__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nr-rail__item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: var(--nr-rail-item);
+  padding: var(--space-6) 0 var(--space-4);
+  border-radius: var(--radius-control);
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nr-rail__indicator {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: var(--nr-rail-indicator-w);
+  height: var(--nr-rail-indicator-h);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-rail svg.nr-rail__icon { width: var(--space-24); height: var(--space-24); }
+.nr-rail__label { max-width: 100%; text-align: center; font-weight: 500; overflow-wrap: anywhere; }
+.nr-rail__item:hover { color: var(--text-primary); }
+.nr-rail__item:hover .nr-rail__indicator { background: var(--control-hover); }
+.nr-rail__item:active .nr-rail__indicator { filter: brightness(0.92); }
+.nr-rail__item[aria-current="page"] { color: var(--accent-text); }
+.nr-rail__item[aria-current="page"] .nr-rail__label { font-weight: 600; }
+.nr-rail__item[aria-current="page"] .nr-rail__indicator { background: var(--selection); color: var(--text-on-accent); }
+.nr-rail__item[aria-current="page"]:active .nr-rail__indicator { background: var(--accent-pressed); filter: none; }
+.nr-rail__badge {
+  position: absolute;
+  top: calc(-1 * var(--space-2));
+  inset-inline-start: calc(50% + var(--space-4));
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--space-16);
+  height: var(--space-16);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--badge-fill);
+  color: var(--text-on-status);
+  font-variant-numeric: tabular-nums;
+}
+/* Expanded: the item is the indicator, label inside, hugging the rail width. */
+.nr-rail--expanded .nr-rail__item {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: var(--space-8);
+  min-height: var(--nr-rail-indicator-w);
+  padding: 0 var(--space-16);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-rail--expanded .nr-rail__items { gap: 0; }
+.nr-rail--expanded .nr-rail__indicator { width: auto; height: auto; }
+.nr-rail--expanded .nr-rail__item:hover .nr-rail__indicator,
+.nr-rail--expanded .nr-rail__item[aria-current="page"] .nr-rail__indicator { background: transparent; }
+.nr-rail--expanded .nr-rail__item:hover { background: var(--control-hover); }
+.nr-rail--expanded .nr-rail__item:active { filter: brightness(0.92); }
+.nr-rail--expanded .nr-rail__item[aria-current="page"] { background: var(--selection); color: var(--text-on-accent); }
+.nr-rail--expanded .nr-rail__item[aria-current="page"]:active { background: var(--accent-pressed); filter: none; }
+.nr-rail--expanded .nr-rail__label { flex: 1 1 auto; text-align: start; }
+.nr-rail--expanded .nr-rail__badge { position: static; }
+[data-theme$="-hc"] .nr-rail__item[aria-current="page"] .nr-rail__indicator,
+[data-theme$="-hc"] .nr-rail--expanded .nr-rail__item[aria-current="page"] { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+[data-theme$="-hc"] .nr-rail--expanded .nr-rail__item[aria-current="page"] .nr-rail__indicator { box-shadow: none; }
+
+/* ===========================================================================
+   TabBar: phone bottom navigation. Default = floating glass capsule (iOS and
+   touch web), optional bottom accessory and separate search tab.
+   --docked = the M3 64dp navigation bar. --minimized = collapsed on scroll.
+   =========================================================================== */
+.nr-tabbar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.nr-tabbar--pinned {
+  position: absolute;
+  z-index: var(--z-sticky);
+  left: var(--margin-compact);
+  right: var(--margin-compact);
+  bottom: var(--space-8);
+}
+.nr-tabbar__row { display: flex; align-items: stretch; gap: var(--space-8); min-width: 0; }
+.nr-tabbar__tabs, .nr-tabbar__search, .nr-tabbar__accessory {
+  box-sizing: border-box;
+  background-color: var(--glass-veil);
+  background-image: linear-gradient(var(--pane-fill), var(--pane-fill));
+  -webkit-backdrop-filter: var(--blur-bar);
+  backdrop-filter: var(--blur-bar);
+  box-shadow: var(--shadow-float);
+  color: var(--text-primary);
+}
+.nr-tabbar__tabs {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-pill);
+  list-style: none;
+}
+.nr-tabbar__tab {
+  appearance: none;
+  position: relative;
+  flex: 1 1 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 0;
+  min-height: var(--target-touch-apple);
+  margin: 0;
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.nr-tabbar__tab:active { filter: brightness(0.92); }
+.nr-tabbar__tab[aria-current="page"] { background: var(--neutral-tint); color: var(--accent-text); font-weight: 600; }
+.nr-tabbar__indicator {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-tabbar svg.nr-tabbar__icon { width: var(--space-24); height: var(--space-24); }
+.nr-tabbar__label { max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.nr-tabbar__badge {
+  position: absolute;
+  top: calc(-1 * var(--space-4));
+  inset-inline-start: calc(50% + var(--space-4));
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--space-16);
+  height: var(--space-16);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--badge-fill);
+  color: var(--text-on-status);
+  font-variant-numeric: tabular-nums;
+}
+.nr-tabbar__search {
+  appearance: none;
+  flex: none;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: var(--target-touch-apple);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.nr-tabbar__search:active { filter: brightness(0.92); }
+.nr-tabbar__accessory {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-width: 0;
+  min-height: var(--target-touch-android);
+  padding: 0 var(--space-6) 0 var(--space-16);
+  border-radius: var(--radius-pill);
+}
+.nr-tabbar__accessory-text { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
+.nr-tabbar__accessory-text > * { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.nr-tabbar__accessory-dot { flex: none; width: var(--space-8); height: var(--space-8); border-radius: 50%; background: var(--positive); }
+.nr-tabbar__accessory-button {
+  appearance: none;
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: calc(var(--space-32) + var(--space-4));
+  height: calc(var(--space-32) + var(--space-4));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--control);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.nr-tabbar__accessory-button::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--space-32) + var(--space-4) - var(--target-touch-apple)) / 2);
+}
+.nr-tabbar__accessory-button:hover { background: var(--control-hover); }
+.nr-tabbar__accessory-button:active { filter: brightness(0.92); }
+
+/* Minimized on scroll (iPhone): the selected tab alone, the accessory inline. */
+.nr-tabbar--minimized { flex-direction: row; align-items: stretch; }
+.nr-tabbar--minimized .nr-tabbar__row { display: contents; }
+.nr-tabbar--minimized .nr-tabbar__tabs { flex: none; order: 0; }
+.nr-tabbar--minimized .nr-tabbar__accessory { flex: 1 1 auto; order: 1; }
+.nr-tabbar--minimized .nr-tabbar__search { order: 2; }
+.nr-tabbar--minimized .nr-tabbar__tab:not([aria-current]),
+.nr-tabbar--minimized .nr-tabbar__label { display: none; }
+.nr-tabbar--minimized .nr-tabbar__tab { min-width: var(--target-touch-apple); padding: var(--space-6); }
+
+/* Docked (Android M3 navigation bar): full width, 64 tall, square corners,
+   a 56 x 32 indicator over the label. */
+.nr-tabbar--docked { gap: 0; }
+.nr-tabbar--docked.nr-tabbar--pinned { left: 0; right: 0; bottom: 0; }
+.nr-tabbar--docked .nr-tabbar__tabs {
+  gap: 0;
+  min-height: var(--space-64);
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.nr-tabbar--docked .nr-tabbar__tab {
+  gap: var(--space-4);
+  min-height: var(--space-64);
+  padding: var(--space-6) 0;
+  border-radius: 0;
+}
+.nr-tabbar--docked .nr-tabbar__tab[aria-current="page"] { background: transparent; }
+.nr-tabbar--docked .nr-tabbar__indicator {
+  width: calc(var(--space-48) + var(--space-8));
+  height: var(--space-32);
+}
+.nr-tabbar--docked .nr-tabbar__tab:hover .nr-tabbar__indicator { background: var(--control-hover); }
+.nr-tabbar--docked .nr-tabbar__tab[aria-current="page"] .nr-tabbar__indicator {
+  background: var(--selection);
+  color: var(--text-on-accent);
+}
+.nr-tabbar--docked .nr-tabbar__badge { top: calc(-1 * var(--space-2)); }
+/* Documentation stand-ins: the screen a bar floats over (an opaque pane
+   that scrolls under the bar) and its content column. */
+.nr-tabbar__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  padding: var(--margin-compact) var(--margin-compact) var(--space-64);
+}
+.nr-tabbar__screen {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: var(--radius-sheet);
+  background: var(--pane-opaque);
+  color: var(--text-primary);
+}
+[data-theme$="-hc"] .nr-tabbar__tabs,
+[data-theme$="-hc"] .nr-tabbar__search,
+[data-theme$="-hc"] .nr-tabbar__accessory { box-shadow: inset 0 0 0 1px var(--edge-hc), var(--shadow-float); }
+[data-theme$="-hc"] .nr-tabbar__tab[aria-current="page"],
+[data-theme$="-hc"] .nr-tabbar--docked .nr-tabbar__tab[aria-current="page"] .nr-tabbar__indicator { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+[data-theme$="-hc"] .nr-tabbar--docked .nr-tabbar__tab[aria-current="page"] { box-shadow: none; }
+
+/* ===========================================================================
+   Toolbar: a row of up to three groups with at most one prominent action,
+   trailing. Desktop: the main pane's top row (no surface of its own).
+   --floating = a glass capsule over content; --docked = full-width glass bar.
+   =========================================================================== */
+.nr-toolbar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nr-gap);
+  min-width: 0;
+  min-height: var(--nr-h-bar);
+}
+.nr-toolbar--floating, .nr-toolbar--docked {
+  background-color: var(--glass-veil);
+  background-image: linear-gradient(var(--pane-fill), var(--pane-fill));
+  -webkit-backdrop-filter: var(--blur-bar);
+  backdrop-filter: var(--blur-bar);
+  color: var(--text-primary);
+}
+.nr-toolbar--floating {
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-float);
+}
+.nr-toolbar--docked { min-height: var(--space-64); padding: 0 var(--space-16); }
+.nr-toolbar__window-controls {
+  flex: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: calc(var(--space-64) + var(--space-14));
+  height: calc(var(--space-24) + var(--space-6));
+  padding-inline-start: var(--space-8);
+}
+.nr-toolbar__window-light { width: var(--space-12); height: var(--space-12); border-radius: 50%; background: var(--neutral); }
+.nr-toolbar__title { flex: 1 1 auto; min-width: 0; margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--text-primary); }
+.nr-toolbar__spacer { flex: 1 1 auto; }
+.nr-toolbar__group {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--control);
+}
+.nr-toolbar__button {
+  appearance: none;
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--inline-gap);
+  min-width: var(--nr-h-control);
+  height: calc(var(--nr-h-control) - 2 * var(--space-2));
+  margin: 0;
+  padding: 0 var(--space-6);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--toolbar-glyph);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+/* The fill is drawn behind the glyph so the press darkens the fill, never the glyph. */
+.nr-toolbar__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: transparent;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-toolbar__button::after {
+  content: "";
+  position: absolute;
+  inset-block: calc((var(--nr-h-control) - 2 * var(--space-2) - var(--nr-target)) / 2);
+  inset-inline: calc((var(--nr-h-control) - var(--nr-target)) / 2);
+}
+.nr-toolbar__button:hover::before { background: var(--control-hover); }
+.nr-toolbar__button:active::before { background: var(--control-hover); filter: brightness(0.92); }
+.nr-toolbar__button[aria-pressed="false"] { color: var(--toolbar-glyph-off); }
+.nr-toolbar__button[aria-expanded="true"]::before { background: var(--toolbar-expanded); }
+.nr-toolbar__button:disabled { opacity: var(--opacity-disabled); cursor: default; }
+.nr-toolbar__button:disabled::before { background: transparent; }
+.nr-toolbar__button--round {
+  width: var(--nr-h-control);
+  height: var(--nr-h-control);
+  padding: 0;
+  border-radius: 50%;
+}
+.nr-toolbar__button--round::before { background: var(--control); }
+.nr-toolbar__button--round::after { inset: calc((var(--nr-h-control) - var(--nr-target)) / 2); }
+.nr-toolbar__button--text { height: var(--nr-h-control); padding: 0 var(--space-12); color: var(--text-primary); font-weight: 600; }
+.nr-toolbar__button--text::before { background: var(--control); }
+.nr-toolbar__button--text::after { inset: calc((var(--nr-h-control) - var(--nr-target)) / 2) 0; }
+.nr-toolbar__prominent {
+  appearance: none;
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--inline-gap);
+  height: var(--nr-h-control);
+  margin: 0;
+  padding: 0 var(--space-14);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-toolbar__prominent::after { content: ""; position: absolute; inset: calc((var(--nr-h-control) - var(--nr-target)) / 2) 0; }
+.nr-toolbar__prominent:active { background: var(--accent-pressed); }
+.nr-toolbar__prominent:disabled { opacity: var(--opacity-disabled); cursor: default; }
+.nr-touch .nr-toolbar svg, .nr-toolbar.nr-touch svg { width: var(--space-20); height: var(--space-20); }
+[data-theme$="-hc"] .nr-toolbar__group,
+[data-theme$="-hc"] .nr-toolbar__button--round::before,
+[data-theme$="-hc"] .nr-toolbar__button--text::before,
+[data-theme$="-hc"] .nr-toolbar__prominent { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+[data-theme$="-hc"] .nr-toolbar--floating { box-shadow: inset 0 0 0 1px var(--edge-hc), var(--shadow-float); }
+[data-theme$="-hc"] .nr-toolbar--docked { box-shadow: inset 0 1px 0 var(--edge-hc); }
+
+/* ===========================================================================
+   StepProgress: steps are reached, not chosen. 14px nodes joined by 2px
+   connectors; done and current nodes in accent-soft with a 2px tint ring.
+   =========================================================================== */
+.nr-steps {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nr-steps__step {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  min-width: 0;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+.nr-steps__node {
+  box-sizing: border-box;
+  flex: none;
+  width: var(--space-14);
+  height: var(--space-14);
+  border-radius: 50%;
+  background: var(--well);
+  box-shadow: var(--shadow-check);
+}
+.nr-steps__step--done .nr-steps__node,
+.nr-steps__step[aria-current="step"] .nr-steps__node {
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 2px var(--accent-tint);
+}
+.nr-steps__step[aria-current="step"] { color: var(--text-primary); }
+.nr-steps__step + .nr-steps__step::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--space-14) / 2 - 1px);
+  left: calc(-50% + var(--space-14) / 2 + var(--space-6));
+  right: calc(50% + var(--space-14) / 2 + var(--space-6));
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--rule);
+}
+.nr-steps__step.nr-steps__step--done::before,
+.nr-steps__step.nr-steps__step[aria-current="step"]::before { background: var(--accent-soft); }
+.nr-steps__label { max-width: 100%; overflow-wrap: anywhere; }
+/* Vertical: narrow screens and long labels. */
+.nr-steps--vertical { flex-direction: column; align-items: stretch; }
+.nr-steps--vertical .nr-steps__step {
+  flex: none;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-10);
+  padding-bottom: var(--space-24);
+  text-align: start;
+}
+.nr-steps--vertical .nr-steps__step:last-child { padding-bottom: 0; }
+.nr-steps--vertical .nr-steps__step[aria-current="step"] { font-weight: 600; }
+.nr-steps--vertical .nr-steps__step + .nr-steps__step::before { content: none; }
+.nr-steps--vertical .nr-steps__node { margin-top: calc((1lh - var(--space-14)) / 2); }
+.nr-steps--vertical .nr-steps__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-14) / 2 - 1px);
+  top: calc((1lh - var(--space-14)) / 2 + var(--space-14) + var(--space-6));
+  bottom: var(--space-6);
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--rule);
+}
+.nr-steps--vertical .nr-steps__step--done:not(:last-child)::after { background: var(--accent-soft); }
+
+/* ===========================================================================
+   EdgeRail (macOS): a glanceable rail on the screen's right edge. Closed, a
+   4 x 240 hover zone holding a 3 x 72 handle; open, a 56-wide rail of 44px
+   tiles inset 12 from the edge with a 380-wide peek 16 to its left.
+   =========================================================================== */
+.nr-edge-rail {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-16);
+  padding-inline-end: var(--space-12);
+  min-width: 0;
+}
+.nr-edge-rail--fixed {
+  position: fixed;
+  z-index: var(--z-floating);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.nr-edge-rail__peek { width: var(--size-panel-width); display: flex; flex-direction: column; gap: var(--card-gap); }
+.nr-edge-rail__title { margin: 0; }
+.nr-edge-rail__rail {
+  box-sizing: border-box;
+  flex: none;
+  width: calc(var(--size-control-touch) + 2 * var(--space-6));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+}
+.nr-edge-rail__tile {
+  appearance: none;
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: var(--size-control-touch);
+  height: var(--size-control-touch);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-card-quiet);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-edge-rail svg.nr-edge-rail__glyph { width: var(--space-20); height: var(--space-20); }
+.nr-edge-rail svg.nr-edge-rail__mark { width: calc(var(--size-control-touch) - var(--space-14)); height: calc(var(--size-control-touch) - var(--space-14)); }
+.nr-edge-rail__tile:hover { background: var(--control-hover); }
+.nr-edge-rail__tile:active { filter: brightness(0.92); }
+.nr-edge-rail__tile[aria-current="true"] { background: var(--selection); color: var(--text-on-accent); }
+.nr-edge-rail__tile[aria-current="true"]:active { background: var(--accent-pressed); filter: none; }
+.nr-edge-rail__rule { width: var(--size-control-large); height: 1px; margin: var(--space-4) 0; background: var(--rule); }
+.nr-edge-rail__zone {
+  box-sizing: border-box;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: var(--space-4);
+  height: calc(var(--space-48) * 5);
+}
+.nr-edge-rail__handle {
+  flex: none;
+  width: calc(var(--space-2) + 1px);
+  height: calc(var(--space-64) + var(--space-8));
+  border-radius: var(--radius-pill);
+  background: var(--neutral);
+}
+.nr-edge-rail__row { display: flex; align-items: center; gap: var(--space-8); min-width: 0; }
+.nr-edge-rail__row-text { flex: 1 1 auto; min-width: 0; }
+.nr-edge-rail__dot { flex: none; width: var(--space-8); height: var(--space-8); border-radius: 50%; background: var(--neutral); }
+.nr-edge-rail__dot--positive { background: var(--positive); }
+.nr-edge-rail__dot--caution { background: var(--caution); }
+.nr-edge-rail__button {
+  appearance: none;
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  height: var(--nr-h-control);
+  margin: 0;
+  padding: 0 var(--space-12);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--control);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.nr-edge-rail__button:hover { background: var(--control-hover); }
+.nr-edge-rail__button:active { filter: brightness(0.92); }
+.nr-edge-rail__link { color: var(--accent-text); font-weight: 600; text-decoration: none; }
+.nr-edge-rail__link:hover { text-decoration: underline; }
+/* Documentation stand-in for a screen whose right edge the rail sits on. */
+.nr-edge-rail__screen {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  padding-block: var(--space-12);
+  border-radius: var(--radius-window);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+[data-theme$="-hc"] .nr-edge-rail__tile[aria-current="true"],
+[data-theme$="-hc"] .nr-edge-rail__button { box-shadow: inset 0 0 0 1px var(--edge-hc); }
+
+/* ===========================================================================
+   Pane extensions and the three-pane window. Main 440 fixed, content
+   flexible (min 360, takes every window resize), inspector 293 fixed,
+   10px gaps, no window padding. Opening a pane grows the window rightward.
+   =========================================================================== */
+.nr-pane--inspector { padding: var(--inspector-padding-y) var(--inspector-padding-x); }
+.nr-pane--flush { padding: 0; overflow: hidden; }
+.nr-pane--content {
+  background: var(--pane-base);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.nr-pane-layout {
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  gap: var(--pane-gap);
+  min-width: 0;
+}
+.nr-pane-layout > .nr-pane { display: flex; flex-direction: column; gap: var(--card-gap); min-height: 0; }
+.nr-pane-layout__main { flex: none; width: var(--size-pane-main); }
+.nr-pane-layout__content { flex: 1 1 auto; min-width: var(--size-pane-content-min); }
+.nr-pane-layout__inspector { flex: none; width: var(--size-pane-inspector); }
+/* Documentation only: draws a window at a fraction of its size. */
+.nr-pane-layout--miniature { zoom: 0.6; }
+
+/* ---- Forced colors and Reduce Motion -------------------------------------- */
+@media (forced-colors: active) {
+  .nr-tabs__ember::after { background: Highlight; }
+  .nr-tabs__ember::before { display: none; }
+  .nr-sidebar__item[aria-current="page"],
+  .nr-rail__item[aria-current="page"] .nr-rail__indicator,
+  .nr-rail--expanded .nr-rail__item[aria-current="page"],
+  .nr-tabbar__tab[aria-current="page"],
+  .nr-edge-rail__tile[aria-current="true"] { background: Highlight; color: HighlightText; forced-color-adjust: none; }
+  .nr-steps__step--done .nr-steps__node,
+  .nr-steps__step[aria-current="step"] .nr-steps__node { background: Highlight; }
+  .nr-tabbar__tabs, .nr-tabbar__search, .nr-tabbar__accessory,
+  .nr-toolbar--floating, .nr-toolbar__group { border: 1px solid CanvasText; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nr-tabs__ember, .nr-tabs__tab, .nr-breadcrumb__back, .nr-breadcrumb__crumb,
+  .nr-sidebar__item, .nr-rail__menu, .nr-rail__item, .nr-rail__indicator,
+  .nr-tabbar__tab, .nr-tabbar__indicator, .nr-toolbar__button, .nr-toolbar__button::before,
+  .nr-toolbar__prominent, .nr-edge-rail__tile, .nr-edge-rail__button { transition: none; }
+}

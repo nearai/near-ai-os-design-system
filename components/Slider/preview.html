@@ -1,0 +1,71 @@
+<!-- @dsCard group="Inputs" height=234 subtitle="A value in a fixed range, with live feedback and labeled ends" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Slider — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="nr-slider">
+      <div class="nr-slider__head">
+        <label class="nr-slider__label web-label" for="sl-1">Temperature</label>
+        <output class="nr-slider__value web-label" id="sl-1-out" for="sl-1">0.70</output>
+      </div>
+      <input class="nr-slider__input" id="sl-1" type="range" min="0" max="2" step="0.05" value="0.7" data-out="sl-1-out" data-fixed="2" aria-describedby="sl-1-ends">
+      <div class="nr-slider__ends web-caption" id="sl-1-ends"><span>Precise</span><span>Creative</span></div>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="nr-slider">
+      <div class="nr-slider__head"><label class="nr-slider__label web-label" for="sl-2">Steps per run</label></div>
+      <div class="nr-slider__row">
+        <input class="nr-slider__input" id="sl-2" type="range" min="1" max="50" step="1" value="12" aria-describedby="sl-2-ends">
+        <div class="nr-number-field">
+          <div class="nr-number-field__well web-label"><input class="nr-number-field__input" type="text" inputmode="numeric" value="12" aria-label="Steps per run" role="spinbutton" aria-valuenow="12" aria-valuemin="1" aria-valuemax="50"></div>
+        </div>
+      </div>
+      <div class="nr-slider__ends web-caption" id="sl-2-ends"><span>1</span><span>50</span></div>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Touch (Android)</div>
+    <div class="nr-touch">
+      <div class="nr-slider">
+        <div class="nr-slider__head">
+          <label class="nr-slider__label android-label" for="sl-3">Temperature</label>
+          <output class="nr-slider__value android-label" id="sl-3-out" for="sl-3">1.20</output>
+        </div>
+        <input class="nr-slider__input" id="sl-3" type="range" min="0" max="2" step="0.05" value="1.2" data-out="sl-3-out" data-fixed="2">
+      </div>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Dense and disabled</div>
+    <div class="nr-dense nr-stack">
+      <div class="nr-slider">
+        <div class="nr-slider__row">
+          <label class="nr-slider__label web-caption" for="sl-4" style="width: 72px">Top P</label>
+          <input class="nr-slider__input" id="sl-4" type="range" min="0" max="1" step="0.01" value="0.95" data-out="sl-4-out" data-fixed="2">
+          <output class="nr-slider__value web-caption" id="sl-4-out" for="sl-4">0.95</output>
+        </div>
+      </div>
+      <div class="nr-slider">
+        <div class="nr-slider__row">
+          <label class="nr-slider__label web-caption" for="sl-5" style="width: 72px">Top K</label>
+          <input class="nr-slider__input" id="sl-5" type="range" min="0" max="100" step="1" value="40" data-out="sl-5-out" disabled>
+          <output class="nr-slider__value web-caption" id="sl-5-out" for="sl-5">40</output>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+document.querySelectorAll('.nr-slider__input').forEach(function (s) {
+  function sync() {
+    s.style.setProperty('--nr-slider-ratio', (s.value - s.min) / (s.max - s.min));
+    var out = s.dataset.out && document.getElementById(s.dataset.out);
+    if (out) out.textContent = Number(s.value).toFixed(Number(s.dataset.fixed || 0));
+  }
+  s.addEventListener('input', sync);
+  sync();
+});
+</script>
+</body>
+</html>

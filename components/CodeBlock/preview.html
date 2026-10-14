@@ -1,0 +1,31 @@
+<!-- @dsCard group="Containers" height=272 subtitle="A tool call with a copy action, a wrapped transcript with a redaction, a scrolling log line" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CodeBlock — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-card-grid" style="width: 728px" aria-label="Tool call details">
+    <figure class="nr-code-block">
+      <figcaption class="nr-code-block__header"><span class="web-caption">Tool call · JSON</span><button class="nr-code-block__copy web-label" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="3.8" y="3.8" width="6.6" height="6.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M8.2 2.6V2.4c0-.6-.5-1-1-1H2.6c-.6 0-1 .4-1 1v4.8c0 .6.4 1 1 1h.2" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>Copy</button></figcaption>
+      <pre class="nr-code-block__pre web-mono"><code>{
+  <span class="nr-code-block__key">"tool"</span>: "web_search",
+  <span class="nr-code-block__key">"query"</span>: "near ai attestation",
+  <span class="nr-code-block__key">"max_results"</span>: 5
+}</code></pre>
+    </figure>
+    <figure class="nr-code-block">
+      <figcaption class="nr-visually-hidden">Transcript excerpt</figcaption>
+      <pre class="nr-code-block__pre web-mono"><code><span class="nr-code-block__comment"># Claude Code, near-agents, today 14:02</span>
+fix the flaky retry test
+Reading tests/retry_test.rs
+export NEAR_API_KEY=<span class="nr-code-block__redacted">[api key removed]</span>
+Edited src/retry.rs: raise the backoff ceiling to 30 s.</code></pre>
+    </figure>
+    <figure class="nr-code-block nr-code-block--scroll nr-card--wide">
+      <figcaption class="nr-code-block__header"><span class="web-caption">Call log</span><button class="nr-code-block__copy web-label" type="button"><svg viewBox="0 0 12 12" aria-hidden="true"><rect x="3.8" y="3.8" width="6.6" height="6.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M8.2 2.6V2.4c0-.6-.5-1-1-1H2.6c-.6 0-1 .4-1 1v4.8c0 .6.4 1 1 1h.2" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>Copy</button></figcaption>
+      <pre class="nr-code-block__pre web-mono" tabindex="0"><code>2026-10-13T14:02:11Z call=7f3a9c04 agent=research-digest model=near-ai/deepseek-v3 tokens=1912 cost=0.0021 proof=verified attestation=0x7f3a9c04b81de1</code></pre>
+    </figure>
+  </section>
+</div>
+</body>
+</html>

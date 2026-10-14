@@ -1,0 +1,41 @@
+<!-- @dsCard group="Inputs" height=254 subtitle="On or off, acting at once; every switch uses the accent" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Switch — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">General</div>
+    <label class="nr-switch nr-switch--row web-label">
+      <span class="nr-switch__text"><span class="nr-switch__title">Private AI</span><span class="nr-switch__sub web-caption">Tools on this Mac send their model calls here. Each call is listed under Inference.</span></span>
+      <input class="nr-switch__track" type="checkbox" role="switch" checked>
+    </label>
+    <div class="nr-hairline"></div>
+    <label class="nr-switch nr-switch--row web-label">
+      <span class="nr-switch__text"><span class="nr-switch__title">Show the edge rail</span><span class="nr-switch__sub web-caption">A strip on the right edge of the screen with Home, Private AI and Traces.</span></span>
+      <input class="nr-switch__track" type="checkbox" role="switch">
+    </label>
+    <div class="nr-hairline"></div>
+    <label class="nr-switch nr-switch--row web-label">
+      <span class="nr-switch__text"><span class="nr-switch__title">Start at login</span><span class="nr-switch__sub web-caption">Set by your organization.</span></span>
+      <input class="nr-switch__track" type="checkbox" role="switch" checked disabled>
+    </label>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-caption nr-text-tertiary">Compact (macOS)</div>
+    <div class="nr-compact nr-row">
+      <label class="nr-switch mac-label"><span class="nr-switch__text">Watching</span><input class="nr-switch__track" type="checkbox" role="switch" checked></label>
+      <label class="nr-switch mac-label"><span class="nr-switch__text">Show in menu bar</span><input class="nr-switch__track" type="checkbox" role="switch"></label>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Touch (iOS list row)</div>
+    <div class="nr-touch">
+      <label class="nr-switch nr-switch--row ios-body">
+        <span class="nr-switch__text">Private AI</span>
+        <input class="nr-switch__track" type="checkbox" role="switch" checked>
+      </label>
+    </div>
+  </section>
+</div>
+</body>
+</html>

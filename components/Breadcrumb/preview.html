@@ -1,0 +1,51 @@
+<!-- @dsCard group="Navigation" height=232 subtitle="Bare back chevron, then the trail" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Breadcrumb — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-compact nr-stack" style="width: 440px" aria-label="Home, macOS">
+    <nav class="nr-breadcrumb mac-label" aria-label="Breadcrumb">
+      <button class="nr-breadcrumb__back" aria-label="Back to Home" title="Back to Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <ol class="nr-breadcrumb__list">
+        <li class="nr-breadcrumb__item"><a class="nr-breadcrumb__crumb" href="#home">Home</a></li>
+        <li class="nr-breadcrumb__item"><a class="nr-breadcrumb__crumb" href="#missions">Missions</a></li>
+        <li class="nr-breadcrumb__item"><span class="nr-breadcrumb__current" aria-current="page" role="heading" aria-level="2">Mission drafts</span></li>
+      </ol>
+    </nav>
+    <div class="nr-card nr-card--quiet nr-stack">
+      <div class="mac-body-strong">Summarize this week's agent runs</div>
+      <div class="mac-caption nr-text-secondary">Draft · edited 2 min ago</div>
+    </div>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 264px" aria-label="Phone">
+    <div class="nr-touch">
+      <nav class="nr-breadcrumb nr-breadcrumb--collapsed ios-label" aria-label="Breadcrumb">
+        <button class="nr-breadcrumb__back" aria-label="Back to Agents">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <ol class="nr-breadcrumb__list">
+          <li class="nr-breadcrumb__item"><a class="nr-breadcrumb__crumb" href="#agents">Agents</a></li>
+          <li class="nr-breadcrumb__item"><span class="nr-breadcrumb__current" aria-current="page">Research agent</span></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="web-caption nr-text-secondary">Compact width: back and the current title only, 44 to 48 target.</div>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 440px" aria-label="Web">
+    <nav class="nr-breadcrumb web-label" aria-label="Breadcrumb">
+      <ol class="nr-breadcrumb__list">
+        <li class="nr-breadcrumb__item"><a class="nr-breadcrumb__crumb" href="#agents">Agents</a></li>
+        <li class="nr-breadcrumb__item"><a class="nr-breadcrumb__crumb" href="#research">Research agent</a></li>
+        <li class="nr-breadcrumb__item"><span class="nr-breadcrumb__current" aria-current="page">Run 14 · 3 tool calls</span></li>
+      </ol>
+    </nav>
+    <div class="web-caption nr-text-secondary">Web trail without a back button: the browser has one.</div>
+  </section>
+</div>
+</body>
+</html>

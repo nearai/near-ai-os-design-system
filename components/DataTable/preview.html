@@ -1,0 +1,48 @@
+<!-- @dsCard group="Containers" height=470 subtitle="Model calls, sortable, with a selected row; a dense step table" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DataTable — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 728px" aria-label="Private AI">
+    <div class="nr-spread"><div class="web-title" role="heading" aria-level="2">Calls</div><div class="web-caption nr-text-secondary nr-tabular">Calls 1,284 · Verified 1,279 · Priced 1,284</div></div>
+    <div class="nr-card nr-card--flush">
+      <table class="nr-data-table nr-data-table--interactive web-body" aria-label="Calls">
+        <thead class="web-eyebrow">
+          <tr>
+            <th scope="col" aria-sort="descending"><button class="nr-data-table__sort" type="button">Time<svg class="nr-data-table__sort-glyph" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 3l2.5 2.5L6.5 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+            <th scope="col"><button class="nr-data-table__sort" type="button">Model<svg class="nr-data-table__sort-glyph" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 3l2.5 2.5L6.5 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+            <th scope="col"><button class="nr-data-table__sort" type="button">Agent<svg class="nr-data-table__sort-glyph" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 3l2.5 2.5L6.5 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+            <th scope="col" class="nr-data-table__num"><button class="nr-data-table__sort" type="button">Tokens<svg class="nr-data-table__sort-glyph" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 3l2.5 2.5L6.5 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></th>
+            <th scope="col" class="nr-data-table__num">Cost</th>
+            <th scope="col">Proof</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="nr-data-table__nowrap"><span class="web-mono">14:02:11</span></td><td class="nr-data-table__truncate">near-ai/deepseek-v3</td><td class="nr-data-table__secondary nr-data-table__nowrap">research-digest</td><td class="nr-data-table__num">1,912</td><td class="nr-data-table__num">0.0021 NEAR</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--positive"></span>Verified</span></td></tr>
+          <tr aria-selected="true"><td class="nr-data-table__nowrap"><span class="web-mono">14:01:47</span></td><td class="nr-data-table__truncate">near-ai/qwen3-32b</td><td class="nr-data-table__secondary nr-data-table__nowrap">research-digest</td><td class="nr-data-table__num">644</td><td class="nr-data-table__num">0.0004 NEAR</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--positive"></span>Verified</span></td></tr>
+          <tr><td class="nr-data-table__nowrap"><span class="web-mono">13:58:02</span></td><td class="nr-data-table__truncate">near-ai/qwen3-32b</td><td class="nr-data-table__secondary nr-data-table__nowrap">inbox-triage</td><td class="nr-data-table__num">3,208</td><td class="nr-data-table__num">—</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--caution"></span>Pending</span></td></tr>
+          <tr><td class="nr-data-table__nowrap"><span class="web-mono">13:15:40</span></td><td class="nr-data-table__truncate">near-ai/llama-3.3-70b-instruct</td><td class="nr-data-table__secondary nr-data-table__nowrap">inbox-triage</td><td class="nr-data-table__num">12,480</td><td class="nr-data-table__num">0.0110 NEAR</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--positive"></span>Verified</span></td></tr>
+          <tr><td class="nr-data-table__nowrap"><span class="web-mono">11:02:19</span></td><td class="nr-data-table__truncate">openai/gpt-oss-120b</td><td class="nr-data-table__secondary nr-data-table__nowrap">code-review</td><td class="nr-data-table__num">8,036</td><td class="nr-data-table__num">0.0094 NEAR</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--neutral"></span>No proof</span></td></tr>
+        </tbody>
+      </table>
+      <div class="nr-data-table__foot web-caption">Showing the latest 5 of 1,284 calls.</div>
+    </div>
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Dense: research-digest steps</div>
+    <div class="nr-card nr-card--flush nr-dense">
+      <table class="nr-data-table web-caption" aria-label="research-digest steps">
+        <thead class="web-micro">
+          <tr><th scope="col" class="nr-data-table__num">#</th><th scope="col">Step</th><th scope="col">Tool</th><th scope="col" class="nr-data-table__num">Duration</th><th scope="col">Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="nr-data-table__num">1</td><td class="nr-data-table__truncate">Plan the digest</td><td class="nr-data-table__secondary">—</td><td class="nr-data-table__num">1.2 s</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--positive"></span>Done</span></td></tr>
+          <tr><td class="nr-data-table__num">2</td><td class="nr-data-table__truncate">Search for sources</td><td class="nr-data-table__secondary"><span class="web-mono">web_search</span></td><td class="nr-data-table__num">3.8 s</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--positive"></span>Done</span></td></tr>
+          <tr><td class="nr-data-table__num">3</td><td class="nr-data-table__truncate">Read 12 pages</td><td class="nr-data-table__secondary"><span class="web-mono">fetch</span></td><td class="nr-data-table__num">14.1 s</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot nr-data-table__dot--accent"></span>Running</span></td></tr>
+          <tr><td class="nr-data-table__num">4</td><td class="nr-data-table__truncate">Write the summary</td><td class="nr-data-table__secondary">—</td><td class="nr-data-table__num">—</td><td><span class="nr-data-table__status"><span class="nr-data-table__dot"></span>Waiting</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!-- @dsCard group="Containers" height=504 subtitle="Dense multi-run inspector with mixed, invalid and disabled values; regular inspector" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>PropertyInspector — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <aside class="nr-pane nr-property-inspector nr-dense" style="width: 300px" aria-label="Inspector">
+    <div class="nr-property-inspector__header">
+      <div class="nr-property-inspector__title web-body-strong" role="heading" aria-level="2">3 agent runs</div>
+      <div class="nr-property-inspector__caption web-caption">Changes apply to all three.</div>
+    </div>
+    <details class="nr-expander" open>
+      <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Model</span></summary>
+      <div class="nr-expander__content nr-property-inspector__rows web-caption">
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label" for="d-model">Model</label>
+          <div class="nr-property-inspector__value"><button class="nr-property-inspector__field" id="d-model" type="button" aria-haspopup="listbox"><span class="nr-property-inspector__field-text">near-ai/deepseek-v3</span><svg class="nr-property-inspector__glyph" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.8L5 6.8l3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="d-temp" title="Drag to change. Higher gives more varied answers.">Temperature</label>
+          <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-temp" value="0.7" inputmode="decimal"></span></div>
+        </div>
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="d-max">Max tokens</label>
+          <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-max" value="4,096" inputmode="numeric"><span class="nr-property-inspector__unit">tokens</span></span></div>
+        </div>
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label" for="d-topp">Top p</label>
+          <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-topp" placeholder="—" aria-describedby="d-mixed" inputmode="decimal"></span><span class="nr-visually-hidden" id="d-mixed">Mixed values</span></div>
+        </div>
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label" for="d-stream">Stream answers</label>
+          <div class="nr-property-inspector__value"><input type="checkbox" id="d-stream" checked></div>
+        </div>
+      </div>
+    </details>
+    <details class="nr-expander" open>
+      <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Tools</span></summary>
+      <div class="nr-expander__content nr-property-inspector__rows web-caption">
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label" for="d-web">Web search</label>
+          <div class="nr-property-inspector__value"><input type="checkbox" id="d-web" data-mixed aria-checked="mixed"></div>
+        </div>
+        <div class="nr-property-inspector__row" aria-disabled="true">
+          <label class="nr-property-inspector__label" for="d-code">Code runner</label>
+          <div class="nr-property-inspector__value"><input type="checkbox" id="d-code" disabled aria-describedby="d-code-why"></div>
+          <div class="nr-property-inspector__help" id="d-code-why">Needs a workspace folder.</div>
+        </div>
+      </div>
+    </details>
+    <details class="nr-expander" open>
+      <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Limits</span></summary>
+      <div class="nr-expander__content nr-property-inspector__rows web-caption">
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="d-timeout">Timeout</label>
+          <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-timeout" value="120" inputmode="numeric"><span class="nr-property-inspector__unit">s</span></span></div>
+        </div>
+        <div class="nr-property-inspector__row">
+          <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="d-retries">Retries</label>
+          <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-retries" value="12" inputmode="numeric" aria-invalid="true" aria-describedby="d-retries-why"></span></div>
+          <div class="nr-property-inspector__message" id="d-retries-why">Use 0 to 5 retries.</div>
+        </div>
+        <details class="nr-expander" open>
+          <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-caption">Budget</span></summary>
+          <div class="nr-expander__content nr-property-inspector__rows">
+            <div class="nr-property-inspector__row">
+              <label class="nr-property-inspector__label" for="d-run">Per run</label>
+              <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-run" value="0.50" inputmode="decimal"><span class="nr-property-inspector__unit">NEAR</span></span></div>
+            </div>
+            <div class="nr-property-inspector__row">
+              <label class="nr-property-inspector__label" for="d-day">Per day</label>
+              <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="d-day" value="5.00" inputmode="decimal"><span class="nr-property-inspector__unit">NEAR</span></span></div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </details>
+    <details class="nr-expander">
+      <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-label">Data</span></summary>
+      <div class="nr-expander__content nr-property-inspector__rows web-caption"></div>
+    </details>
+  </aside>
+
+  <aside class="nr-pane nr-property-inspector" style="width: 416px" aria-label="Inspector, regular density">
+    <div class="nr-property-inspector__header">
+      <div class="nr-property-inspector__title web-heading" role="heading" aria-level="2">research-digest</div>
+      <div class="nr-property-inspector__caption web-caption">Agent run · started 14:02</div>
+    </div>
+    <div class="nr-card nr-card--quiet">
+      <details class="nr-expander" open>
+        <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-body-strong">Model</span></summary>
+        <div class="nr-expander__content nr-property-inspector__rows web-label">
+          <div class="nr-property-inspector__row">
+            <label class="nr-property-inspector__label" for="r-model">Model</label>
+            <div class="nr-property-inspector__value"><button class="nr-property-inspector__field" id="r-model" type="button" aria-haspopup="listbox"><span class="nr-property-inspector__field-text">near-ai/deepseek-v3</span><svg class="nr-property-inspector__glyph" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.8L5 6.8l3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          </div>
+          <div class="nr-property-inspector__row">
+            <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="r-temp">Temperature</label>
+            <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="r-temp" value="0.7" inputmode="decimal"></span></div>
+          </div>
+          <div class="nr-property-inspector__row">
+            <label class="nr-property-inspector__label nr-property-inspector__label--scrub" for="r-max">Max tokens</label>
+            <div class="nr-property-inspector__value"><span class="nr-property-inspector__field"><input id="r-max" value="4,096" inputmode="numeric"><span class="nr-property-inspector__unit">tokens</span></span></div>
+          </div>
+          <div class="nr-property-inspector__row">
+            <label class="nr-property-inspector__label" for="r-stream">Stream answers</label>
+            <div class="nr-property-inspector__value"><input type="checkbox" id="r-stream" checked></div>
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="nr-card nr-card--quiet">
+      <details class="nr-expander">
+        <summary class="nr-expander__summary"><svg class="nr-expander__chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nr-expander__label web-body-strong">Limits</span><span class="nr-expander__meta web-caption">120 s · 0.50 NEAR</span></summary>
+        <div class="nr-expander__content nr-property-inspector__rows web-label"></div>
+      </details>
+    </div>
+  </aside>
+</div>
+<script>
+document.querySelectorAll('input[data-mixed]').forEach(function (box) { box.indeterminate = true; });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- @dsCard group="Inputs" height=284 subtitle="Filter, input, suggestion and status chips in sets" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Chip — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-eyebrow nr-upper nr-text-tertiary" id="ch-1">Filter history</div>
+    <div class="nr-chip-group" role="group" aria-labelledby="ch-1">
+      <button class="nr-chip web-label" type="button" aria-pressed="true"><span class="nr-chip__label">Shared</span><span class="nr-chip__count">96</span></button>
+      <button class="nr-chip web-label" type="button" aria-pressed="true"><span class="nr-chip__label">Kept</span><span class="nr-chip__count">30</span></button>
+      <button class="nr-chip web-label" type="button" aria-pressed="false"><span class="nr-chip__label">Failed</span><span class="nr-chip__count">2</span></button>
+      <button class="nr-chip web-label" type="button" aria-pressed="false" disabled><span class="nr-chip__label">Withdrawn</span><span class="nr-chip__count">0</span></button>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-eyebrow nr-upper nr-text-tertiary" id="ch-2">Suggested</div>
+    <div class="nr-chip-group" role="group" aria-labelledby="ch-2">
+      <button class="nr-chip nr-chip--suggestion web-label" type="button">Explain the failing test</button>
+      <button class="nr-chip nr-chip--suggestion web-label" type="button">Draft a fix</button>
+      <button class="nr-chip nr-chip--suggestion web-label" type="button">Summarize this session</button>
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="nr-chip-group">
+      <span class="nr-chip nr-chip--status nr-chip--positive web-mono"><span class="nr-chip__dot" aria-hidden="true"></span>Watching</span>
+      <span class="nr-chip nr-chip--status web-mono"><span class="nr-chip__dot" aria-hidden="true"></span>Paused</span>
+    </div>
+  </section>
+  <section class="nr-pane nr-stack" style="width: 344px">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Prompt scope</div>
+    <div class="nr-search-field web-label">
+      <span class="nr-search-field__tokens">
+        <span class="nr-chip nr-chip--input web-mono"><span class="nr-chip__label">@near/nearcore</span><button class="nr-chip__remove" type="button" aria-label="Remove @near/nearcore"></button></span>
+        <span class="nr-chip nr-chip--input web-mono"><span class="nr-chip__label">in: Traces</span><button class="nr-chip__remove" type="button" aria-label="Remove in: Traces"></button></span>
+      </span>
+      <input class="nr-search-field__input" type="text" value="retry" aria-label="Ask about your sessions">
+    </div>
+    <div class="nr-hairline"></div>
+    <div class="web-caption nr-text-tertiary">Touch (Android)</div>
+    <div class="nr-touch">
+      <div class="nr-chip-group" role="group" aria-label="Filter history">
+        <button class="nr-chip android-label" type="button" aria-pressed="true"><span class="nr-chip__label">Shared</span></button>
+        <button class="nr-chip android-label" type="button" aria-pressed="false"><span class="nr-chip__label">Kept</span></button>
+        <button class="nr-chip android-label" type="button" aria-pressed="false"><span class="nr-chip__label">Failed</span></button>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

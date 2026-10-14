@@ -1,0 +1,144 @@
+{
+  "$comment": "The published Design System artifact this repository feeds, and the asset ids its uploaded SVGs received. scripts/artifact.py reads this to assemble the page's files; scripts/preview.py uses it to resolve /_blob/<id> URLs locally.",
+  "url": "https://claude.ai/artifact/NTUqkQNo8D8MQ6kSey959M",
+  "title": "NEAR AI Design System",
+  "namespace": "NearAI",
+  "assetGroups": {
+    "Logos": {
+      "tile": "l",
+      "files": [
+        {
+          "name": "near-ai-primary-color.svg",
+          "blob": "15bd8db01c5cd9f95907e0109451578e",
+          "size": 4249,
+          "path": "assets/logos/near-ai-primary-color.svg"
+        },
+        {
+          "name": "near-ai-primary-black.svg",
+          "blob": "a01ea2dd591edc39c5cf55406576706b",
+          "size": 4222,
+          "path": "assets/logos/near-ai-primary-black.svg"
+        },
+        {
+          "name": "near-ai-primary-white-color.svg",
+          "blob": "64e3bacedbcfe50caac8c212fa2720d4",
+          "size": 4226,
+          "path": "assets/logos/near-ai-primary-white-color.svg"
+        },
+        {
+          "name": "near-ai-primary-white.svg",
+          "blob": "88bea311e4eebeb25af96518ef24c031",
+          "size": 4222,
+          "path": "assets/logos/near-ai-primary-white.svg"
+        },
+        {
+          "name": "near-ai-secondary-color.svg",
+          "blob": "67e7a7e6915a587d0cb3d16074d8545e",
+          "size": 2174,
+          "path": "assets/logos/near-ai-secondary-color.svg"
+        },
+        {
+          "name": "near-ai-secondary-black.svg",
+          "blob": "aa7beab480714cd04c60c97282d7220d",
+          "size": 2170,
+          "path": "assets/logos/near-ai-secondary-black.svg"
+        },
+        {
+          "name": "near-ai-secondary-white-color.svg",
+          "blob": "0d92367c67db769b00ea69927d36786d",
+          "size": 2174,
+          "path": "assets/logos/near-ai-secondary-white-color.svg"
+        },
+        {
+          "name": "near-ai-secondary-white.svg",
+          "blob": "56ffbaa9a358c9feb9a7b97d929b5ad8",
+          "size": 2170,
+          "path": "assets/logos/near-ai-secondary-white.svg"
+        },
+        {
+          "name": "near-ai-tile-color.svg",
+          "blob": "820eb3607e10c21a6f65ecce5c083b02",
+          "size": 1617,
+          "path": "assets/logos/near-ai-tile-color.svg"
+        },
+        {
+          "name": "near-ai-tile-white-color.svg",
+          "blob": "0f3fefcc779ec085eb449ced4aef89a6",
+          "size": 1615,
+          "path": "assets/logos/near-ai-tile-white-color.svg"
+        },
+        {
+          "name": "near-ai-primary-clear-space.svg",
+          "blob": "465a1fb4ff672f4fc5d134d3934e624a",
+          "size": 4255,
+          "path": "assets/logos/near-ai-primary-clear-space.svg"
+        },
+        {
+          "name": "near-ai-secondary-clear-space.svg",
+          "blob": "e090e81fdae5e2bd730a27629418ed62",
+          "size": 2263,
+          "path": "assets/logos/near-ai-secondary-clear-space.svg"
+        }
+      ]
+    },
+    "Trace": {
+      "tile": "m",
+      "files": [
+        {
+          "name": "trace-mark-live.svg",
+          "blob": "62d0c0bfce01cf237a72741833692af3",
+          "size": 1590,
+          "path": "assets/trace/trace-mark-live.svg"
+        },
+        {
+          "name": "trace-mark-ink-white.svg",
+          "blob": "8039eb474b0592da4ee82ca84a285ae7",
+          "size": 1011,
+          "path": "assets/trace/trace-mark-ink-white.svg"
+        },
+        {
+          "name": "trace-mark-ink-black.svg",
+          "blob": "a673d30c871a7e94bb6edb41cc7cdbfd",
+          "size": 1011,
+          "path": "assets/trace/trace-mark-ink-black.svg"
+        },
+        {
+          "name": "the-turn-dark.svg",
+          "blob": "032b1829ddac2b1e56e75732373d5e75",
+          "size": 380,
+          "path": "assets/trace/the-turn-dark.svg"
+        },
+        {
+          "name": "the-turn-light.svg",
+          "blob": "325e878bd2781d32796ddd4ecbbf76de",
+          "size": 380,
+          "path": "assets/trace/the-turn-light.svg"
+        },
+        {
+          "name": "the-turn-glyph-dark.svg",
+          "blob": "74e691236dacce9b61d93eaeb5a827f5",
+          "size": 283,
+          "path": "assets/trace/the-turn-glyph-dark.svg"
+        },
+        {
+          "name": "the-turn-glyph-light.svg",
+          "blob": "2c3a705f9d6e6a2722c22445f4fc2566",
+          "size": 283,
+          "path": "assets/trace/the-turn-glyph-light.svg"
+        },
+        {
+          "name": "the-turn-template-dark.svg",
+          "blob": "d035c5ba81fd2d40a407573acc4fe13b",
+          "size": 283,
+          "path": "assets/trace/the-turn-template-dark.svg"
+        },
+        {
+          "name": "the-turn-template-light.svg",
+          "blob": "457f5be73f15a3fb94423afd0170be72",
+          "size": 283,
+          "path": "assets/trace/the-turn-template-light.svg"
+        }
+      ]
+    }
+  }
+}

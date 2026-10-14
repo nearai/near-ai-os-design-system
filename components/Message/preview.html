@@ -1,0 +1,135 @@
+<!-- @dsCard group="AI" height=1050 subtitle="User and agent turns, sources, proof footer, streaming, stopped, error" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Message — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <section class="nr-pane" style="width: 728px">
+    <div class="nr-message-thread" role="log" aria-label="Conversation with near-agents">
+
+      <article class="nr-message nr-message--user" aria-label="You, 14:01">
+        <div class="nr-card nr-message__bubble web-body">Which calls from Claude Code last week had no proof, and why?</div>
+        <div class="nr-message__actions" role="group" aria-label="Actions for your message">
+          <button class="nr-message__action web-label" type="button" aria-label="Edit your message"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M11 2.75l2.25 2.25L6 12.25l-3 .75.75-3z"/></svg>Edit</button>
+          <button class="nr-message__action web-label" type="button" aria-label="Copy your message"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5V4A1.5 1.5 0 0 0 9 2.5H4A1.5 1.5 0 0 0 2.5 4v5A1.5 1.5 0 0 0 4 10.5h1.5"/></svg>Copy</button>
+        </div>
+      </article>
+
+      <article class="nr-message" aria-labelledby="m2-who">
+        <header class="nr-message__head">
+          <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+          <span class="web-label" id="m2-who">near-agents</span>
+          <time class="nr-message__time web-caption">14:01</time>
+        </header>
+        <div class="nr-message__body web-body">
+          <p>Of the 1,284 calls Claude Code sent here last week, 1,262 were verified. The other 22 have no proof, for two reasons.</p>
+          <ul>
+            <li>18 are still pending. The check was slow on Thursday and they are queued for another try<a class="nr-message__cite web-micro" href="#m2-s1" aria-label="Source 1, calls ledger">1</a></li>
+            <li>4 went to <code class="nr-message__code web-mono">claude-sonnet-4-5</code>, an outside model, so they carry no proof. All four came from one session in near-agents after its model setting changed<a class="nr-message__cite web-micro" href="#m2-s2" aria-label="Source 2, session 7f3a">2</a></li>
+          </ul>
+        </div>
+        <ol class="nr-card nr-card--quiet nr-message__sources" aria-label="Sources">
+          <li class="nr-message__source" id="m2-s1"><span class="nr-message__source-num web-caption">1</span><a class="nr-message__link web-label" href="#m2-s1">Calls ledger · Thu 8 Oct</a><span class="nr-message__source-path web-mono">Private AI › Calls</span></li>
+          <li class="nr-message__source" id="m2-s2"><span class="nr-message__source-num web-caption">2</span><a class="nr-message__link web-label" href="#m2-s2">Session 7f3a · near-agents</a><span class="nr-message__source-path web-mono">~/code/near-agents/.nearai/config.toml</span></li>
+        </ol>
+        <footer class="nr-message__foot">
+          <span class="nr-proof-tag-group">
+            <span class="nr-proof-tag nr-proof-tag--verified web-micro"><svg class="nr-proof-tag__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Verified</span>
+            <button class="nr-proof-tag__info" type="button" aria-label="About Verified" aria-expanded="false"><svg class="nr-proof-tag__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M8 7.4V11.2"/><path d="M8 4.9v0.2"/></svg></button>
+          </span>
+          <span class="nr-message__model web-mono">deepseek-ai/DeepSeek-V3.1</span>
+          <span class="web-caption nr-tabular">2.4 s</span>
+        </footer>
+        <div class="nr-message__actions" role="group" aria-label="Actions for this answer">
+          <button class="nr-message__action web-label" type="button" aria-label="Copy answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5V4A1.5 1.5 0 0 0 9 2.5H4A1.5 1.5 0 0 0 2.5 4v5A1.5 1.5 0 0 0 4 10.5h1.5"/></svg>Copy</button>
+          <button class="nr-message__action web-label" type="button" aria-label="Retry answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.46-3.54"/><path d="M13 2.5v3h-3"/></svg>Retry</button>
+          <span class="nr-message__sep" aria-hidden="true"></span>
+          <button class="nr-message__action nr-message__action--icon" type="button" aria-label="Good answer" title="Good answer. Sends this rating to NEAR AI, without the conversation."><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M5 7l2.6-4.3a1.2 1.2 0 0 1 2.2.8L9.4 6.5h3.1a1.3 1.3 0 0 1 1.3 1.6l-1 4.2a1.6 1.6 0 0 1-1.6 1.2H5z"/><path d="M2.5 7H5v6.5H2.5z"/></svg></button>
+          <button class="nr-message__action nr-message__action--icon" type="button" aria-label="Bad answer" title="Bad answer. Opens a short form; you choose what to include."><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><g transform="rotate(180 8 8)"><path d="M5 7l2.6-4.3a1.2 1.2 0 0 1 2.2.8L9.4 6.5h3.1a1.3 1.3 0 0 1 1.3 1.6l-1 4.2a1.6 1.6 0 0 1-1.6 1.2H5z"/><path d="M2.5 7H5v6.5H2.5z"/></g></svg></button>
+        </div>
+      </article>
+
+      <article class="nr-message nr-message--user" aria-label="You, 14:03">
+        <div class="nr-card nr-message__bubble web-body">Put near-agents back on a verified model.</div>
+      </article>
+
+      <article class="nr-message" aria-labelledby="m4-who">
+        <header class="nr-message__head">
+          <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+          <span class="web-label" id="m4-who">near-agents</span>
+          <time class="nr-message__time web-caption">14:03</time>
+        </header>
+        <div class="nr-message__body web-body">
+          <p>Changed the model in <code class="nr-message__code web-mono">.nearai/config.toml</code> from <code class="nr-message__code web-mono">claude-sonnet-4-5</code> to <code class="nr-message__code web-mono">deepseek-ai/DeepSeek-V3.1</code>. New calls from near-agents are answered here.</p>
+        </div>
+        <footer class="nr-message__foot">
+          <span class="nr-proof-tag nr-proof-tag--verified web-micro"><svg class="nr-proof-tag__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Verified</span>
+          <span class="nr-message__model web-mono">deepseek-ai/DeepSeek-V3.1</span>
+          <span class="web-caption nr-tabular">1.1 s</span>
+        </footer>
+        <div class="nr-message__actions" role="group" aria-label="Actions for this change">
+          <button class="nr-message__action web-label" type="button" aria-label="Undo model change in config.toml"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5l-3 3 3 3"/><path d="M2.5 6.5h7a3.5 3.5 0 0 1 0 7H7"/></svg>Undo change</button>
+          <button class="nr-message__action web-label" type="button" aria-label="Copy answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 5.5V4A1.5 1.5 0 0 0 9 2.5H4A1.5 1.5 0 0 0 2.5 4v5A1.5 1.5 0 0 0 4 10.5h1.5"/></svg>Copy</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 358px" aria-label="Working">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Working</div>
+    <article class="nr-message" aria-labelledby="m5-who" aria-busy="true">
+      <header class="nr-message__head">
+        <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+        <span class="web-label" id="m5-who">near-agents</span>
+      </header>
+      <div class="nr-message__status web-caption" role="status"><span class="nr-message__spinner" aria-hidden="true"></span>Reading 4 sessions in near-agents…</div>
+    </article>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 358px" aria-label="Streaming">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Streaming</div>
+    <article class="nr-message" aria-labelledby="m6-who" aria-busy="true">
+      <header class="nr-message__head">
+        <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+        <span class="web-label" id="m6-who">near-agents</span>
+      </header>
+      <div class="nr-message__body web-body"><p>Last week four calls from near-agents went to an outside model and carry no proof. They came from one session after<span class="nr-message__caret" aria-hidden="true"></span></p></div>
+      <footer class="nr-message__foot">
+        <span class="nr-proof-tag nr-proof-tag--pending web-micro"><svg class="nr-proof-tag__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 5.2v3l2 1.4"/></svg>Pending</span>
+        <span class="nr-message__model web-mono">deepseek-ai/DeepSeek-V3.1</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 358px" aria-label="Stopped">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Stopped</div>
+    <article class="nr-message nr-message--stopped" aria-labelledby="m7-who">
+      <header class="nr-message__head">
+        <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+        <span class="web-label" id="m7-who">near-agents</span>
+      </header>
+      <div class="nr-message__body web-body"><p>Here is a note for the team. Last week four calls from near-agents went to</p></div>
+      <div class="nr-message__state web-caption"><span class="nr-message__dot" aria-hidden="true"></span>Stopped · 14 words kept</div>
+      <div class="nr-message__actions" role="group" aria-label="Actions for this answer">
+        <button class="nr-message__action web-label" type="button" aria-label="Continue answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5l7 4.5-7 4.5z"/></svg>Continue</button>
+        <button class="nr-message__action web-label" type="button" aria-label="Retry answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.46-3.54"/><path d="M13 2.5v3h-3"/></svg>Retry</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="nr-pane nr-stack" style="width: 358px" aria-label="Error">
+    <div class="web-eyebrow nr-upper nr-text-tertiary">Error</div>
+    <article class="nr-message nr-message--error" aria-labelledby="m8-who">
+      <header class="nr-message__head">
+        <span class="nr-message__avatar web-micro" aria-hidden="true">NA</span>
+        <span class="web-label" id="m8-who">near-agents</span>
+      </header>
+      <div class="nr-message__alert web-caption" role="alert"><span class="nr-message__dot nr-message__dot--critical" aria-hidden="true"></span><span>NEAR AI Cloud didn't answer in 60 s. Your message is kept.</span></div>
+      <div class="nr-message__actions" role="group" aria-label="Actions for this answer">
+        <button class="nr-message__action web-label" type="button" aria-label="Retry answer"><svg class="nr-message__glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.46-3.54"/><path d="M13 2.5v3h-3"/></svg>Retry</button>
+      </div>
+    </article>
+  </section>
+</div>
+</body>
+</html>

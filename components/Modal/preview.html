@@ -1,0 +1,45 @@
+<!-- @dsCard group="Presentation" height=540 subtitle="A confirmation over its scrim, and a narrow destructive modal while busy" width=820 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Modal — preview</title></head>
+<body>
+<div class="nr-preview nr-scene">
+  <div class="nr-modal-layer nr-modal-layer--static" style="width: 100%">
+    <section class="nr-modal" role="alertdialog" aria-modal="true" aria-labelledby="m1-title" aria-describedby="m1-msg">
+      <header class="nr-modal__header">
+        <div class="nr-modal__titles">
+          <h2 class="nr-modal__title web-title" id="m1-title">Turn on Automatic for near-agents?</h2>
+        </div>
+        <button class="nr-icon-button nr-icon-button--small" aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+      </header>
+      <div class="nr-modal__body" id="m1-msg">
+        <p class="nr-modal__message web-body">Automatic sends each finished session in near-agents to Trace Commons without asking first.</p>
+        <p class="nr-modal__message web-body">You can switch back to Ask me at any time. Sessions already sent stay sent.</p>
+      </div>
+      <footer class="nr-modal__footer">
+        <button class="nr-button nr-button--glass web-label">Cancel</button>
+        <button class="nr-button nr-button--primary web-label">Turn on</button>
+      </footer>
+    </section>
+  </div>
+  <div class="nr-modal-layer nr-modal-layer--static" style="width: 100%">
+    <section class="nr-modal nr-modal--narrow" role="alertdialog" aria-modal="true" aria-busy="true" aria-labelledby="m2-title" aria-describedby="m2-msg">
+      <header class="nr-modal__header">
+        <div class="nr-modal__titles">
+          <h2 class="nr-modal__title web-title" id="m2-title">Withdraw this trace?</h2>
+          <p class="nr-modal__subtitle web-caption">near-agents · 14 steps · today at 10:42</p>
+        </div>
+        <button class="nr-icon-button nr-icon-button--small" disabled aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+      </header>
+      <div class="nr-modal__body" id="m2-msg">
+        <p class="nr-modal__message web-body">Withdrawing removes this trace from Trace Commons. Copies already in a released dataset stay in that release.</p>
+      </div>
+      <footer class="nr-modal__footer">
+        <button class="nr-button nr-button--glass web-label" disabled>Cancel</button>
+        <button class="nr-button nr-button--destructive web-label" aria-busy="true"><span class="nr-button__spinner" aria-hidden="true"></span>Withdrawing…</button>
+      </footer>
+    </section>
+  </div>
+</div>
+</body>
+</html>

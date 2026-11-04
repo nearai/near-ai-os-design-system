@@ -43,7 +43,7 @@ A toolbar holds a screen's frequent commands in at most three groups along the t
 | Hover | `control-hover` behind the glyph |
 | Pressed | the fill at `filter: brightness(0.92)`; the glyph keeps its contrast |
 | Toggle on (`aria-pressed="true"`) | `toolbar-glyph` |
-| Toggle off (`aria-pressed="false"`, its pane hidden) | `toolbar-glyph-off`, 3:1 on `control`. Gateway light (2.27:1) and Gateway dark (2.63:1) are below the floor, kept from the source and flagged |
+| Toggle off (`aria-pressed="false"`, its pane hidden) | `toolbar-glyph-off`, 3:1 on `control` in every theme (NDS-50) |
 | Menu open (`aria-expanded="true"`) | `toolbar-expanded` fill |
 | Prominent pressed | `accent-pressed` |
 | Disabled | `opacity-disabled`, no hover; explain why nearby |

@@ -1307,9 +1307,9 @@
   "theme": "gateway-light",
   "token": "toolbar-glyph-off",
   "check": "toolbar-glyph-off on control",
-  "ratio": 2.27,
+  "ratio": 3.03,
   "floor": 3.0,
-  "pass": false
+  "pass": true
  },
  {
   "theme": "gateway-dark",
@@ -1571,8 +1571,8 @@
   "theme": "gateway-dark",
   "token": "toolbar-glyph-off",
   "check": "toolbar-glyph-off on control",
-  "ratio": 2.63,
+  "ratio": 3.0,
   "floor": 3.0,
-  "pass": false
+  "pass": true
  }
 ]

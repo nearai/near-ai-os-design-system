@@ -213,7 +213,7 @@
     },
     "toolbar-glyph-off": {
       "$type": "color",
-      "$value": "#83838c",
+      "$value": "#8d8d97",
       "$description": "A toolbar glyph whose pane is hidden (3:1 on the control)."
     },
     "toolbar-expanded": {

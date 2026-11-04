@@ -61,7 +61,7 @@ A button whose glyph names the action, drawn round, as a pill, as a glyph in a t
 
 - Name every icon button with `aria-label` (SwiftUI `accessibilityLabel`) from the product's copy, naming the action and its object where needed ("More for near-agents"). The same words feed the tooltip.
 - Toggles expose `aria-pressed`; menu triggers expose `aria-haspopup="menu"` and `aria-expanded`.
-- Glyphs are marks that carry meaning on their own, so they hold 3:1 against their fill (NDS-6). `toolbar-glyph-off` is flagged below that floor in the Gateway themes (2.27:1 gateway-light, 2.63:1 gateway-dark); the button's name and `aria-pressed` carry the state.
+- Glyphs are marks that carry meaning on their own, so they hold 3:1 against their fill (NDS-6). The button's name and `aria-pressed` also carry the state.
 - Targets: 28 pointer, 44pt Apple, 48dp Android and touch web, 60pt visionOS. On touch the kebab becomes a full round button.
 
 ## Platforms

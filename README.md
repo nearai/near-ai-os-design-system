@@ -95,11 +95,11 @@ make artifact   # assemble the published page's files in build/artifact/
 
 - Text is at least 4.5:1, and 7:1 in the increased-contrast themes, on every ground it is drawn on, measured over the worst desktop the glass can show (white under dark glass, #333333 under light glass).
 - A mark that shows a state on its own (a selected fill, the focus ring, a chart series) is at least 3:1.
-- No designer overrides. Two Gateway values miss today and are reported as flagged: the hidden-toolbar glyph (2.27:1 light, 2.63:1 dark). The dark purple selected fill that missed at 1.09:1 is gone: Gateway took the parent accent on 2026-10-19 (NDS-22).
+- No designer overrides. A product value that misses a floor is reported as flagged and blocks that theme. None is flagged today: Gateway took the parent accent (NDS-22) and the parent's hidden-toolbar greys (NDS-50).
 
 ## Decisions
 
-The register is `docs/reference/23-decisions.md`: NDS-1 to NDS-8 are the owner's decisions of 2026-10-13, NDS-9 to NDS-21 are defaults set when the system was written, NDS-22 to NDS-49 are the owner's decisions from designing Gateway, the private chat and the Near AI Gateway site (2026-09-30 to 2026-11-04), and twelve questions are open. `research/sessions-2026-11.md` records where each of the later decisions came from.
+The register is `docs/reference/23-decisions.md`: NDS-1 to NDS-8 are the owner's decisions of 2026-10-13, NDS-9 to NDS-21 are defaults set when the system was written, NDS-22 to NDS-50 are the owner's decisions from designing Gateway, the private chat and the Near AI Gateway site (2026-09-30 to 2026-11-04), and eleven questions are open. `research/sessions-2026-11.md` records where each of the later decisions came from.
 
 ## Relationship to trace-commons
 

@@ -116,14 +116,7 @@ The `-hc` themes deepen the veil to 90%, raise card, field and control fills, an
 | `toolbar-expanded` | #d1d1d6 / #55555a | #035ca3 / #7ebcff | An open toolbar menu fills with the accent |
 | `well` | #8a93a5 at 43% / black at 30% | #8a93a5 at 28% / black at 30% | A lighter light well (owner, 2026-10-12) |
 
-The parent took Gateway's navy off knob and 38% dark switch track (NDS-38). Purple survives in the old Trace mark (`gateway-purple`) and Gateway's Shared data series. One Gateway value still misses a parent floor and stays exact, flagged in its token note, until the Gateway team fixes it:
-
-| Theme | Pair | Ratio | Floor |
-|---|---|---|---|
-| `gateway-dark` | `toolbar-glyph-off` #83838c on a control | 2.63:1 | 3:1 |
-| `gateway-light` | `toolbar-glyph-off` #8a8a90 on a control | 2.27:1 | 3:1 |
-
-The parent `light` and `dark` themes solve the toolbar glyph to #75757b and #8d8d97.
+The parent took Gateway's navy off knob and 38% dark switch track (NDS-38). Purple survives in the old Trace mark (`gateway-purple`) and Gateway's Shared data series. The Gateway themes also take the parent's hidden-toolbar greys, #75757b and #8d8d97 (2026-11-04; NDS-50), so no Gateway value misses a floor.
 
 ## Mapping to platform color systems
 

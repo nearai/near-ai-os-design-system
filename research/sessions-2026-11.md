@@ -1,6 +1,6 @@
 # Design decisions from the product sessions (2026-09-15 to 2026-11-03)
 
-The system's first version (2026-10-13) was derived from trace-commons' source code. Between 2026-09-15 and 2026-11-03 the owner designed three products in Claude Code sessions, and many of those decisions either came after the system was written or were never written into it. This note records where NDS-22 to NDS-49 came from, so a later reader can check them against their source.
+The system's first version (2026-10-13) was derived from trace-commons' source code. Between 2026-09-15 and 2026-11-03 the owner designed three products in Claude Code sessions, and many of those decisions either came after the system was written or were never written into it. This note records where NDS-22 to NDS-50 came from, so a later reader can check them against their source.
 
 ## What was read
 
@@ -50,6 +50,7 @@ The sessions that matter most, by product:
 | NDS-47 | trace-commons | Apple app icons from the Near AI logo (10-26) | #1663 |
 | NDS-48 | all | The owner's review of this update (11-04) | this repository |
 | NDS-49 | LibreChat | The owner's review of this update (11-04) | this repository |
+| NDS-50 | trace-commons | The owner's review of a side-by-side comparison (11-04) | this repository; trace-commons still to apply |
 
 ## What was not adopted
 

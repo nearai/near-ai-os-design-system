@@ -25,23 +25,16 @@ Contrast uses WCAG 2.x relative luminance with the sRGB linearization threshold 
 | `dark` | 33 | 33 | `caution-text` on the pane, 4.55 | `toolbar-glyph-off` on a control, 3.00 |
 | `light-hc` | 33 | 33 | `text-on-status` on `badge-fill`, 7.13 | `neutral` mark on `pane-opaque`, 3.09 |
 | `dark-hc` | 34 | 34 | `text-on-accent` on `accent-pressed`, 7.03 | `edge-hc` on the pane, 3.32 |
-| `gateway-light` | 32 | 31 | `text-placeholder-on-opaque` on `pane-opaque`, 4.57 | `toolbar-glyph-off` on a control, 2.27 (fails) |
-| `gateway-dark` | 33 | 32 | `caution-text` on the pane, 4.55 | `toolbar-glyph-off` on a control, 2.63 (fails) |
+| `gateway-light` | 32 | 32 | `text-placeholder-on-opaque` on `pane-opaque`, 4.57 | `toolbar-glyph-off` on a control, 3.03 |
+| `gateway-dark` | 33 | 33 | `caution-text` on the pane, 4.55 | `toolbar-glyph-off` on a control, 3.00 |
 
 Focus rings clear 3:1 in every theme: 3.12 light and gateway-light, 3.17 dark and gateway-dark, 4.64 light-hc, 5.62 dark-hc. The dark themes' navy off knob holds 3:1 on its 38% track (3.34 on `pane-opaque`), and a passed proof's `proof-text` holds 5.37 (light) and 7.23 (dark) on `proof-tint`. The status marks clear 3:1 on `pane-opaque` everywhere, and `data-1` to `data-8` clear 3:1 on `surface-chart` in every theme.
 
 In `light-hc` the badge turns deep red (`badge-fill` #b01218) with a white count (`text-on-status` #ffffff) at 7.1:1, because a dark count on a light red tops out near 5:1.
 
-### The flagged Gateway values
+### Flagged values
 
-Gateway keeps its source values exactly, and two of them miss the floor. They stay flagged in their token notes until the Gateway team changes them. The dark purple selected fill that missed at 1.09:1 left Gateway when it took the parent accent (NDS-22).
-
-| Theme | Pair | Ratio | Floor | What it affects |
-|---|---|---|---|---|
-| `gateway-dark` | `toolbar-glyph-off` #83838c on a control | 2.63:1 | 3:1 | Toolbar glyphs whose pane is hidden |
-| `gateway-light` | `toolbar-glyph-off` #8a8a90 on a control | 2.27:1 | 3:1 | The same glyphs in light |
-
-While they stand, Gateway's toolbar never relies on these pairs alone: a toolbar toggle exposes its state in words to assistive technology and in its tooltip. Under Increase Contrast a Gateway build switches to `light-hc` and `dark-hc`, which pass.
+A product theme's source value that misses a floor stays exact, flagged in its token note, and blocks that theme from shipping under the parent until it is fixed (NDS-6). None is flagged today. Gateway's two were its dark purple selected fill (1.09:1), which left when it took the parent accent (NDS-22), and its hidden-toolbar glyph (2.27:1 light, 2.63:1 dark), which took the parent's greys (NDS-50).
 
 ## Focus
 

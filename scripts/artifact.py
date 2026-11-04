@@ -55,7 +55,7 @@ def main():
         copy(os.path.join(ROOT, folder, 'README.md'), os.path.join(proj, 'assets', group, 'README.md'))
     now = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     index = {
-        'v': 3, 'layout': 'files', 'createdOnFiles': {'v': 1, 'at': now}, 'title': meta['title'],
+        'v': 3, 'layout': 'files', 'createdOnFiles': meta.get('createdOnFiles', {'v': 1, 'at': now}), 'title': meta['title'],
         'namespace': meta['namespace'], 'libraries': [], 'sections': {}, 'groups': list(meta['assetGroups']),
         'assetGroups': {gname: {'name': gname, 'tile': g['tile'], 'order': [f['name'] for f in g['files']],
                                 'files': {f['name']: {'name': f['name'], 'blob': f['blob'], 'size': f['size'],
@@ -75,7 +75,7 @@ def main():
                 files[rel] = rel
     print(json.dumps(dict(sorted(files.items())), indent=0))
     print('%d files; index at %s' % (len(files), os.path.join(proj, 'design-system.json')), file=sys.stderr)
-    print('Note: when the page already exists, read its index first and keep its createdOnFiles object.',
+    print('Before publishing, read the live index and confirm its createdOnFiles matches artifact.json.',
           file=sys.stderr)
 
 

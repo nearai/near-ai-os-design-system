@@ -1,4 +1,4 @@
-The NEAR AI Design System is the parent system for every NEAR AI product on desktop, web, tablet and phone. It carries the look of the Trace macOS app (flat glass: frosted panes over the desktop, flat painted fills inside them, one accent for the one action) into a shared set of tokens, components and pattern libraries, and lets each product bring its own accent. Read this page first, then the section for the surface you are building.
+The Near AI OS Design System is the parent system for every NEAR AI product on desktop, web, tablet and phone. It carries the look of the Trace macOS app (flat glass: frosted panes over the desktop, flat painted fills inside them, one accent for the one action) into a shared set of tokens, components and pattern libraries, and lets each product bring its own accent. Read this page first, then the section for the surface you are building.
 
 ## How the system is put together
 

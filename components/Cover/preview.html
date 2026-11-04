@@ -13,7 +13,7 @@
   .violet { fill: var(--trace-purple); }
   .paper { fill: var(--brand-paper); }
   .ground { fill: var(--scene); }
-  .name { margin: 32px 0 0; font-family: var(--font-web); font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.5px; color: var(--text-primary); }
+  .name { margin: 32px 0 0; font-family: var(--font-web); font-weight: 700; font-size: 60px; line-height: 0.95; letter-spacing: -0.5px; color: var(--text-primary); }
   .tag { margin: 12px 0 0; max-width: 440px; font-family: var(--font-web); font-size: 14px; line-height: 20px; color: var(--text-secondary); }
 </style>
 </head>
@@ -21,7 +21,7 @@
 <div class="cover">
   <svg viewBox="0 0 880 112" role="img" aria-label="">
     <!-- blocks: brand-blue 432x112, text-primary (ink) 196x112, scene-glow-1 120x112, trace-purple 112x112; radius-pane corners; pane-gap 10 between -->
-    <!-- arrangement: one strip of unequal bands across the top (top-band skeleton; the name is too wide for the 440px zone at 64px) -->
+    <!-- arrangement: one strip of unequal bands across the top (top-band skeleton; the name is too wide for the 440px zone, so it runs full width at 60px, the largest size that fits 880px) -->
     <!-- pattern: capsules, the shape every control takes; "Controls are capsules on every platform" (Shape and elevation) -->
     <!-- scales: capsule height 22 with rx radius-control 11; rows at a 32 pitch (space-32); gaps space-8 -->
     <rect class="blk blue" x="0" y="0" width="432" height="112"/>
@@ -38,7 +38,7 @@
     <rect class="pill ground" x="456" y="54" width="64" height="22"/>
     <rect class="pill ground" x="528" y="54" width="92" height="22"/>
   </svg>
-  <h1 class="name">NEAR AI Design System</h1>
+  <h1 class="name">Near AI OS Design System</h1>
   <p class="tag">One system for NEAR AI on desktop, web, tablet and phone.</p>
 </div>
 </body>

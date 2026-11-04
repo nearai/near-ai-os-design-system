@@ -1,8 +1,12 @@
 {
   "$comment": "The published Design System artifact this repository feeds, and the asset ids its uploaded SVGs received. scripts/artifact.py reads this to assemble the page's files; scripts/preview.py uses it to resolve /_blob/<id> URLs locally.",
   "url": "https://claude.ai/artifact/NTUqkQNo8D8MQ6kSey959M",
-  "title": "NEAR AI Design System",
+  "title": "Near AI OS Design System",
   "namespace": "NearAI",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-14T00:09:02Z"
+  },
   "assetGroups": {
     "Logos": {
       "tile": "l",

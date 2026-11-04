@@ -10,7 +10,7 @@ The system has three layers. The parent defines every role and rule. A product t
 
 ## Token tiers
 
-1. **Brand constants.** Colors that belong to a mark and never change with the theme: `brand-blue`, `brand-tile`, `brand-paper`, `brand-ink`, and the Trace mark colors `trace-purple`, `trace-live-start`, `trace-live-mid`, `trace-live-end`. Use them in logos, illustration and, where a role says so, as a role's value. Never style a control with a brand constant directly.
+1. **Brand constants.** Colors that belong to a brand and never change with the theme: `brand-blue`, `brand-tile`, `brand-paper`, `brand-ink`, and the Trace product purple `trace-purple`. Use them in logos, illustration and, where a role says so, as a role's value. Never style a control with a brand constant directly.
 2. **Roles.** Every other color token names a job, not a hue: `pane-fill`, `text-secondary`, `accent`, `caution-text`, `data-3`. Components and screens use roles only. A role has a value in each of the six themes.
 3. **Measures.** Spacing, radius, size, opacity, blur, z-index, breakpoint, duration and easing tokens. They do not change with the theme.
 4. **Type styles.** One step scale (`micro` to `mono`) rendered per platform tier (`mac-`, `web-`, `ios-`, `android-`), plus two hero styles.

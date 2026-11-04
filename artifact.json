@@ -84,65 +84,6 @@
           "path": "assets/logos/near-ai-secondary-clear-space.svg"
         }
       ]
-    },
-    "Trace": {
-      "tile": "m",
-      "files": [
-        {
-          "name": "trace-mark-live.svg",
-          "blob": "62d0c0bfce01cf237a72741833692af3",
-          "size": 1590,
-          "path": "assets/trace/trace-mark-live.svg"
-        },
-        {
-          "name": "trace-mark-ink-white.svg",
-          "blob": "8039eb474b0592da4ee82ca84a285ae7",
-          "size": 1011,
-          "path": "assets/trace/trace-mark-ink-white.svg"
-        },
-        {
-          "name": "trace-mark-ink-black.svg",
-          "blob": "a673d30c871a7e94bb6edb41cc7cdbfd",
-          "size": 1011,
-          "path": "assets/trace/trace-mark-ink-black.svg"
-        },
-        {
-          "name": "the-turn-dark.svg",
-          "blob": "032b1829ddac2b1e56e75732373d5e75",
-          "size": 380,
-          "path": "assets/trace/the-turn-dark.svg"
-        },
-        {
-          "name": "the-turn-light.svg",
-          "blob": "325e878bd2781d32796ddd4ecbbf76de",
-          "size": 380,
-          "path": "assets/trace/the-turn-light.svg"
-        },
-        {
-          "name": "the-turn-glyph-dark.svg",
-          "blob": "74e691236dacce9b61d93eaeb5a827f5",
-          "size": 283,
-          "path": "assets/trace/the-turn-glyph-dark.svg"
-        },
-        {
-          "name": "the-turn-glyph-light.svg",
-          "blob": "2c3a705f9d6e6a2722c22445f4fc2566",
-          "size": 283,
-          "path": "assets/trace/the-turn-glyph-light.svg"
-        },
-        {
-          "name": "the-turn-template-dark.svg",
-          "blob": "d035c5ba81fd2d40a407573acc4fe13b",
-          "size": 283,
-          "path": "assets/trace/the-turn-template-dark.svg"
-        },
-        {
-          "name": "the-turn-template-light.svg",
-          "blob": "457f5be73f15a3fb94423afd0170be72",
-          "size": 283,
-          "path": "assets/trace/the-turn-template-light.svg"
-        }
-      ]
     }
   }
 }

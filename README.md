@@ -9,13 +9,12 @@ This repository is the source. The browsable reference is published as a Design 
 ```
 tokens/near-ai.tokens.json   the token source: 72 color roles x 6 themes, brand colors, scales, type, springs
 css/*.css                    component styles, one file per component group (nr- classes)
-components/<Name>/           57 components: README.md (spec) and preview.html (live card), plus the Cover
+components/<Name>/           56 components: README.md (spec) and preview.html (live card), plus the Cover
 docs/brand-book.md           the brand book: principles, token usage, voice, visual foundations
 docs/guidelines/             color, glass, type, layout and density, shape, motion, icons, accessibility, writing
 docs/patterns/               navigation, desktop, web, tablet, phone, spatial, dense tools, AI, feedback, forms
 docs/reference/              platform crosswalk, implementation, decisions and open questions
 assets/logos/                NEAR AI lockups from the logo kit (unchanged)
-assets/trace/                Trace marks: the live-trace mark and The Turn
 dist/                        generated outputs (committed; regenerate with make build)
 scripts/                     build, check, previews, accent derivation, page assembly
 research/                    the research the system was built from

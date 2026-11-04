@@ -871,19 +871,7 @@
     },
     "trace-purple": {
       "value": "#6d14f3",
-      "usage": "Trace product brand purple: the Trace dark accent and the unvisited nodes of the Trace mark. Trace themes only."
-    },
-    "trace-live-start": {
-      "value": "#5b14ff",
-      "usage": "Trace mark live-trace gradient, violet start (Trace product mark only)."
-    },
-    "trace-live-mid": {
-      "value": "#b412c4",
-      "usage": "Trace mark live-trace gradient, purple middle (Trace product mark only)."
-    },
-    "trace-live-end": {
-      "value": "#ff0a6c",
-      "usage": "Trace mark live-trace gradient, hot-pink end and current-step glow (mark only)."
+      "usage": "Trace product brand purple: the Trace dark accent. Trace themes only."
     }
   },
   "shadow": {

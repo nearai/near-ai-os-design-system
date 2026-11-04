@@ -72,7 +72,7 @@ SF Symbols on Apple platforms, Material Symbols (rounded, weight matched to text
 
 ## Brand
 
-The master brand is NEAR AI: the "near AI" wordmark, the "N" monogram lockup and the tile, from the NEAR AI logo kit (asset group Logos). Use the color lockup on light grounds and the white-and-color lockup on dark grounds; keep the kit's clear space. `brand-blue` #0091fd is the "AI" of the wordmark; it appears in marks and, in the dark themes, as `accent-soft` and `data-1`, but never as text on a light ground. Products carry their own marks beside the master brand: Trace has the live-trace mark and The Turn (asset group Trace). The macOS app ships as "Near.ai"; "Trace Commons" names the commons, the account and the server.
+The master brand is NEAR AI: the "near AI" wordmark, the "N" monogram lockup and the tile, from the NEAR AI logo kit (asset group Logos). Use the color lockup on light grounds and the white-and-color lockup on dark grounds; keep the kit's clear space. `brand-blue` #0091fd is the "AI" of the wordmark; it appears in marks and, in the dark themes, as `accent-soft` and `data-1`, but never as text on a light ground. Products carry their own marks beside the master brand. The macOS app ships as "Near.ai"; "Trace Commons" names the commons, the account and the server.
 
 ## Intentional additions
 
@@ -83,7 +83,7 @@ trace-commons defines the desktop vocabulary. These components are added for the
 - `SearchField`, `Slider`, `NumberField`, `DataTable`, `PropertyInspector`: data entry and dense pro-tool panels (Unity Editor Foundations and App UI).
 - `Toast`, `ProgressBar`: undo after reversible actions, and determinate progress for long work.
 - `Message`, `PromptComposer`, `ProofTag`, `AgentRun`, `ToolCall`: AI and agent surfaces (HIG generative AI; App UI thread and composer).
-- `Logo`, `TraceMark`: the NEAR AI lockups and the Trace product mark.
+- `Logo`: the NEAR AI lockups.
 
 ## Sections
 

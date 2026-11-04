@@ -237,11 +237,10 @@ Ship an SVG favicon with a 32px PNG fallback, a 180px `apple-touch-icon`, and we
 ### Which mark becomes the icon
 
 - NEAR AI apps build their icon from the tile: a full-bleed `brand-tile` background layer and the "N" in `brand-paper` as the foreground layer. Never submit the tile file itself; its rounded rectangle is already masked.
-- Trace's packaging icon is The Turn today: macOS `.icns`, the Linux hicolor set and tray SVG, and the Windows MSIX tiles, all regenerated from one geometry by `mark-export`. Whether The Turn converges on the Trace mark is the brand owner's open decision (see Decisions and open questions).
 
 ## Brand marks
 
-Marks stay out of the icon registry as functional glyphs; the one exception is the Trace ink mark as Trace's own tile in the edge rail and a product switcher, where it names the product.
+Marks stay out of the icon registry as functional glyphs.
 
 ### The NEAR AI master brand (NDS-8)
 
@@ -258,11 +257,8 @@ Marks stay out of the icon registry as functional glyphs; the one exception is t
 
 ### Product marks
 
-- **The Trace mark** ("1c Live trace", `TraceMark`): a trace across a 3×3 lattice in a 200-unit box; visited nodes and joins in the live gradient (`trace-live-start`, `trace-live-mid`, `trace-live-end`) with a glow on the current step, unvisited nodes in `trace-purple`. Use the gradient mark at 30px and up on dark grounds only; below 30px and on light grounds use the one-ink mark (white on dark, black on light).
-- **The Turn**: two corner brackets in a 64-unit box (framed with a 2-unit rectangle, brackets at stroke 7, or 8 in the one-ink template). Its open bracket is mint #00d4aa, a legacy color outside the token set.
 - Product marks sit inside their product or beside the NEAR AI lockup, never in place of it outside the product. Inside a product the product name and mark lead; the NEAR AI lockup sits on the about screen or in the footer.
 - The NEAR AI "N" appears as texture in one place only: the faint tiled field under Trace's flow map. Do not add other decorative uses of a mark.
-- Copy the files in `assets/Trace`; never redraw or simplify a lattice or bracket. [trace-commons: GlassTraceMark.swift, assets/mark]
 
 ## Licensing
 

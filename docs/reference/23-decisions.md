@@ -15,7 +15,7 @@ Made by the owner on 2026-10-13. They bind the system until the owner changes th
 | NDS-5 | **Focus ring: product choice.** | The parent specifies a 2px `focus-ring` outline 2px outside the control and turns it on by default. A product may turn it off (`.nr-focus-off`). Turning it off fails WCAG 2.4.7. Trace has it off (its own ruling, 2026-10-11). |
 | NDS-6 | **Strict contrast floors, no overrides.** | Text 4.5:1 and state marks 3:1 in every theme, over the worst-case ground behind glass; 7:1 text in the `-hc` themes. Source values that miss stay exact in their product theme, flagged, and block that theme from shipping until fixed. |
 | NDS-7 | **Apple platforms keep Trace's painted glass.** | Veil and flat fill painted over the native material; floating surfaces painted over a within-window blur; the Mac control ladder 26 / 28 / 30 / 34. Painted surfaces do not follow the person's Clear-to-Tinted glass setting. |
-| NDS-8 | **Marks come from the NEAR AI logo kit.** | Primary, secondary and tile lockups with clear-space guides (asset group Logos). The Trace mark and The Turn are Trace product marks (asset group Trace). |
+| NDS-8 | **Marks come from the NEAR AI logo kit.** | Primary, secondary and tile lockups with clear-space guides (asset group Logos). |
 
 ## System defaults
 
@@ -42,7 +42,7 @@ Set when the system was written, from the research and the source code. The owne
 1. **Trace contrast.** Three Trace values miss the floors: the dark selected fill #6d14f3 at 1.09:1 against the pane over a white desktop, and the hidden-toolbar glyph at 2.63:1 (dark) and 2.27:1 (light). Under NDS-6 the Trace theme ships under the parent only once they are fixed. The parent fixed its own versions. For Trace dark, `make accent SEED=#6d14f3` proposes a lavender selected fill #b5aaff with a dark label (#071a2e, 8.5:1), 3.06:1 against the worst pane, the way the parent handles blue; the hidden-toolbar glyph needs the parent's solved greys (#75757b light, #8d8d97 dark).
 2. **Painted glass on macOS 27 (NDS-7).** macOS 27 draws its own darker edge and brighter highlight on glass, and adds a continuous Clear-to-Tinted setting. Painted panes ignore that setting. Review once the Trace team has measured both on device.
 3. **Trace focus ring (NDS-5).** Allowed, and it fails WCAG 2.4.7 for keyboard users. Restoring it on the Monitor window is a one-line change per scene.
-4. **Brand architecture.** How "Near.ai" (the macOS app name), NEAR AI (the master brand), Trace (the product theme) and Trace Commons (the commons) appear together, and whether The Turn retires in favor of the Trace mark. The logo kit sets no minimum sizes.
+4. **Brand architecture.** How "Near.ai" (the macOS app name), NEAR AI (the master brand), Trace (the product theme) and Trace Commons (the commons) appear together. The logo kit sets no minimum sizes.
 5. **Copy ownership beyond macOS.** Trace's Rust core owns every sentence for the desktop shells. Web and mobile need a decision: read the same tables, or a per-product copy service.
 6. **The default parent accent.** NDS-1 left the parent neutral; the system uses NEAR AI blue from the logo kit as its default. Confirm, or name another.
 7. **Classic glass.** Kept as an optional expressive treatment. Confirm whether any product will use it; if none, retire the `edge-classic-*` tokens.

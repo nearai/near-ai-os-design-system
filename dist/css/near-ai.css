@@ -4873,7 +4873,7 @@ button.nr-property-inspector__field:hover { background: var(--control-hover); }
   .nr-tool-call__button { transition: none; }
 }
 
-/* ---- Brand: Logo, TraceMark ---------------------------------------------- */
+/* ---- Brand: Logo --------------------------------------------------------- */
 .nr-logo { display: block; height: 24px; width: auto; }
 .nr-logo--secondary { height: 28px; }
 .nr-logo--tile { height: 40px; }
@@ -4884,7 +4884,3 @@ button.nr-property-inspector__field:hover { background: var(--control-hover); }
 .nr-logo-ground { box-sizing: border-box; border-radius: var(--radius-card); padding: var(--space-20) var(--space-24); }
 .nr-logo-ground--light { background: var(--brand-paper); }
 .nr-logo-ground--dark { background: var(--brand-ink); }
-.nr-trace-mark { display: block; width: 30px; height: 30px; }
-.nr-trace-mark--large { width: 72px; height: 72px; }
-.nr-logo-ground--light .nr-trace-mark__name { color: var(--brand-ink); }
-.nr-logo-ground--dark .nr-trace-mark__name { color: var(--brand-paper); }

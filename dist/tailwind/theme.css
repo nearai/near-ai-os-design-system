@@ -79,9 +79,6 @@
   --color-brand-paper: var(--brand-paper);
   --color-brand-ink: var(--brand-ink);
   --color-trace-purple: var(--trace-purple);
-  --color-trace-live-start: var(--trace-live-start);
-  --color-trace-live-mid: var(--trace-live-mid);
-  --color-trace-live-end: var(--trace-live-end);
   --spacing-pane-gap: 10px;
   --spacing-pane-padding: 12px;
   --spacing-card-padding-y: 12px;

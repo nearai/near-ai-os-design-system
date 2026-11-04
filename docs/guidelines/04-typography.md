@@ -56,5 +56,5 @@ The tier follows the platform, not the window size: a narrow macOS window still 
 
 - Leave room: labels grow 30-40% in German and Finnish. Buttons hug their labels; never fix a button width to English.
 - Scripts with tall glyphs (Thai, Vietnamese, Devanagari) need taller line heights; M3 publishes language-specific heights, and Apple's text styles handle it automatically.
-- Mirror layout for right-to-left languages, but never mirror numbers, code, media controls or the Trace mark.
+- Mirror layout for right-to-left languages, but never mirror numbers, code, media controls or logo marks.
 - Never build a sentence from fragments; counts inflect in the copy source.

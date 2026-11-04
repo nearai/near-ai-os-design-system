@@ -3,7 +3,7 @@
 The NEAR AI master-brand lockups from the logo kit, placed on the right ground for the theme.
 
 ## When to use
-Use the primary wordmark wherever NEAR AI introduces itself: the web app header, sign-in, about and settings screens, onboarding, marketing. Use the secondary lockup when the wordmark does not fit (headers under 600px, compact toolbars). Use the tile only where an app icon would appear. Inside a product, the product name and mark (for Trace, `TraceMark`) lead and the NEAR AI lockup sits in the footer or about screen.
+Use the primary wordmark wherever NEAR AI introduces itself: the web app header, sign-in, about and settings screens, onboarding, marketing. Use the secondary lockup when the wordmark does not fit (headers under 600px, compact toolbars). Use the tile only where an app icon would appear. Inside a product, the product name and mark lead and the NEAR AI lockup sits in the footer or about screen.
 
 ## Anatomy
 1. Lockup image (an uploaded SVG asset; never inline, never redrawn).

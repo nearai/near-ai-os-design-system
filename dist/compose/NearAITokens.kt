@@ -554,9 +554,6 @@ object NearAIBrand {
     val brandPaper = Color(0xFFF3F3F2)
     val brandInk = Color(0xFF000000)
     val tracePurple = Color(0xFF6D14F3)
-    val traceLiveStart = Color(0xFF5B14FF)
-    val traceLiveMid = Color(0xFFB412C4)
-    val traceLiveEnd = Color(0xFFFF0A6C)
 }
 
 object NearAISpacing {

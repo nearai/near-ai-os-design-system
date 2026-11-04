@@ -72,7 +72,6 @@ Rows follow the catalogue groups: Actions, Presentation, Inputs, Navigation, Con
 | `AgentRun` | addition (`GlassActivityRow`, `GlassSpinner`) | custom `DisclosureGroup` of steps | same | custom | `.nr-agent-run` on `<ol>` | `Thread` (nearest) |
 | `ToolCall` | addition (`GlassToolTile`, `GlassTool`) | custom `DisclosureGroup` | same | custom | `.nr-tool-call` on `<details>` | `AccordionItem` (nearest) |
 | `Logo` | `GlassBrandMark` (the "N" only) | vector asset `Image` | vector asset `Image` | `VectorDrawable` `Image` | `.nr-logo` inline `<svg>` | `Image` |
-| `TraceMark` | `GlassTraceMark` | `Shape` from `SVGPathData` | same | `Canvas` | `.nr-trace-mark` `<svg>` | none |
 
 Rules the table implies:
 
@@ -143,7 +142,7 @@ Unity names are shortened. **E** is a Unity Editor variable (`--unity-colors-<na
 | `data-1..8` | `dataShared`, `dataKept`, `dataInference` (three series) | none | Swift Charts default palette, replaced | A palette `color-<hue>-800` |
 | `ink` | `ink` | `on-surface` at a state-layer alpha | `labelColor` at an alpha | A `transparent-black-*`, `transparent-white-*` |
 | `brand-blue`, `brand-tile`, `brand-paper`, `brand-ink` | none (logo kit) | none | none | none |
-| `trace-purple`, `trace-live-start`, `-mid`, `-end` | `purple`, `traceLiveStart`, `traceLiveMid`, `traceLiveEnd` | none | none | none |
+| `trace-purple` | `purple` | none | none | none |
 
 Rules for the mapping:
 

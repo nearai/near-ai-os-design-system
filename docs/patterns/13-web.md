@@ -257,7 +257,7 @@ See AI and agent patterns and Feedback and states.
 | Material | Scene and painted cards; Classic treatment allowed for one promotion | Flat glass shell |
 | Motion | `spring-expressive` for one or two hero moments | Standard springs and `ease-standard` |
 | Layout | Page sections spaced `space-48` to `space-64`, text at `size-readable-width` | Panes and canonical layouts |
-| Marks | `Logo` from the NEAR AI kit; product marks such as `TraceMark` | Product mark in the app tile or rail header only |
+| Marks | `Logo` from the NEAR AI kit; a product's own mark | Product mark in the app tile or rail header only |
 
 - Never use SF fonts on the web (NDS-4, NDS-18); both surfaces use the `system-ui` stack.
 - Decoration stays restrained: no gradients as ornament beyond the scene, no colored borders on cards, no emoji.

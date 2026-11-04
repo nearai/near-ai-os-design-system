@@ -626,9 +626,6 @@ public enum NearAIBrand {
     public static let brandPaper = Color(.sRGB, red: 0.9529, green: 0.9529, blue: 0.949, opacity: 1)
     public static let brandInk = Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 1)
     public static let tracePurple = Color(.sRGB, red: 0.4275, green: 0.0784, blue: 0.9529, opacity: 1)
-    public static let traceLiveStart = Color(.sRGB, red: 0.3569, green: 0.0784, blue: 1, opacity: 1)
-    public static let traceLiveMid = Color(.sRGB, red: 0.7059, green: 0.0706, blue: 0.7686, opacity: 1)
-    public static let traceLiveEnd = Color(.sRGB, red: 1, green: 0.0392, blue: 0.4235, opacity: 1)
 }
 
 public enum NearAISpacing {

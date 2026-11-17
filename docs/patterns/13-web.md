@@ -333,9 +333,47 @@ Below 768 the titles step down to `clamp(2.1rem, 9vw, 2.75rem)` and ledes to 18.
 - Sections are `clamp(72px, 10vw, 128px)` apart, tight ones `clamp(48px, 7vw, 88px)`, with a hairline between consecutive sections and none under a hero or page head.
 - No eyebrows above headlines, no section numbers and no § marks: the owner removed all of them. Numbered steps use numerals in squircle tiles (JetBrains Mono, tabular), which roll once into view.
 
+### Corners
+
+Marketing corners are squircles, and every radius in this section is a
+**pair**: the squircle value, and a smaller fallback for browsers that cannot
+draw one.
+
+| Surface | Squircle | Fallback |
+|---|---|---|
+| Header bar, CTA panel | 36 | 20 |
+| Card, plate, callout, header art | 28 | 16 |
+| Terminal window | 22 | 12 |
+| Button, menu button | 18 | 10 |
+| Tag, tile | 11 | 6 |
+| Checkbox, toggle | 7 | 4 |
+
+The two numbers are not interchangeable. A squircle of a given radius cuts
+about half as deep as a circle of the same radius, so the squircle value is
+the larger of the pair in order to land on the same visual corner.
+
+**Set `corner-shape: squircle` wherever you set one of these radii.** A
+squircle radius drawn as a circle is close to twice the corner the register
+asks for, and reads as a soft pill rather than as Near AI's corner. It is an
+easy mistake to make, because a utility framework's `rounded-*` class emits
+`border-radius` alone: the radius token grows, the shape does not follow, and
+nothing reports an error.
+
+Where one element's corner continues another's — the header bar's call to
+action sits in its trailing end and carries the bar's outer corner — give
+both the same radius *and* the same `corner-shape`. A browser scales radii
+down when two on one side exceed that side's length, and two boxes only
+scale alike when they agree on both.
+
+These are the marketing values. They are deliberately not the `--radius-*`
+scale the app surfaces use (`radius-pane` 20, `radius-window` 22,
+`radius-card` 16, `radius-control` 11), which is drawn round: no `nr-`
+component sets `corner-shape`. A marketing page takes the pair above; an app
+surface takes the token.
+
 ### Buttons
 
-- **Primary.** Flat Near AI blue, void ink, no border, about 50 tall (padding 13 × 20), radius 18 squircle (10 fallback), with a soft blue glow below (`0 14px 30px -12px` at 65%), which the owner kept because it echoes the app's tab ember. Hover mixes 12% white into the fill and lifts the glow.
+- **Primary.** Flat Near AI blue, void ink, no border, about 50 tall (padding 13 × 20), radius 18 with `corner-shape: squircle` (10 round, as a fallback; see *Corners*), with a soft blue glow below (`0 14px 30px -12px` at 65%), which the owner kept because it echoes the app's tab ember. Hover mixes 12% white into the fill and lifts the glow.
 - **Secondary.** Transparent with a 1px marble outline; hover fills marble with void text.
 - **Link.** No container, 16 text with a 1px underline 4 below.
 - An `<a>` styled as a button carries its own ink; it never inherits the body's link color.
